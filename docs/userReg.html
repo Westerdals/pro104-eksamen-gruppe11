@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <!--TeamList start-->
+
+        <div class="memberList">
+
+            <h3>Legg til medlemmer</h3>
+
+
+
+
+            <div>
+                <form onsubmit="userReg(event)">
+                    <h2>Create new User</h2>
+                    <input type="text" id="userNa" placeholder="Choose User name" required />
+                    <input type="text" id="firstNa" placeholder="Enter First Name" required />
+                    <input type="text" id="lastNa" placeholder="Enter Last  Name" required />
+                    <input type="submit" />
+
+                </form>
+            </div>
+
+
+            <div>
+                <h4>Registrerte medlemmer:</h4>
+                <ol id="registMember"> </ol>
+            </div>
+
+            <script src="userReg.js"></script>
+</body>
+
+</html>
