@@ -1,11 +1,11 @@
-##Group 11 
+## Group 11 
 Pro104 WebProject Exam
 
-#ToDew
+# ToDew
 // Her skal vi ha bilde/giff av nettsida
 
 
-##Table of contents
+## Table of contents
 1. [About. ](#about)
 
 2. [Concept. ](#concept)
@@ -32,7 +32,7 @@ Pro104 WebProject Exam
 
 
 <a name="about"></a>
-##About
+## About
 
 * Date: 13.05.2020-27.05.2020
 * This is an Exam Assignment and we were 6 people collaborating on this Exam. 
@@ -53,7 +53,7 @@ Pro104 WebProject Exam
 
 
 <a name="concept"></a>
-##Concept
+## Concept
 
 We created a wireframe,that includes where our components in the responsive app will find a place, and then drawn the sketch.
 The concept sketch, was one of our initial steps in our brainstorming process of creating this app.
@@ -65,7 +65,7 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
  
 
 <a name="development"></a>
-##Development methodologies
+## Development methodologies
 
 * Use of a Kanban Board <br/>
 The purpose of Kanban is to create continuous change and improvements.Kanban is used to discuss
@@ -82,7 +82,7 @@ all of the tasks have been assigned their own deadline.
 
 
 <a name="prototype"></a>
-##Prototype
+## Prototype
 
 * An interactive mockup of our web design.
 * High-fidelity visual version of the app,that allows you to link between pages.
@@ -92,18 +92,18 @@ all of the tasks have been assigned their own deadline.
 
 
 <a name="class"></a>
-##Class Description
+## Class Description
 
 
 <a name="requirements"></a>
-##Requirements
+## Requirements
 
 * Online browser
 * Mobile device / Laptop / Desktop
 * 
 
 <a name="install"></a>
-##Installation
+## Installation
 First of all, you have to have access to Github.To compile/run this project, first you need to clone/download it from Github.
 You can either <ins>*clone* </ins> this repo to your local machine using [Github](https://github.com/Westerdals/pro104-eksamen-gruppe-11) <br/> and clone it into a folder;
 or you can <ins>*download* </ins> the whole project as a zip file and then unpack the file.
@@ -116,7 +116,7 @@ The next step is to right-click the project,and open Module settings,select SDK'
 
 
 <a name="usage"></a>
-##Usage
+## Usage
 
 Our vision is to create an application that will be easy to use, and helpful tool for managing projects, 
 in other words app-for collaborating smoothly.
@@ -129,7 +129,7 @@ To be able to use our app you have to have an online browser(whether on your des
 
 
 <a name="mobile"></a>
-##Mobile support
+## Mobile support
 
 * Mobile friendly. <br/>
 * Use of "Viewport Meta Tag". <br/>
@@ -140,7 +140,7 @@ switch to accommodate for resolution, image size and scripting abilities.
 
 
 <a name="technology"></a>
-##Technology/Framework used
+## Technology/Framework used
 
 We have been using different technologies/frameworks to create this app, in order for the app to work proper and look nice. 
 * Naming convention before we start coding.
@@ -154,7 +154,7 @@ We have been using different technologies/frameworks to create this app, in orde
 
 
 <a name="code"></a>
-##Code style
+## Code style
 
 * Standard
 * camelCase
