@@ -38,7 +38,7 @@ Pro104 WebProject Exam
 * This is an Exam Assignment and we were 6 people collaborating on this Exam. 
 * Responsive web app that helps the users with managing projects.
 * Easy-to-use web app with a comprehensive overview, that is also compatible with mobile devices.
-* Based on Usability, because we strove to deliver a app that our users will find it effective,efficient and satisfied.
+* Based on Usability, because we strove to deliver an app that our users will find it effective,efficient and satisfied.
 * Our goal is to meet the users expectations and needs,as quickly and dependably as possible. 
 * Our target group is students or people who works on project, but are not familiar with using such auxiliary tools.
 * The app have the ability to keep track of deadlines,collaborative/individual overview, as well as to set an reminder.
@@ -59,8 +59,8 @@ We created a wireframe,that includes where our components in the responsive app 
 The concept sketch, was one of our initial steps in our brainstorming process of creating this app.
 The reason behind creating a concept sketch,was because we wanted to visualize the project together from the start,
 which helped our team to shape/share our ideas, and to get a clear idea of what kind of design we will go for. 
-Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward.
- In here you can see how our concept sketch looks like: 
+Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. <br/>
+<ins> In here you can see how our concept sketch looks like: </ins>
  ![](images/conceptSc.gif)
  
 
