@@ -24,9 +24,9 @@ Pro104 WebProject Exam
 
 9. [Mobile support. ](#mobile)
 
-10.[Technology/Framework used. ](#technology) 
+10. [Technology/Framework used. ](#technology) 
 
-11.[Code Style. ](#code)
+11. [Code Style. ](#code)
 
 
 
