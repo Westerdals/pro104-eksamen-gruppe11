@@ -25,12 +25,12 @@ function userID() {
 
 
 
-function userReg(event) {
+function userRegister(event) {
     event.preventDefault();
 
-    const userNa = document.getElementById("userNa").value;
-    const firstNa = document.getElementById("firstNa").value;
-    const lastNa = document.getElementById("lastNa").value;
+    const userNa = document.getElementById("userName").value;
+    const firstNa = document.getElementById("firstName").value;
+    const lastNa = document.getElementById("lastName").value;
 
     const userRegister = { id: userID(), userName: userNa, firstName: firstNa, lastName: lastNa };
 
