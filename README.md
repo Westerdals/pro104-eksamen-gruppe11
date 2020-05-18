@@ -159,9 +159,13 @@ We have been using different technologies/frameworks to create this app, in orde
 
 * Standard
 * camelCase
+* Long words are separated by underline(_)
+* Use of abbreviations
 * No trailing white space
-<br/>
-//vi får endre på det etterhvert.
+* Comments above the start tag of the elements(briefly and concisely in English)
+* New line for each declaration
+* Names are short and descriptive
+
 
 
 
