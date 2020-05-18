@@ -15,7 +15,6 @@ let toDoDiv = document.getElementById("todo-div");
 let duringDiv = document.getElementById("during-div");
 let finishedDiv = document.getElementById("finished-div");
 
-
 counter= 0;
 toDoButton.onclick = function dothis(){
 
@@ -51,20 +50,7 @@ function drop(event) {
   }
 
 
-
-
-
-   function colorChange(){
-     if(options1){
-       return `background-color: green`;
-    }else if(options2){
-      return `background-color: yellow`;
-    }else if(options3){
-      return `background-color: red`;
-    }
-    //  return `background-color:rgb(${Math.random()*100},${Math.random()*100}, ${Math.random()*100})`;
-    
-    }
- 
+ //Dette er en funksjon som vi kan bruke til å sette påminnelser. 
+ // https://www.plus2net.com/javascript_tutorial/timer-set.php
     mytime = setTimeout(expression, msec); 
     
