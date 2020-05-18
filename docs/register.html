@@ -9,100 +9,51 @@
 
 <body>
 
-    <div class="form-popup" id="myForm">
+    <div class="formPopup" id="projectForm">
+
+
         <!-- Register new Project -->
-
-
-        <form onsubmit="delegate(event)" class="form-container">
+        <form class="forms" onsubmit="createProject(event)">
             <h1>Register new Project</h1>
 
             <div>
                 <!-- Adding Project id and Project Name -->
-                <label for="projecId">Project Id</label><!-- maybe it should have a random generated number? if else -->
-                <input type="text" placeholder="Enter project nr" id="projecId">
                 <label for="projectName">Project Name</label>
                 <input type="text" placeholder="Enter Project Name" id="projectName" required>
             </div>
 
-
+            <!-- Adding start and end date for the Project -->
             <div>
-                <!-- Adding start and end date for the Project -->
-
-
-
                 <label for="startDate">Start Date</label>
                 <input type="date" id="startDate" required>
                 <label for="endDate">End Date</label>
                 <input type="date" id="endDate" required>
             </div>
 
-
+            <!-- Project description -->
             <div>
-                <!-- Project description -->
                 <h4>Project Description</h4>
                 <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
             </div>
 
 
-            <div>
-                <!-- Creating project options -->
-                <button type="submit" class="btn">Opprett Prosjekt</button>
+            <button type="submit" class="btn">Opprett Prosjekt</button>
+            <input type="reset" value="Reset">
 
-                <!-- <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>  -->
-
-            </div>
         </form>
 
 
 
 
 
-        <div>
-            <!-- Creating task-->
-            <form>
-                <h4>Opprett Oppgaver</h4>
-                <label for="addTask">Add Task</label>
-                <input type="text" placeholder="Add task" name="" required>
-                <label for="priority">Choose priority:</label>
-                <input list="priority" name="priorities" id="priorities">
-                <datalist id="priority">
-                    <option value="Low">
-                    <option value="Medium">
-                    <option value="High">
-                </datalist>
-                <br>
 
-                <!-- Adding start and end date for the Project -->
-                <label for="taskStartDate">Start Date</label>
-                <input type="date" name="taskStartDate" required>
-                <label for="taskEndtDate">End Date</label>
-                <input type="date" name="taskEndtDate" required>
-                <br>
-                <input type="submit">
-            </form>
-        </div>
-
-        <div>
-            <!-- delegate task to exisiting users -->
-            <form onsubmit="delegate(event)">
-                <h3>Deleger Oppgaver (alternativt) </h3>
-                <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..."
-                    required>
-                <datalist id="userList"></datalist>
-                <input list="taskList" id="taskListInput" name="taskListInput" type="text"
-                    placeholder="Tildel registrert oppgave..." required>
-                <datalist id="taskList"></datalist>
-
-                <input type="submit" value="Legg til" />
-            </form>
-
-        </div>
 
 
 
     </div>
 
-    <script src="register.js"></script>
+    <script src="/register.js"></script>
+
 
 
 
@@ -118,7 +69,9 @@
         https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_textarea
         https://www.w3schools.com/tags/tag_datalist.asp
         https://stackoverflow.com/questions/29629458/saving-and-retrieving-date-from-local-storage/29629610
-
+        https://www.w3schools.com/jsref/met_form_reset.asp
+        https://www.freecodecamp.org/news/when-and-why-you-should-use-es6-arrow-functions-and-when-you-shouldnt-3d851d7f0b26/
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset
            <div>
             <label for=""></label>
             <input type="text" placeholder="" name="" required>

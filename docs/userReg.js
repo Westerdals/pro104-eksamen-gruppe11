@@ -5,22 +5,23 @@ let userList = JSON.parse(window.localStorage.getItem("delegateTaskList"));
 
 //User IdGenerator
 function userID() {
-    let IdCounter ="";
+    let IdCounter = "";
 
     let userList = JSON.parse(window.localStorage.getItem("UserList"));
 
     if (userList === null || userList.length == 0) {
         IdCounter = 4000
-    }else{
-        IdCounter = 4000 + userList.length}
+    } else {
+        IdCounter = 4000 + userList.length
+    }
 
-        return IdCounter;
+    return IdCounter;
 
 }
 
 
 
- 
+
 
 
 
@@ -31,7 +32,7 @@ function userReg(event) {
     const firstNa = document.getElementById("firstNa").value;
     const lastNa = document.getElementById("lastNa").value;
 
-    const userRegister = { id: userID(),userName: userNa, firstName: firstNa, lastName: lastNa };
+    const userRegister = { id: userID(), userName: userNa, firstName: firstNa, lastName: lastNa };
 
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 
@@ -59,7 +60,7 @@ class User {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
-    
+
     }
 
 }
