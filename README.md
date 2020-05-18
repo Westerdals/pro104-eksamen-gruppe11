@@ -113,8 +113,9 @@ Once **Git** is selected, paste the Git repository URL, and select the directory
 You will be asked if you want to connect to Github, and you should click yes.
 Now, intelliJ will tell you that there is an Unlinked project,so click on import Gradle project;use the auto-import and unselect the "create Separate module per source set"-then ok.
 The next step is to right-click the project,and open Module settings,select SDK's, and there you have to select the JDK that is installed on your system and click ok; and the project is installed and ready to run.
-
-
+You are also able to use WebStorm. You have to specify the URL of the project [Github](https://github.com/Westerdals/pro104-eksamen-gruppe-11) <br/>, enter the path to the folder where your
+local Git repository will be created,and click Clone.WebStorm will automatically set Git root mapping to the project root directory.
+As well as you are also able to use Brackets, or any other source code editor that you are familiar with.
 <a name="usage"></a>
 ## Usage
 
