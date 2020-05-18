@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="index.html">Trykk her for startsiden</a>
+    <div>
+        <!--Register teamList-->
+
+        <div class="memberList">
+
+            <h3>Legg til medlemmer</h3>
+
+            <div>
+                <form onsubmit="userRegister(event)">
+                    <h2>Create new User</h2>
+                    <input type="text" id="userName" placeholder="Choose User name" required />
+                    <input type="text" id="firstName" placeholder="Enter First Name" required />
+                    <input type="text" id="lastName" placeholder="Enter Last  Name" required />
+                    <input type="submit" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <h4>Registrerte medlemmer:</h4>
+        <ol id="registMember"> </ol>
+    </div>
+
+    <script src="/docs/scripts/userRegister.js"></script>
+</body>
+
+</html>

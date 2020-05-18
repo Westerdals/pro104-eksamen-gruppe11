@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register task</title>
+</head>
+
+<body>
+    <a href="index.html">Trykk her for startsiden</a>
+
+    <!-- Creating task-->
+    <script src="/docs/scripts/taskRegister.js" defer></script>
+
+    <div>
+        <form action="">
+            <label for="createdProject">Choose Project to add task:</label>
+            <input type="text" list="createdProject">
+            <datalist id="createdProject"></datalist>
+        </form>
+
+    </div>
+    <div>
+        <form>
+            <h4>Opprett Oppgaver</h4>
+            <label for="addTask">Add Task</label>
+            <input type="text" placeholder="Add task" required>
+            <label for="priority">Choose priority:</label>
+            <input list="priority" name="priorities" id="priorities">
+            <datalist id="priority">
+                <option value="Low">
+                <option value="Medium">
+                <option value="High">
+            </datalist>
+            <br>
+
+            <!-- Adding start and end date for the Project -->
+            <label for="taskStartDate">Start Date</label>
+            <input type="date" name="taskStartDate" required>
+            <label for="taskEndtDate">End Date</label>
+            <input type="date" name="taskEndtDate" required>
+            <br>
+            <input type="submit">
+        </form>
+    </div>
+    <!-- delegate task to exisiting users -->
+    <div>
+        <form onsubmit="delegate(event)">
+            <h3>Deleger Oppgaver (alternativt) </h3>
+            <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
+            <datalist id="userList"></datalist>
+            <input list="taskList" id="taskListInput" name="taskListInput" type="text"
+                placeholder="Tildel registrert oppgave..." required>
+            <datalist id="taskList"></datalist>
+
+            <input type="submit" value="Legg til" />
+        </form>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
