@@ -16,6 +16,8 @@ let duringDiv = document.getElementById("during-div");
 let finishedDiv = document.getElementById("finished-div");
 
 counter= 0;
+
+//The event that happens when you click create task - div is created. 
 toDoButton.onclick = function dothis(){
 
   const priorityColor= document.getElementById("prioritySelector").value;
@@ -31,6 +33,8 @@ ${toDoText.value}<p>
 counter++;
 }
 var data = "";
+
+//Drag and drop functions
 function dragStart(event) {
   event.dataTransfer.setData("Text", event.target.id);
   }
