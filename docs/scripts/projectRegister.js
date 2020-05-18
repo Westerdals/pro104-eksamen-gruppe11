@@ -14,8 +14,6 @@ function ProjectID() {
 
 }
 
-
-
 //Creating new project
 function createProject(event) {
     event.preventDefault();
