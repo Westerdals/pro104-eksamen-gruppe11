@@ -32,7 +32,7 @@ function userRegister(event) {
     const firstNa = document.getElementById("firstName").value;
     const lastNa = document.getElementById("lastName").value;
 
-    const userRegister = { id: userID(), userName: userNa, firstName: firstNa, lastName: lastNa };
+    const userRegister = { id: Task.userID(), userName: userNa, firstName: firstNa, lastName: lastNa };
 
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 

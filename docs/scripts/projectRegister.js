@@ -24,7 +24,8 @@ function createProject(event) {
     const projectDesc = document.getElementById("projectDesc").value;
 
 
-    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [] };
+    //keys for the project
+    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [], user: [] };
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects")) || [];
     projectList.push(projectInfo);
@@ -38,11 +39,11 @@ function createProject(event) {
 }
 
 
-const taskPopup = document.createElement ("div");
-    
-    document.body.appendChild(taskPopup);
+const taskPopup = document.createElement("div");
 
-    document.getElementById("projectRegBtn").onclick = function(){
+document.body.appendChild(taskPopup);
+
+document.getElementById("projectRegBtn").onclick = function () {
     taskPopup.innerHTML = `
     
     <br> 
@@ -87,7 +88,7 @@ const taskPopup = document.createElement ("div");
         </form>
 
     </div>`;
-    
+
 }
 
 
