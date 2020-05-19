@@ -41,7 +41,8 @@ function userRegister(event) {
 
     window.localStorage.setItem("UserList", JSON.stringify(userList));
 
-
+    //using confirm as an extra control, if person
+    confirm("New user has been created");
 
     event.target.reset();
 
