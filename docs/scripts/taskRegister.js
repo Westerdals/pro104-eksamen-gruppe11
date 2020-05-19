@@ -8,7 +8,8 @@ function projectListShow() {
     const projectListEl = document.getElementById("createdProject");
 
     for (const projects of projectList) {
-        projectListEl.innerHTML += `<option value = "${'ProjectID: ' + projects.ProjectID + ' name: ' + projects.projectName}">`
+        projectListEl.innerHTML += `<option value = ${projects.ProjectID}>${projects.projectName}</option>"`//$ {'ProjectID: ' + projects.ProjectID + 
+        //' name: ' + projects.projectName}" id = '${projects.ProjectID}'>`
     }
 }
 
@@ -17,21 +18,26 @@ function projectListShow() {
 
 //Attach task to project
 
-function attachTaskToProj(addTask) {
+function attachTaskToProj(task) {
 
-    const chosenProject = document.getElementById("createdProject").value;
-    const crap = chosenProject.value;
+    const createdProject = document.getElementById("createdProject").value;
+    console.log(createdProject);
+
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects"));
 
-    for (let i = 0; i = projectList.length; i++) {
 
-        if (projectList[i].includes(crap)) {
-            const taskIndex = projectList[i].indexOf(task)
-            taskIndex.push(addTask);
+    //for each loop
+    projectList.forEach((el) => {
+        console.log(el.ProjectID);
+        if (el.ProjectID == createdProject) {
+            el.task.push(task)
         }
+    })
 
-    }
+    console.log(projectList);
+
+    window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
 
 }
@@ -45,16 +51,13 @@ function createTask(event) {
     const taskStartDate = document.getElementById("taskStartDate").value;
     const taskEndtDate = document.getElementById("taskEndtDate").value;
 
-    const addTask = { taskText, priorities, taskStartDate, taskEndtDate }
-    attachTaskToProj(addTask)
+    const task = { taskText, priorities, taskStartDate, taskEndtDate }
 
-    //  attachTaskToProj(regTask)
-
-    window.localStorage.setItem("TaskList", JSON.stringify(Task.taskArray));
+    attachTaskToProj(task);
 
 
 
-    event.target.reset();
+    //event.target.reset();
 }
 
 
@@ -63,5 +66,46 @@ function createTask(event) {
 
 projectListShow()
 
+
+
+//User IdGenerator
+function ProjectID() {
+    let IdCounter = "";
+
+    let projects = JSON.parse(window.localStorage.getItem("Projects"));
+
+    if (projects === null || projects.length == 0) {
+        IdCounter = 2000
+    } else {
+        IdCounter = 2000 + projects.length
+    }
+
+    return IdCounter;
+
+}
+
+//Creating new project
+function createProject(event) {
+    event.preventDefault();
+
+    const projectName = document.getElementById("projectName").value;
+    const startDate = document.getElementById("startDate").value;
+    const endDate = document.getElementById("endDate").value;
+    const projectDesc = document.getElementById("projectDesc").value;
+
+
+    //keys for the project
+    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [], user: [] };
+
+    const projectList = JSON.parse(window.localStorage.getItem("Projects")) || [];
+    projectList.push(projectInfo);
+
+
+    window.localStorage.setItem("Projects", JSON.stringify(projectList));
+
+
+    event.target.reset();
+
+}
 
 
