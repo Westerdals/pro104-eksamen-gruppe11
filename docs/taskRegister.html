@@ -22,10 +22,10 @@
 
     </div>
     <div>
-        <form>
+        <form onsubmit="createTask(event)">
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
-            <input type="text" placeholder="Add task" required>
+            <input type="text" id="taskText" placeholder="Add task" required>
             <label for="priority">Choose priority:</label>
             <input list="priority" name="priorities" id="priorities">
             <datalist id="priority">
@@ -37,9 +37,9 @@
 
             <!-- Adding start and end date for the Project -->
             <label for="taskStartDate">Start Date</label>
-            <input type="date" name="taskStartDate" required>
+            <input type="date" id="taskStartDate" name="taskStartDate" required>
             <label for="taskEndtDate">End Date</label>
-            <input type="date" name="taskEndtDate" required>
+            <input type="date" id="taskEndtDate" name="taskEndtDate" required>
             <br>
             <input type="submit">
         </form>
@@ -60,6 +60,8 @@
     </div>
 
 
+
+    <script src="/docs/scripts/Classes.js" defer></script>
 
 
 </body>
