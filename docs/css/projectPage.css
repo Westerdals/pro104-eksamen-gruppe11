@@ -1,4 +1,17 @@
 
+#popUp{
+
+    background-color: skyblue;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #todo-text-head{
     width: 120px;
  }
@@ -62,3 +75,5 @@
  #main-container{
      display: flex;
  }
+
+ 
