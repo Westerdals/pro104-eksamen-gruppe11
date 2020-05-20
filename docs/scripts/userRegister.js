@@ -1,7 +1,3 @@
-let userList = JSON.parse(window.localStorage.getItem("delegateTaskList"));
-
-
-
 
 //User IdGenerator
 function userID() {
@@ -21,28 +17,21 @@ function userID() {
 
 
 
-
-
-
-
+//Creates new user
 function userRegister(event) {
     event.preventDefault();
 
-    const userNa = document.getElementById("userName").value;
-    const firstNa = document.getElementById("firstName").value;
-    const lastNa = document.getElementById("lastName").value;
+    const userName = document.getElementById("userName").value;
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
 
-    const userRegister = { id: userID(), userName: userNa, firstName: firstNa, lastName: lastNa };
+    const userRegister = { id: userID(), userName, firstName, lastName };
 
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
-
-
     userList.push(userRegister);
 
     window.localStorage.setItem("UserList", JSON.stringify(userList));
 
-    //using confirm as an extra control, if person
-    confirm("New user has been created");
 
     event.target.reset();
 
@@ -52,19 +41,20 @@ function userRegister(event) {
 
 
 
-class User {
+//Pushes created users to list
+function showUserList() {
+    const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 
-    static IdCounter = 1000;
+    const userListEl = document.getElementById("userList");
+    userList.innerHTML = "";
 
-    constructor(userName, firstName, lastName) {
-        this.ID = user.IdCounter;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
 
+    for (const users of userList) {
+        userListEl.innerHTML += `<option value = ${users.id}>${users.firstName}</option>"`;
     }
-
 }
+
+showUserList()
 
 
 //https://stackoverflow.com/questions/24403732/check-if-array-is-empty-or-does-not-exist-js

@@ -16,8 +16,7 @@
     <div>
         <form action="">
             <label for="createdProject">Choose Project to add task:</label>
-            <input type="text" list="createdProject">
-            <datalist id="createdProject"></datalist>
+            <select id="createdProject"></select>
         </form>
 
     </div>
@@ -48,12 +47,10 @@
     <div>
         <form onsubmit="delegate(event)">
             <h3>Deleger Oppgaver (alternativt) </h3>
-            <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
-            <datalist id="userList"></datalist>
-            <input list="taskList" id="taskListInput" name="taskListInput" type="text"
-                placeholder="Tildel registrert oppgave..." required>
-            <datalist id="taskList"></datalist>
-
+            <label for="userList">Choose User</label>
+            <select id="userList"></select>
+            <label for="taskList">Choose Created Task</label>
+            <select id="taskList"></select>
             <input type="submit" value="Legg til" />
         </form>
 
@@ -62,6 +59,7 @@
 
 
     <script src="/docs/scripts/Classes.js" defer></script>
+    <script src="/docs/scripts/userRegister.js" defer></script>
 
 
 </body>

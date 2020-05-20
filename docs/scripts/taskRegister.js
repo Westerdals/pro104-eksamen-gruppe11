@@ -1,31 +1,27 @@
-//project list 
+showTaskList()
+projectListShow()
 
 
-
+//Show the created project in the datalist
 function projectListShow() {
     const projectList = JSON.parse(window.localStorage.getItem("Projects")) ?? [];
 
     const projectListEl = document.getElementById("createdProject");
 
     for (const projects of projectList) {
-        projectListEl.innerHTML += `<option value = ${projects.ProjectID}>${projects.projectName}</option>"`//$ {'ProjectID: ' + projects.ProjectID + 
-        //' name: ' + projects.projectName}" id = '${projects.ProjectID}'>`
+        projectListEl.innerHTML += `<option value = ${projects.ProjectID}>${projects.projectName}</option>"`;
     }
 }
 
 
 
 
-//Attach task to project
-
+//Attach new task to project
 function attachTaskToProj(task) {
 
     const createdProject = document.getElementById("createdProject").value;
-    console.log(createdProject);
-
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects"));
-
 
     //for each loop
     projectList.forEach((el) => {
@@ -43,6 +39,7 @@ function attachTaskToProj(task) {
 }
 
 
+//Creates new task
 function createTask(event) {
     event.preventDefault();
 
@@ -55,17 +52,8 @@ function createTask(event) {
 
     attachTaskToProj(task);
 
-
-
-    //event.target.reset();
+    event.target.reset();
 }
-
-
-
-
-
-projectListShow()
-
 
 
 //User IdGenerator
@@ -79,33 +67,23 @@ function ProjectID() {
     } else {
         IdCounter = 2000 + projects.length
     }
-
     return IdCounter;
 
 }
 
-//Creating new project
-function createProject(event) {
-    event.preventDefault();
+//Pushes created task to list
+function showTaskList() {
+    const projectTaskList = JSON.parse(window.localStorage.getItem("Projects")) || [];
 
-    const projectName = document.getElementById("projectName").value;
-    const startDate = document.getElementById("startDate").value;
-    const endDate = document.getElementById("endDate").value;
-    const projectDesc = document.getElementById("projectDesc").value;
+    const taskListEl = document.getElementById("taskList");
+    taskListEl.innerHTML = "";
 
+    for (const project of projectTaskList) {
+        for (const task of project) {
 
-    //keys for the project
-    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [], user: [] };
-
-    const projectList = JSON.parse(window.localStorage.getItem("Projects")) || [];
-    projectList.push(projectInfo);
-
-
-    window.localStorage.setItem("Projects", JSON.stringify(projectList));
-
-
-    event.target.reset();
-
+            taskListEl.innerHTML += `<option value = ${task.taskText}>${task.taskText}</option>"`;
+        }
+    }
 }
 
 
