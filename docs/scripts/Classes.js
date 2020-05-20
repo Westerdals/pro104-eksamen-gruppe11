@@ -2,7 +2,6 @@
 class Task {
 
 
-    static taskArray = JSON.parse(window.localStorage.getItem("TaskList")) || [];
 
 
     constructor(taskText, priority, startDate, endDate) {
@@ -30,11 +29,26 @@ class Task {
 
     }
 
+}
 
-    static setup() {
+class ID {
 
-        new Task("løø", "Low", "2020-05-18", "2020-05-21")
+
+    userid() {
+        let IdCounter = "";
+
+        if (User.userArray.length == null) {
+            IdCounter = 1000;
+        } else {
+
+            IdCounter = 1000 + User.userArray.length
+        }
+
+        return IdCounter;
 
     }
 
+
 }
+
+

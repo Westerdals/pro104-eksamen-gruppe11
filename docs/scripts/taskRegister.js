@@ -1,42 +1,45 @@
-//project list 
+showTaskList()
+projectListShow()
 
 
-
+//Show the created project in the datalist
 function projectListShow() {
     const projectList = JSON.parse(window.localStorage.getItem("Projects")) ?? [];
 
     const projectListEl = document.getElementById("createdProject");
 
     for (const projects of projectList) {
-        projectListEl.innerHTML += `<option value = "${'ProjectID: ' + projects.ProjectID + ' name: ' + projects.projectName}">`
+        projectListEl.innerHTML += `<option value = ${projects.ProjectID}>${projects.projectName}</option>"`;
     }
 }
 
 
 
 
-//Attach task to project
+//Attach new task to project
+function attachTaskToProj(task) {
 
-function attachTaskToProj(addTask) {
-
-    const chosenProject = document.getElementById("createdProject").value;
-    const crap = chosenProject.value;
+    const createdProject = document.getElementById("createdProject").value;
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects"));
 
-    for (let i = 0; i = projectList.length; i++) {
-
-        if (projectList[i].includes(crap)) {
-            const taskIndex = projectList[i].indexOf(task)
-            taskIndex.push(addTask);
+    //for each loop
+    projectList.forEach((el) => {
+        console.log(el.ProjectID);
+        if (el.ProjectID == createdProject) {
+            el.task.push(task)
         }
+    })
 
-    }
+    console.log(projectList);
+
+    window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
 
 }
 
 
+//Creates new task
 function createTask(event) {
     event.preventDefault();
 
@@ -45,23 +48,42 @@ function createTask(event) {
     const taskStartDate = document.getElementById("taskStartDate").value;
     const taskEndtDate = document.getElementById("taskEndtDate").value;
 
-    const addTask = { taskText, priorities, taskStartDate, taskEndtDate }
-    attachTaskToProj(addTask)
+    const task = { taskText, priorities, taskStartDate, taskEndtDate }
 
-    //  attachTaskToProj(regTask)
-
-    window.localStorage.setItem("TaskList", JSON.stringify(Task.taskArray));
-
-
+    attachTaskToProj(task);
 
     event.target.reset();
 }
 
 
+//User IdGenerator
+function ProjectID() {
+    let IdCounter = "";
 
+    let projects = JSON.parse(window.localStorage.getItem("Projects"));
 
+    if (projects === null || projects.length == 0) {
+        IdCounter = 2000
+    } else {
+        IdCounter = 2000 + projects.length
+    }
+    return IdCounter;
 
-projectListShow()
+}
 
+//Pushes created task to list
+function showTaskList() {
+    const projectTaskList = JSON.parse(window.localStorage.getItem("Projects")) || [];
+
+    const taskListEl = document.getElementById("taskList");
+    taskListEl.innerHTML = "";
+
+    for (const project of projectTaskList) {
+        for (const task of project) {
+
+            taskListEl.innerHTML += `<option value = ${task.taskText}>${task.taskText}</option>"`;
+        }
+    }
+}
 
 
