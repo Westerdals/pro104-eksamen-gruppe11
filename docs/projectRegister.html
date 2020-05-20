@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="index.html">Trykk her for startsiden</a>
+    <div>
+
+        <!-- Register new Project -->
+        <form class="forms" onsubmit="createProject(event)">
+            <h1>Register new Project</h1>
+
+            <div>
+                <!-- Adding Project id and Project Name -->
+                <label for="projectName">Project Name</label>
+                <input type="text" placeholder="Enter Project Name" id="projectName" required>
+            </div>
+
+            <!-- Adding start and end date for the Project -->
+            <div>
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" required>
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" required>
+            </div>
+
+            <!-- Project description -->
+            <div>
+                <h4>Project Description</h4>
+                <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
+            </div>
+
+
+            <button type="submit" class="btn" id="projectRegBtn">Opprett Prosjekt</button>
+            <input type="reset" value="Reset">
+
+        </form>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script src="/docs/scripts/projectRegister.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+<!--
+        https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_textarea
+        https://www.w3schools.com/tags/tag_datalist.asp
+        https://stackoverflow.com/questions/29629458/saving-and-retrieving-date-from-local-storage/29629610
+        https://www.w3schools.com/jsref/met_form_reset.asp
+        https://www.freecodecamp.org/news/when-and-why-you-should-use-es6-arrow-functions-and-when-you-shouldnt-3d851d7f0b26/
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset
+           <div>
+            <label for=""></label>
+            <input type="text" placeholder="" name="" required>
+            <label for=""></label>
+            <input type="text" placeholder="" name="" required>
+        </div>
+    
+    -->

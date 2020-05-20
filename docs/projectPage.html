@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/docs/css/projectPage.css">
+</head>
+<body>
+
+<a href="index.html">Trykk her for startsiden</a>
+  <!--Kanskje bruke dependecies mapper, som vi kan ha andres code i, som vi bruker.
+  Det er visst lov. pluss at vi kan fullcalendar.io - den er visst helt innafor
+å bruke. -->
+ <span>
+ <div>
+<p>
+  <h1>Prosjekt manager</h1>
+  <h3></h3>
+</p>
+</div>
+<div id="div-text">
+<input type="textbox" id="todo-text-head" placeholder="Overskrift">
+<input type="textbox" id="todo-text" placeholder="Tekst">
+<br>
+<label for="prioritySelector">Velg hastighetsgrad</label>
+<select id="prioritySelector"> 
+<option id="option1" class="options" value="green">Lav hastighetsgrad</option>
+<option id="option2" class="options"  value="yellow">Medium hastighetsgrad</option>
+<option id="option3" class="options" value="red">Høy hastighetsgrad</option>
+</select>
+<br>
+<input type="button" id="button-todo" value="add todo">
+</div>
+</span>
+
+<span id="main-container">
+
+<span id="containerToGetDisplayHorizontal">
+  <span id="container">
+    <div id="todo-text-header" class="headers">TODO</div>
+    <div id="todo-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="during-text-head"class="headers">WORK IN PROGRESS</div>
+    <div id="during-div" ondrop="drop(event)"  ondragover="allowDrop(event)"></div>
+    <div id="finished-text-head"class="headers">FINISHED</div>
+    <div id="finished-div"ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </span>
+  </span>  
+  <span id="calendarSpan">
+    <div id="caleandar"></div>
+  </span>
+</span>
+
+<script src="/docs/scripts/projectPage.js"></script>
+</body>
+</html>
