@@ -32,21 +32,22 @@ function createProject(event) {
 
     window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
+    popUp();
 
     event.target.reset();
 
 }
 
 
-const taskPopup = document.createElement ("div");
-    
-    document.body.appendChild(taskPopup);
 
-    document.getElementById("projectRegBtn").onclick = function(){
-    taskPopup.innerHTML = `
-    
-    <br> 
-    <br> 
+
+// Popups the rest other register form to ease ux to complete a whole registration of a function.
+function popUp() {
+
+    const taskPopup = document.createElement("div");
+    taskPopup.innerHTML =
+        `
+
     <br> 
     
     <div>
@@ -87,8 +88,14 @@ const taskPopup = document.createElement ("div");
         </form>
 
     </div>`;
-    
+
+    document.body.appendChild(taskPopup);
+
 }
+
+
+
+
 
 
 
