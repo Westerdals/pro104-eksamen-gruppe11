@@ -14,6 +14,8 @@ Pro104 WebProject Exam
 
 4. [Prototype. ](#prototype)
 
+5. [Logo. ](#logo)
+
 5. [Class Description. ](#class)
 
 6. [Requirements. ](#requirements)
@@ -89,6 +91,10 @@ all of the tasks have been assigned their own deadline.
 * You would be able to see how the plan was that our app would work/look like before we build it up.
  
  //muligens vi han prototypen linket her også? 
+ 
+ 
+<a name="logo"></a>
+## Logo
 
 
 <a name="class"></a>
