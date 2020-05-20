@@ -16,17 +16,17 @@ Pro104 WebProject Exam
 
 5. [Logo. ](#logo)
 
-5. [Class Description. ](#class)
+6. [Class Description. ](#class)
 
-6. [Requirements. ](#requirements)
+7. [Requirements. ](#requirements)
 
-7. [Installation. ](#install)
+8. [Installation. ](#install)
 
-8. [Usage. ](#usage)
+9. [Usage. ](#usage)
 
-9. [Mobile support. ](#mobile)
+10. [Mobile support. ](#mobile)
 
-10. [Technology/Framework used. ](#technology) 
+11. [Technology/Framework used. ](#technology) 
 
 11. [Code Style. ](#code)
 
@@ -62,7 +62,6 @@ The concept sketch, was one of our initial steps in our brainstorming process of
 The reason behind creating a concept sketch,was because we wanted to visualize the project together from the start,
 which helped our team to shape/share our ideas, and to get a clear idea of what kind of design we will go for. 
 Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. <br/>
-<ins> In here you can see how our concept sketch looks like: </ins>
  ![](images/conceptSc.gif)
  
 
@@ -87,10 +86,8 @@ all of the tasks have been assigned their own deadline.
 ## Prototype
 
 * An interactive mockup of our web design.
-* High-fidelity visual version of the app,that allows you to link between pages.
-* You would be able to see how the plan was that our app would work/look like before we build it up.
- 
- //muligens vi han prototypen linket her også? 
+* High-fidelity visual version of the app,that allows you to link between pages.<br/>
+* [Prototype](https://xd.adobe.com/view/d473a8d5-681e-4022-612c-0780508b4732-a242/?fullscreen) shows how the plan was that our app would work/look like before we build it up.
  
  
 <a name="logo"></a>
@@ -123,6 +120,8 @@ You are also able to use WebStorm. You have to specify the URL of the project [G
 local Git repository will be created,and click Clone.WebStorm will automatically set Git root mapping to the project root directory.
 As well as you are also able to use Brackets, or any other source code editor that you are familiar with.
 <a name="usage"></a>
+
+<a name="usage"></a>
 ## Usage
 
 Our vision is to create an application that will be easy to use, and helpful tool for managing projects, 
@@ -149,7 +148,7 @@ switch to accommodate for resolution, image size and scripting abilities.
 <a name="technology"></a>
 ## Technology/Framework used
 
-We have been using different technologies/frameworks to create this app, in order for the app to work proper and look nice. 
+We have been using different technologies/frameworks to create this app, in order for the app to work smoothly and look nice. 
 * Naming convention before we start coding.
 * Post-it cards design with clickable links.
 * +++
