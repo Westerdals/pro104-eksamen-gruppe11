@@ -35,13 +35,12 @@
                 <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
             </div>
 
-
-            <button type="submit" class="btn" id="projectRegBtn">Opprett Prosjekt</button>
+            <button type="submit" class="add-task-project__submit" id="projectRegBtn">Opprett Prosjekt</button>
             <input type="reset" value="Reset">
 
         </form>
 
-        <form class="add-task-project" onsubmit="addTaskProject(event)">
+        <form class="add-task-form" style="display: none;" onsubmit="addTaskProject(event)">
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
             <input type="text" id="taskText" placeholder="Add task" required>
@@ -60,7 +59,7 @@
             <label for="taskEndtDate">End Date</label>
             <input type="date" id="taskEndtDate" name="taskEndtDate" required>
             <br>
-            <input class="add-task-project__submit" type="submit">
+            <input class="add-delegate-project__submit" type="submit">
         </form>
     </div>
 
@@ -76,6 +75,7 @@
 
 
     <script src="/docs/scripts/projectRegister.js"></script>
+    <script src="/docs/scripts/userRegister.js"></script>
 
 
 

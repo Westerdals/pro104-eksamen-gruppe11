@@ -33,7 +33,6 @@ function createProject(event) {
     projectList.push(projectInfo);
     window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
-    popUp(event);
 }
 
 
@@ -64,17 +63,47 @@ function addTaskProject(event) {
 
 
 
-
-
-// function 
-
-// document.querySelector('.add-task-project__submit').addEventListener('click', () => {
-//     document.querySelector('.delegate-form').style.display = 'block';
-// })
+// Add task Popup by changing display
+//if no input in the form the next form wont show
+document.querySelector(".add-task-project__submit").addEventListener('click', () => {
 
 
 
+    if (document.getElementById("projectName").value != "" && document.getElementById("startDate").value != "" &&
+        document.getElementById("endDate").value != "" && document.getElementById("projectDesc").value != "") {
 
+        document.querySelector(".add-task-form").style.display = "block";
+        // Add delegate task Popup by changing display
+        document.querySelector(".add-delegate-project__submit").addEventListener('click', () => {
+            if (document.getElementById("taskText").value != "" && document.getElementById("priorities").value != ""
+                && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndtDate").value != "") {
+
+                document.querySelector(".delegate-form").style.display = "block";
+            } else alert("please fill the blank");
+        })
+
+    } else {
+
+        alert("please fill the blank");
+
+
+
+
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+//https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
 //http://getbem.com/naming/
 
 //const {id} = task;
