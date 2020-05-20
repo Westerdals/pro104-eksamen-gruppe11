@@ -65,67 +65,14 @@ function addTaskProject(event) {
 
 
 
-// Popups the rest other register form to ease ux to complete a whole registration of a function.
-function popUp(event) {
 
-    const taskPopup = document.createElement("div");
-    taskPopup.innerHTML = `    
-    <form class="add-task-project" onsubmit="addTaskProject(event)">
-            <h4>Opprett Oppgaver</h4>
-            <label for="addTask">Add Task</label>
-            <input type="text" id="taskText" placeholder="Add task" required>
-            <label for="priority">Choose priority:</label>
-            <input list="priority" name="priorities" id="priorities">
-            <datalist id="priority">
-                <option value="Low">
-                <option value="Medium">
-                <option value="High">
-            </datalist>
-            <br>
+// function 
 
-            <!-- Adding start and end date for the Project -->
-            <label for="taskStartDate">Start Date</label>
-            <input type="date" id="taskStartDate" name="taskStartDate" required>
-            <label for="taskEndtDate">End Date</label>
-            <input type="date" id="taskEndtDate" name="taskEndtDate" required>
-            <br>
-            <input class="add-task-project__submit" type="submit">
-        </form>
-    </div>
-    <!-- delegate task to exisiting users -->
-    <div style="display: none">
-        <form class="add-task-project" onsubmit="delegate(event)>
-            <h3>Deleger Oppgaver (alternativt) </h3>
-            <label for="userList">Choose User</label>
-            <select id="userList"></select>
-            <label for="taskList">Choose Created Task</label>
-            <select id="taskList"></select>
-            <input type="submit" value="Legg til" />
-        </form>`;
-
-    document.body.appendChild(taskPopup);
-
-    event.preventDefault();
-    setTimeout(() => {
-        document.querySelector('.add-task-project').addEventListener('submit', e => {
-            e.preventDefault();
-        })
-
-    }, 1)
-
-    document.querySelector('.add-task-project__submit').addEventListener('click', () => {
-        document.querySelector('.add-task-project').style.display = 'block';
-    })
+// document.querySelector('.add-task-project__submit').addEventListener('click', () => {
+//     document.querySelector('.delegate-form').style.display = 'block';
+// })
 
 
-
-}
-
-
-function userPopup() {
-
-
-}
 
 
 //http://getbem.com/naming/
