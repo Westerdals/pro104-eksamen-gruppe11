@@ -52,9 +52,11 @@ function showUserList() {
     for (const users of userList) {
         userListEl.innerHTML += `<option value = ${users.id}>${users.firstName}</option>"`;
     }
+
 }
 
 showUserList()
+
 
 
 //https://stackoverflow.com/questions/24403732/check-if-array-is-empty-or-does-not-exist-js

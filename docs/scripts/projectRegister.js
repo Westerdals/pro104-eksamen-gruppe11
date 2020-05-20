@@ -1,3 +1,6 @@
+
+
+
 //User IdGenerator
 function ProjectID() {
     let IdCounter = "";
@@ -24,72 +27,89 @@ function createProject(event) {
     const projectDesc = document.getElementById("projectDesc").value;
 
 
-    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [] };
+    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, tasks: [] };
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects")) || [];
     projectList.push(projectInfo);
-
-
     window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
+}
 
+
+// This function is a part of projectregister popup. Add task to the new created project.
+
+function addTaskProject(event) {
+
+    event.preventDefault();
+
+    const taskText = document.getElementById("taskText").value;
+    const priorities = document.getElementById("priorities").value;
+    const taskStartDate = document.getElementById("taskStartDate").value;
+    const taskEndtDate = document.getElementById("taskEndtDate").value;
+    const task = { taskText, priorities, taskStartDate, taskEndtDate }
+
+    // [] in project here is for situation where local storage is emtpy
+    const projects = JSON.parse(window.localStorage.getItem("Projects")) || [];
+
+    const lastProject = projects[projects.length - 1];
+
+    lastProject.tasks.push(task);
+
+    window.localStorage.setItem("Projects", JSON.stringify(projects));
+
+    // console.log(lastProject.task.push)
     event.target.reset();
-
-}
-
-
-const taskPopup = document.createElement ("div");
-    
-    document.body.appendChild(taskPopup);
-
-    document.getElementById("projectRegBtn").onclick = function(){
-    taskPopup.innerHTML = `
-    
-    <br> 
-    <br> 
-    <br> 
-    
-    <div>
-        <form>
-            <h4>Opprett Oppgaver</h4>
-            <label for="addTask">Add Task</label>
-            <input type="text" placeholder="Add task" required>
-            <label for="priority">Choose priority:</label>
-            <input list="priority" name="priorities" id="priorities">
-            <datalist id="priority">
-                <option value="Low">
-                <option value="Medium">
-                <option value="High">
-            </datalist>
-            <br>
-
-            <!-- Adding start and end date for the Project -->
-            <label for="taskStartDate">Start Date</label>
-            <input type="date" name="taskStartDate" required>
-            <label for="taskEndtDate">End Date</label>
-            <input type="date" name="taskEndtDate" required>
-            <br>
-            <input type="submit">
-        </form>
-    </div>
-    
-    <!-- delegate task to exisiting users -->
-    <div>
-        <form onsubmit="delegate(event)">
-            <h3>Deleger Oppgaver (alternativt) </h3>
-            <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
-            <datalist id="userList"></datalist>
-            <input list="taskList" id="taskListInput" name="taskListInput" type="text"
-                placeholder="Tildel registrert oppgave..." required>
-            <datalist id="taskList"></datalist>
-
-            <input type="submit" value="Legg til" />
-        </form>
-
-    </div>`;
-    
 }
 
 
 
+// Add task Popup by changing display
+//if no input in the form the next form wont show
+document.querySelector(".add-task-project__submit").addEventListener('click', () => {
+
+
+
+    if (document.getElementById("projectName").value != "" && document.getElementById("startDate").value != "" &&
+        document.getElementById("endDate").value != "" && document.getElementById("projectDesc").value != "") {
+
+        document.querySelector(".add-task-form").style.display = "block";
+        // Add delegate task Popup by changing display
+        document.querySelector(".add-delegate-project__submit").addEventListener('click', () => {
+            if (document.getElementById("taskText").value != "" && document.getElementById("priorities").value != ""
+                && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndtDate").value != "") {
+
+                document.querySelector(".delegate-form").style.display = "block";
+            } else alert("please fill the blank");
+        })
+
+    } else {
+
+        alert("please fill the blank");
+
+
+
+
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+//https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+//http://getbem.com/naming/
+
+//const {id} = task;
+
+
+
+//search in array
+//https://www.w3schools.com/jsref/jsref_find.asp
 
