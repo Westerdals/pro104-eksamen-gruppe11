@@ -1,3 +1,6 @@
+
+
+
 //User IdGenerator
 function ProjectID() {
     let IdCounter = "";
@@ -24,37 +27,53 @@ function createProject(event) {
     const projectDesc = document.getElementById("projectDesc").value;
 
 
-    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [] };
+    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, tasks: [] };
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects")) || [];
     projectList.push(projectInfo);
-
-
     window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
-    popUp();
+    popUp(event);
+}
 
+
+// This function is a part of projectregister popup. Add task to the new created project.
+
+function addTaskProject(event) {
+
+    event.preventDefault();
+
+    const taskText = document.getElementById("taskText").value;
+    const priorities = document.getElementById("priorities").value;
+    const taskStartDate = document.getElementById("taskStartDate").value;
+    const taskEndtDate = document.getElementById("taskEndtDate").value;
+    const task = { taskText, priorities, taskStartDate, taskEndtDate }
+
+    // [] in project here is for situation where local storage is emtpy
+    const projects = JSON.parse(window.localStorage.getItem("Projects")) || [];
+
+    const lastProject = projects[projects.length - 1];
+
+    lastProject.tasks.push(task);
+
+    window.localStorage.setItem("Projects", JSON.stringify(projects));
+
+    // console.log(lastProject.task.push)
     event.target.reset();
-
 }
 
 
 
 
 // Popups the rest other register form to ease ux to complete a whole registration of a function.
-function popUp() {
+function popUp(event) {
 
     const taskPopup = document.createElement("div");
-    taskPopup.innerHTML =
-        `
-
-    <br> 
-    
-    <div>
-        <form>
+    taskPopup.innerHTML = `    
+    <form class="add-task-project" onsubmit="addTaskProject(event)">
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
-            <input type="text" placeholder="Add task" required>
+            <input type="text" id="taskText" placeholder="Add task" required>
             <label for="priority">Choose priority:</label>
             <input list="priority" name="priorities" id="priorities">
             <datalist id="priority">
@@ -66,37 +85,55 @@ function popUp() {
 
             <!-- Adding start and end date for the Project -->
             <label for="taskStartDate">Start Date</label>
-            <input type="date" name="taskStartDate" required>
+            <input type="date" id="taskStartDate" name="taskStartDate" required>
             <label for="taskEndtDate">End Date</label>
-            <input type="date" name="taskEndtDate" required>
+            <input type="date" id="taskEndtDate" name="taskEndtDate" required>
             <br>
-            <input type="submit">
+            <input class="add-task-project__submit" type="submit">
         </form>
     </div>
-    
     <!-- delegate task to exisiting users -->
-    <div>
-        <form onsubmit="delegate(event)">
+    <div style="display: none">
+        <form class="add-task-project" onsubmit="delegate(event)>
             <h3>Deleger Oppgaver (alternativt) </h3>
-            <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
-            <datalist id="userList"></datalist>
-            <input list="taskList" id="taskListInput" name="taskListInput" type="text"
-                placeholder="Tildel registrert oppgave..." required>
-            <datalist id="taskList"></datalist>
-
+            <label for="userList">Choose User</label>
+            <select id="userList"></select>
+            <label for="taskList">Choose Created Task</label>
+            <select id="taskList"></select>
             <input type="submit" value="Legg til" />
-        </form>
-
-    </div>`;
+        </form>`;
 
     document.body.appendChild(taskPopup);
+
+    event.preventDefault();
+    setTimeout(() => {
+        document.querySelector('.add-task-project').addEventListener('submit', e => {
+            e.preventDefault();
+        })
+
+    }, 1)
+
+    document.querySelector('.add-task-project__submit').addEventListener('click', () => {
+        document.querySelector('.add-task-project').style.display = 'block';
+    })
+
+
 
 }
 
 
+function userPopup() {
+
+
+}
+
+
+//http://getbem.com/naming/
+
+//const {id} = task;
 
 
 
-
-
+//search in array
+//https://www.w3schools.com/jsref/jsref_find.asp
 

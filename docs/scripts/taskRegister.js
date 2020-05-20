@@ -20,7 +20,7 @@ function createTask(event) {
     const taskStartDate = document.getElementById("taskStartDate").value;
     const taskEndtDate = document.getElementById("taskEndtDate").value;
 
-    const task = { taskText, priorities, taskStartDate, taskEndtDate }
+    const task = { ID: new ID(), taskText, priorities, taskStartDate, taskEndtDate }
 
     attachTaskToProj(task);
 
@@ -46,27 +46,15 @@ function attachTaskToProj(task) {
     console.log(projectList);
 
     window.localStorage.setItem("Projects", JSON.stringify(projectList));
-
-
 }
 
 
-
-
+let idCounter = 2000;
 
 //User IdGenerator
-function ProjectID() {
-    let IdCounter = "";
+function taskID() {
 
-    let projects = JSON.parse(window.localStorage.getItem("Projects"));
-
-    if (projects === null || projects.length == 0) {
-        IdCounter = 2000
-    } else {
-        IdCounter = 2000 + projects.length
-    }
-    return IdCounter;
-
+    return idCounter++;
 }
 
 //Pushes created task to list
@@ -87,3 +75,18 @@ function ProjectID() {
 
 //showTaskList()
 projectListShow()
+
+
+class ID {
+
+    static idCounter = 0;
+
+    constructor() {
+        this.ID = ID.idCounter++;
+    }
+
+
+
+}
+
+

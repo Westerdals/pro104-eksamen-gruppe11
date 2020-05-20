@@ -31,24 +31,3 @@ class Task {
 
 }
 
-class ID {
-
-
-    userid() {
-        let IdCounter = "";
-
-        if (User.userArray.length == null) {
-            IdCounter = 1000;
-        } else {
-
-            IdCounter = 1000 + User.userArray.length
-        }
-
-        return IdCounter;
-
-    }
-
-
-}
-
-
