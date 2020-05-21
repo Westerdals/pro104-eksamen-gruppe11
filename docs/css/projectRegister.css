@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+  }
+
+.gridContainer {
+    display: grid;
+    grid-row-gap: 50px;
+    grid-column-gap: 50px;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: 300px;
+    justify-content: center;
+    align-content: space-evenly;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 414px) {
+
+    .gridContainer {
+        grid-template-columns: 0 100% 0;
+    }
+
+}
