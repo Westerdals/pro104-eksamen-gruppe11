@@ -31,6 +31,7 @@ function createProject(event) {
     if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)){
         projectList.push(projectInfo);
         window.localStorage.setItem("Projects", JSON.stringify(projectList));
+        showStatusMessage("Project created.", true);
 
         // Display the new member list and project list to the user.
         createProjectDropdownList();
@@ -59,6 +60,7 @@ function addTaskProject(event) {
         lastProject.tasks.push(task);
         window.localStorage.setItem("Projects", JSON.stringify(projects));
         event.target.reset();
+        showStatusMessage("Added task to project", true);
     }
 }
 
@@ -126,9 +128,9 @@ document.querySelector('.add-members-form__submit').addEventListener('click', (e
     const checkUserExist = projectList[0].memberList.some(user => user.userId === userValue)
 
     if (checkUserExist) {
-        throw 'User Already Exist!';
+        showStatusMessage("User is already assigned to this project", false);
     } else {
-        console.log('Added User to the memberList');
+        showStatusMessage("Added member to project.", true);
         projectList[0].memberList.push(memberList);
         window.localStorage.setItem('Projects', JSON.stringify(projectList));
     }
@@ -154,13 +156,13 @@ function isValidProjectInput() {
                 && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndDate").value != "") {
                 document.querySelector(".delegate-form").style.display = "block";
             } else {
-                alert("please fill the blank");
+                showStatusMessage("Please fill out the blanks..", false);
                 return false;
             }
         })
         return true;
     } else {
-        alert("please fill the blank");
+        showStatusMessage("Please fill out the blanks..", false);
         return false;
     }
 }
@@ -169,8 +171,7 @@ function isValidProjectInput() {
 function isNotDuplicateProjectName(projectName, projectList) {
     const duplicateProjectName = projectList.filter(project => project.projectName == projectName) ?? [];
     if(duplicateProjectName.length != 0) {
-        console.error(`Project with name: ${projectName} already exists.`);
-        // TODO: Disply the text to the user?
+        showStatusMessage(`Project with name: ${projectName} already exists.`, false);
         return false;
     } else return true;
 }
@@ -180,10 +181,9 @@ function isProjectDateValid(projectStartDateAsString, projectEndDateAsString) {
     const projectEndDate = new Date(projectEndDateAsString);
 
     if(projectStartDate > projectEndDate) {
-        console.error(`Project can't end before start date..`);
+        showStatusMessage("Project can't end before start date..", false);
         return false;
     } else {
-        console.log(`Task date is ok.`);
         return true;
     }
 
@@ -198,18 +198,30 @@ function isTaskDateValidForProject(taskStartDateAsString, taskEndDateAsString, p
 
 
     if(taskStartDate < projectStartDate) {
-        console.error(`Task can't start before project start..`);
+        showStatusMessage("Task can't start before project start..", false);
         return false;
     } else if(taskEndDate > projectEndDate) {
-        console.error(`Task can't end after project end..`);
+        showStatusMessage("Task can't end after project end..", false);
         return false;
     } else if(taskStartDate > taskEndDate) {
-        console.error(`Task can't end before start date..`);
+        showStatusMessage("Task can't end before start date..", false);
         return false;
     } else {
-        console.log(`Task date is ok.`);
         return true;
     }
+}
+
+function showStatusMessage(message, isSuccess) {
+    const statusBox = document.getElementById('status');
+    statusBox.style.display = 'block';
+
+    if(isSuccess) {
+        statusBox.style.backgroundColor = '#00ca4e';
+    } else {
+        statusBox.style.backgroundColor = '#ff605c';
+    }
+
+    statusBox.innerHTML = `<p>${message}</p>`;
 }
 
 // Fill the members & project dropdown once the page loads
