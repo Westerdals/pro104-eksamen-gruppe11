@@ -2,7 +2,6 @@
 class Task {
 
 
-    static taskArray = JSON.parse(window.localStorage.getItem("TaskList")) || [];
 
 
     constructor(taskText, priority, startDate, endDate) {
@@ -30,11 +29,5 @@ class Task {
 
     }
 
-
-    static setup() {
-
-        new Task("løø", "Low", "2020-05-18", "2020-05-21")
-
-    }
-
 }
+
