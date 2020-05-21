@@ -40,6 +40,20 @@
 
         </form>
 
+        <form class="add-members-form">
+            <h1>Deleger Medlemmer til Prosjektet</h1>
+            <label for="add-members-form__assigned-members">Deleger Medlemmer</label>
+            <select id="add-members-form__assigned-members">
+                <option value="" selected disabled hidden>Choose here</option>
+            </select>
+
+            <label for="add-members-form__project">Prosjekt</label>
+            <select id="add-members-form__project">
+                <option value="" selected disabled hidden>Choose here</option>
+            </select>
+            <input type="submit" class="add-members-form__submit" value="Submit">
+        </form>
+
         <form class="add-task-form" style="display: none;" onsubmit="addTaskProject(event)">
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
@@ -76,6 +90,8 @@
 
     <script src="/docs/scripts/projectRegister.js"></script>
     <script src="/docs/scripts/userRegister.js"></script>
+
+
 
 
 
