@@ -1,0 +1,55 @@
+:root {
+  --green: #00ca4e;
+  --red: #ff605c;
+  --yellow: #ffbd44;
+  --lBlack: #2c2c2c; 
+  --dBlack: #131313;
+  --placeholder: #3D3D3D;
+  --offWhite: #F3F3F3;
+  --Gray:   #BBBBBB;
+  --dGray: #3D3D3D;
+
+
+}
+
+body {
+  background-color: var(--dGray);
+}
+
+#textbox-rounded {
+  border-radius: 5px;
+  border: black solid 1px;
+  height: 20px;
+}
+
+#textbox-elipse {
+  border-radius: 50px;
+  border: black solid 1px;
+  height: 20px;
+  background-color: var(--lBlack);
+  text-c: var(--green);
+  text-align: center;
+  font-style: italic;
+  
+}
+
+#textbox-elipse::placeholder {
+  color: var(--Gray);
+  opacity: 30%;
+}
+/* LOGIN BUTTONS */
+#login-button {
+  width: 120px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: var(--green);
+  border: 0px;
+}
+
+#cancel-button {
+  width: 120px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: var(--red);
+  border: 0px;
+}
