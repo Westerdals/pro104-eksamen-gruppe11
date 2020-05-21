@@ -28,7 +28,7 @@ function createProject(event) {
     const projectList = getAllProjectsFromLocalStorage();
 
     // Don't add the project if form is not valid or the project name is duplicate
-    if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList)){
+    if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)){
         projectList.push(projectInfo);
         window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
@@ -48,19 +48,18 @@ function addTaskProject(event) {
     const taskText = document.getElementById("taskText").value;
     const priorities = document.getElementById("priorities").value;
     const taskStartDate = document.getElementById("taskStartDate").value;
-    const taskEndtDate = document.getElementById("taskEndtDate").value;
-    const task = { taskText, priorities, taskStartDate, taskEndtDate }
+    const taskEndDate = document.getElementById("taskEndDate").value;
+    const task = { taskText, priorities, taskStartDate, taskEndDate }
 
     const projects = getAllProjectsFromLocalStorage();
 
     const lastProject = projects[projects.length - 1];
 
-    lastProject.tasks.push(task);
-
-    window.localStorage.setItem("Projects", JSON.stringify(projects));
-
-    // console.log(lastProject.task.push)
-    event.target.reset();
+    if(isTaskDateValidForProject(taskStartDate, taskEndDate, lastProject)) {
+        lastProject.tasks.push(task);
+        window.localStorage.setItem("Projects", JSON.stringify(projects));
+        event.target.reset();
+    }
 }
 
 function getAllMembersFromLocalStorage() {
@@ -152,7 +151,7 @@ function isValidProjectInput() {
         // Add delegate task Popup by changing display
         document.querySelector(".add-delegate-project__submit").addEventListener('click', () => {
             if (document.getElementById("taskText").value != "" && document.getElementById("priorities").value != ""
-                && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndtDate").value != "") {
+                && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndDate").value != "") {
                 document.querySelector(".delegate-form").style.display = "block";
             } else {
                 alert("please fill the blank");
@@ -174,6 +173,43 @@ function isNotDuplicateProjectName(projectName, projectList) {
         // TODO: Disply the text to the user?
         return false;
     } else return true;
+}
+
+function isProjectDateValid(projectStartDateAsString, projectEndDateAsString) {
+    const projectStartDate = new Date(projectStartDateAsString);
+    const projectEndDate = new Date(projectEndDateAsString);
+
+    if(projectStartDate > projectEndDate) {
+        console.error(`Project can't end before start date..`);
+        return false;
+    } else {
+        console.log(`Task date is ok.`);
+        return true;
+    }
+
+}
+
+// returns true if the task start and end date is within the projects dates
+function isTaskDateValidForProject(taskStartDateAsString, taskEndDateAsString, project) {
+    const taskStartDate = new Date(taskStartDateAsString);
+    const taskEndDate = new Date(taskEndDateAsString);
+    const projectStartDate = new Date(project.startDate);
+    const projectEndDate = new Date(project.endDate);
+
+
+    if(taskStartDate < projectStartDate) {
+        console.error(`Task can't start before project start..`);
+        return false;
+    } else if(taskEndDate > projectEndDate) {
+        console.error(`Task can't end after project end..`);
+        return false;
+    } else if(taskStartDate > taskEndDate) {
+        console.error(`Task can't end before start date..`);
+        return false;
+    } else {
+        console.log(`Task date is ok.`);
+        return true;
+    }
 }
 
 // Fill the members & project dropdown once the page loads
