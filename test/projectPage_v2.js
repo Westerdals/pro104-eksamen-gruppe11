@@ -61,17 +61,26 @@ function drop(event) {
     
     
    
+
     
     document.getElementById("button-todo").onclick = function() {
-
       
       let taskPopupWindow = document.createElement("div");
+      let taskPopupWindowScript = document.createElement("script");
+      let taskPopupWindowClasses = document.createElement("script");
+
+      
+      
       
       taskPopupWindow.setAttribute("id", "popUp");
       
       document.body.appendChild(taskPopupWindow);
       
+      document.body.appendChild(taskPopupWindowScript);
+      document.head.appendChild(taskPopupWindowClasses);
 
+      
+      
       document.getElementById("popUp").innerHTML = `
     
     <br> 
@@ -120,23 +129,8 @@ function drop(event) {
     
     `;
 
-    taskPopupWindow.style.display = "flex";
+    //taskPopupWindowScript.innerHTML = "/docs/scripts/taskRegister.js";
+    //taskPopupWindowClasses.innerHTML = "/docs/scripts/Classes.js";
 
-    let close = document.getElementById("closeButton");
-
-    close.onclick = function(){
-      taskPopupWindow.style.display = "none";
-  }  
 }
 
-
-
-
-
-
-//let taskPopupWindowScript = document.createElement("script");
-    //let taskPopupWindowClasses = document.createElement("script");
-
-
-    //document.body.appendChild(taskPopupWindowScript);
-    //document.head.appendChild(taskPopupWindowClasses);

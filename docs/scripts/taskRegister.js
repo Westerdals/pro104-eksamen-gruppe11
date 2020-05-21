@@ -62,6 +62,3 @@ function createTask(event) {
 
 
 projectListShow()
-
-
-

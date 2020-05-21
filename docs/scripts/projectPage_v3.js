@@ -59,13 +59,13 @@ function drop(event) {
     //mytime = setTimeout(expression, msec); 
 
     
-    
    
-    
     document.getElementById("button-todo").onclick = function() {
+      document.getElementById("popUp").style.zIndex = "2";
+    }
 
       
-      let taskPopupWindow = document.createElement("div");
+      const taskPopupWindow = document.createElement("div");
       
       taskPopupWindow.setAttribute("id", "popUp");
       
@@ -120,23 +120,8 @@ function drop(event) {
     
     `;
 
-    taskPopupWindow.style.display = "flex";
-
     let close = document.getElementById("closeButton");
 
     close.onclick = function(){
-      taskPopupWindow.style.display = "none";
+      taskPopupWindow.style.zIndex = "-1";
   }  
-}
-
-
-
-
-
-
-//let taskPopupWindowScript = document.createElement("script");
-    //let taskPopupWindowClasses = document.createElement("script");
-
-
-    //document.body.appendChild(taskPopupWindowScript);
-    //document.head.appendChild(taskPopupWindowClasses);
