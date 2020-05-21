@@ -67,12 +67,12 @@ function attachTaskToProj(task) {
 }
 
 
-//Updates task list after changing project you want register new task
-function removeOptions(selectElement) { //updates
-
-    const lastArrayPosition = selectElement.options.length - 1;
-    for (let index = lastArrayPosition; index >= 0; index--) {
-        selectElement.remove(index);
+//removes taskList after chosen
+function removeOptions(selectElement) {
+    var i,
+        L = selectElement.options.length - 1;
+    for (i = L; i >= 0; i--) {
+        selectElement.remove(i);
     }
 }
 
