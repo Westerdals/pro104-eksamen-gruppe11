@@ -5,69 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/docs/css/projectRegister.css">
 </head>
 
 <body>
     <a href="index.html">Trykk her for startsiden</a>
-    <div class="gridContainer">
-        <div><!--Left empty space (wireframe)--></div>
-        <div>
+    <div>
 
-            <!-- Register new Project -->
-            <form class="create-project-forms" onsubmit="createProject(event)">
-                <h1>Register new Project</h1>
+        <!-- Register new Project -->
+        <form class="create-project-forms" onsubmit="createProject(event)">
+            <h1>Register new Project</h1>
 
-                <div>
-                    <!-- Adding Project id and Project Name -->
-                    <label for="projectName">Project Name</label>
-                    <input type="text" placeholder="Enter Project Name" id="projectName" required>
-                </div>
+            <div>
+                <!-- Adding Project id and Project Name -->
+                <label for="projectName">Project Name</label>
+                <input type="text" placeholder="Enter Project Name" id="projectName" required>
+            </div>
 
-                <!-- Adding start and end date for the Project -->
-                <div>
-                    <label for="startDate">Start Date</label>
-                    <input type="date" id="startDate" required>
-                    <label for="endDate">End Date</label>
-                    <input type="date" id="endDate" required>
-                </div>
+            <!-- Adding start and end date for the Project -->
+            <div>
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" required>
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" required>
+            </div>
 
-                <!-- Project description -->
-                <div>
-                    <h4>Project Description</h4>
-                    <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
-                </div>
+            <!-- Project description -->
+            <div>
+                <h4>Project Description</h4>
+                <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
+            </div>
 
-                <button type="submit" class="add-task-project__submit" id="projectRegBtn">Opprett Prosjekt</button>
-                <input type="reset" value="Reset">
+            <button type="submit" class="add-task-project__submit" id="projectRegBtn">Opprett Prosjekt</button>
+            <input type="reset" value="Reset">
 
-            </form>
+        </form>
 
-            <form class="add-task-form" style="display: none;" onsubmit="addTaskProject(event)">
-                <h4>Opprett Oppgaver</h4>
-                <label for="addTask">Add Task</label>
-                <input type="text" id="taskText" placeholder="Add task" required>
-                <label for="priority">Choose priority:</label>
-                <input list="priority" name="priorities" id="priorities">
-                <datalist id="priority">
-                    <option value="Low">
-                    <option value="Medium">
-                    <option value="High">
-                </datalist>
-                <br>
+        <form class="add-members-form">
+            <h1>Deleger Medlemmer til Prosjektet</h1>
+            <label for="add-members-form__assigned-members">Deleger Medlemmer</label>
+            <select id="add-members-form__assigned-members">
+                <option value="" selected disabled hidden>Choose here</option>
+            </select>
 
-                <!-- Adding start and end date for the Project -->
-                <label for="taskStartDate">Start Date</label>
-                <input type="date" id="taskStartDate" name="taskStartDate" required>
-                <label for="taskEndtDate">End Date</label>
-                <input type="date" id="taskEndtDate" name="taskEndtDate" required>
-                <br>
-                <input class="add-delegate-project__submit" type="submit">
-            </form>
-        </div>
-        <div><!--Right empty space (wireframe)--></div>
+            <label for="add-members-form__project">Prosjekt</label>
+            <select id="add-members-form__project">
+                <option value="" selected disabled hidden>Choose here</option>
+            </select>
+            <input type="submit" class="add-members-form__submit" value="Submit">
+        </form>
+
+        <form class="add-task-form" style="display: none;" onsubmit="addTaskProject(event)">
+            <h4>Opprett Oppgaver</h4>
+            <label for="addTask">Add Task</label>
+            <input type="text" id="taskText" placeholder="Add task" required>
+            <label for="priority">Choose priority:</label>
+            <input list="priority" name="priorities" id="priorities">
+            <datalist id="priority">
+                <option value="Low">
+                <option value="Medium">
+                <option value="High">
+            </datalist>
+            <br>
+
+            <!-- Adding start and end date for the Project -->
+            <label for="taskStartDate">Start Date</label>
+            <input type="date" id="taskStartDate" name="taskStartDate" required>
+            <label for="taskEndtDate">End Date</label>
+            <input type="date" id="taskEndtDate" name="taskEndtDate" required>
+            <br>
+            <input class="add-delegate-project__submit" type="submit">
+        </form>
     </div>
-    
 
     <!-- delegate task to exisiting users -->
     <form onsubmit="delegate(event)" class="delegate-form" style="display: none;">
@@ -82,6 +90,14 @@
 
     <script src="/docs/scripts/projectRegister.js"></script>
     <script src="/docs/scripts/userRegister.js"></script>
+
+
+
+
+
+
+
+
 
 </body>
 

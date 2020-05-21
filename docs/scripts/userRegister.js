@@ -41,7 +41,7 @@ function userRegister(event) {
 
 
 
-//Pushes created users to list
+// //Pushes created users to list
 function showUserList() {
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 
@@ -52,10 +52,11 @@ function showUserList() {
     for (const users of userList) {
         userListEl.innerHTML += `<option value = ${users.id}>${users.firstName}</option>"`;
     }
-
 }
 
 showUserList()
+
+
 
 
 
