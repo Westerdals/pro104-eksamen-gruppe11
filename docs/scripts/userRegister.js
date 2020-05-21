@@ -46,10 +46,10 @@ function showUserList() {
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 
     const userListEl = document.getElementById("userList");
-    userList.innerHTML = "";
+    //  userListEl.innerHTML = "";
 
 
-    for (const users of userList) {
+    for (let users of userList) {
         userListEl.innerHTML += `<option value = ${users.id}>${users.firstName}</option>"`;
     }
 }
