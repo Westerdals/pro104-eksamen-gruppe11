@@ -27,7 +27,7 @@ function createProject(event) {
     const projectDesc = document.getElementById("projectDesc").value;
 
 
-    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, task: [], delegate: [], memberList: [] };
+    const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, tasks: [], delegate: [], memberList: [] };
 
     const projectList = JSON.parse(window.localStorage.getItem("Projects")) || [];
     projectList.push(projectInfo);
