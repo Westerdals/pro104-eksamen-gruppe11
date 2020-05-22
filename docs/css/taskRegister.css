@@ -21,24 +21,25 @@ body {
 }
 
 
-#actionForm{
-
+#actionForm {
+    position: absolute;
+    top:60px;
+    margin:10px 200px;
+    padding: 5px;
+    left: 10px;
 }
 
-label [for=createdProject]{
 
-}
-
-#createdProject{
-
+#createdProject {
 }
 
 .forms{
     width: 500px;
     height: 40px;
-    margin: 2rem auto;
+    margin: 3rem auto;
     border-radius: 30px;
     position: relative;
+    top: 60px;
 
 }
 
@@ -47,10 +48,11 @@ h4{
     font-style:normal;
     font-weight: normal;
     color:var(--dBlack);
-    font-size: 20px;
+    font-size: 23px;
     padding: 10px 10px;
-    margin:40px;
+    margin:50px;
     text-align: center;
+
 }
 
 #taskText{
@@ -64,6 +66,11 @@ h4{
     padding: 1px 1px;
     display: table-cell;
     color: rgba(0,0,0,0.5);
+}
+
+#taskText:focus,
+#taskText:valid{
+    color: var(--dBlack);
 }
 
 label[for=taskText]{
@@ -97,10 +104,6 @@ label[for=priorities]{
     left:80px;
 }
 
-#priority{
-
-}
-
 
 #taskStartDate{
     border-radius: 5px;
@@ -113,7 +116,6 @@ label[for=priorities]{
     display: table-cell;
 
 }
-
 label[for=taskStartDate]{
     position: relative;
     font-size: 15px;
@@ -123,7 +125,6 @@ label[for=taskStartDate]{
     text-decoration: none;
     right: 15px;
 }
-
 
 
 #taskEndDate{
@@ -148,32 +149,50 @@ label[for=taskEndDate]{
     left: 60px;
 }
 
-
-.delegateTasks{
-    position: relative;
-    padding: 100px 100px;
-    margin:80px;
-    text-align: center;
-
-
+input[type=date]{
+    color: rgba(0,0,0,0.5);
 }
+
+input [type=date]:focus,
+input[type=date]:valid{
+    color:var(--dBlack);
+}
+
 h3{
     font-family: "Roboto Light",sans-serif;
     font-style:normal;
     font-weight: normal;
+    text-align: center;
     color:var(--dBlack);
-    font-size: 23px;
+    font-size: 22px;
+    margin-top: 260px;
+    margin-bottom: 5px;
+    padding: 0px;
+
+}
+.delegateTasks{
+    position: relative;
+    top:50px;
+    float: right;
+    margin:1px 260px;
+    padding: 1px;
+    right: 10px;
 
 }
 
+
 #userList{
+
+    margin-top: 1px;
+    margin-bottom: 1px;
+    display: inline-block;
+    vertical-align: middle;
     border-radius: 5px;
     border: black solid 1px;
     width: 155px;
     height: 30px;
-    padding: 1px 1px;
-    display: table-cell;
-    margin-right:15px;
+
+
 
 
 
@@ -183,41 +202,56 @@ label[for=userList]{
     text-decoration:none;
     right:8px;
 
+
+}
+
+#userList:focus,
+#userList:valid{
+    color: var(--dBlack);
 }
 
 
 #taskList{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    display: inline-block;
+    vertical-align: middle;
     border-radius:5px;
     border: black solid 1px;
     width: 160px;
     height: 30px;
-    margin-left: 30px;
-    padding: 1px 1px;
-    display: table-cell;
+    margin-left: 40px;
+
+
 }
 
 label[for=taskList]{
     position: relative;
     text-decoration:none;
-    left: 25px;
+    left: 35px;
+
 }
+
+#taskList:focus,
+#taskList:valid{
+    color: var(--dBlack);
+}
+
 input[value="Create Task"]{
-
-}
-
-input[value="Submit"]{
+    justify-content: center;
     display:block;
-    padding: 0.5em 1em;
-    margin: 2em 13em;
+    padding: 1em 1em;
+    margin: 3em 13em;
+    top: 223px;
+    left:190px;
     position: relative;
-    width:97px;
-    height:30px;
-    border-radius: 2em;
-    border: black solid 1px;
+    width:145px;
+    height:35px;
+    border-radius: 3em;
+    border: black solid 0.5px;
     box-sizing: border-box;
     font-family: "Roboto Light",sans-serif;
-    float: right;
-    left: 90px;
+    font-style: normal;
     font-weight: 300;
     text-transform:none;
     text-align: center;
@@ -227,8 +261,34 @@ input[value="Submit"]{
     transition: all 0.2s;
 
 }
-input[value="Submit"]:hover{
+
+input[value="Create Task"]:hover{
     background-color:var(--dGray);
     color:var(--offWhite);
-    opacity: 80%;
+    opacity: 80%; }
+
+
+input[value="Submit"]{
+    display:block;
+    padding: 0.5em 1em;
+    margin: 1em 13em;
+    position: relative;
+    width:97px;
+    height:30px;
+    border-radius: 3em;
+    border: black solid 0.5px;
+    box-sizing: border-box;
+    font-family: "Roboto Light",sans-serif;
+    float: right;
+    left:160px;
+    top: 1px;
+    font-weight: 300;
+    text-transform:none;
+    text-align: center;
+    color:var(--dBlack);
+    background-color:var(--Gray);
+    opacity: 90%;
+
 }
+
+

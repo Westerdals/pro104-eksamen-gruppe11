@@ -28,7 +28,7 @@
             <input type="text" id="taskText" placeholder="" required>
             <label for="priorities">Priority</label>
             <input list="priority" name="priorities" id="priorities">
-            <datalist id="priority">
+              <datalist id="priority">
                 <option value="Low">
                 <option value="Medium">
                 <option value="High">
@@ -45,9 +45,9 @@
         </form>
     </div>
     <!-- delegate task to exisiting users -->
+    <div><h3>Delegate Task (Optional) </h3>
     <div class="delegateTasks">
         <form onsubmit="delegate(event)">
-            <h3>Delegate Task (Optional) </h3>
             <label for="userList">Add Member</label>
             <select id="userList"></select>
             <label for="taskList">Add Task</label>
@@ -56,7 +56,7 @@
         </form>
 
     </div>
-
+    </div>
 
 
     <script src="/docs/scripts/Classes.js" defer></script>
