@@ -1,6 +1,7 @@
-//Show the created project in the datalist
-
+// LocalStorage Items
 const projectList = JSON.parse(window.localStorage.getItem('Projects')) ?? [];
+const userList = JSON.parse(window.localStorage.getItem('UserList')) ?? [];
+
 
 let projectListEl = '';
 projectListEl = document.getElementById('createdProject');
@@ -87,41 +88,107 @@ const createOption = (parentEl, id, value) => {
 //task popup version
 
 //shows creating task
-document
-    .querySelector('.create-task-form-submit__submit')
-    .addEventListener('click', () => {
-        document.querySelector('.delegate-form-submit').style.display = 'block';
-    });
+document.querySelector('.create-task-form-submit__submit').addEventListener('click', () => {
+    document.querySelector('.add-members-form').style.display = 'block';
+});
 
-document.querySelector('.create-task-form-submit').style.display = 'none';
-document.querySelector('.delegate-form-submit').style.display = 'none';
 const taskList = document.querySelector('#taskList');
+const userOption = document.querySelector('#add-members-form__assigned-members');
+const delegateMembers = document.querySelector('#add-members-form__assigned-members');
+const selectUserElement = document.querySelector('#userList');
 
+// Event Listener to check if DOM is on Change
 document.querySelector('#createdProject').addEventListener('change', (e) => {
+    // Default is the element displayed none, but changing when
+    document.querySelector('.create-task-form-submit').style.display = 'block';
+    document.querySelector('.delegate-form-submit').style.display = 'block';
+    document.querySelector('.add-members-form').style.display = 'block';
+
+    // Target value for the project
+    const projectTaskVal = e.target.value;
+
+    // Remove the Option DOM after changing the DOM from the Project add to task
+    removeOptions(selectUserElement);
     removeOptions(taskList);
 
-    const projectList = JSON.parse(window.localStorage.getItem('Projects')) ?? [];
+    // Looping through the userList Storage
+    for (const list of userList) {
+        // Destructuring the objects 
+        const { id, firstName, lastName } = list;
+        createOption(selectUserElement, id, firstName + " " + lastName);
+    }
 
-    for (const projects of projectList) {
-        if (e.target.value == projects.ProjectID) {
-            document.querySelector(
-                '.create-task-form-submit__h4',
-            ).innerHTML = `Opprett Oppgave ${projects.ProjectID}`;
-            document.querySelector('.create-task-form-submit').style.display =
-                'block';
-
-            for (const task of projects.tasks) {
-                let { id, taskText } = task;
+    // Looping through the ProjectList Storage
+    for (const list of projectList) {
+        if (projectTaskVal == list.ProjectID) {
+            for (const task of list.tasks) {
+                const { id, taskText } = task;
                 createOption(taskList, id, taskText);
             }
+        }
+    }
 
-            document
-                .querySelector('.delegate-form-submit__legg--til')
-                .addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const userList = document.querySelector('#userList').value;
-                    const taskList = document.querySelector('#taskList').value;
-                });
+    // Click Event to save delegate the user is going to assign the task
+    document.querySelector('.delegate-form-submit__legg--til').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Getting the values from the option
+        const userId = selectUserElement.value;
+        const taskId = taskList.value;
+        const memberList = { userId: userId, taskId: taskId };
+
+        for (const list of projectList) {
+            if (projectTaskVal == list.ProjectID) {
+                const checkTaskExisted = list.delegate.some(user => user.taskId === taskId && user.userId === userId);
+
+                if (checkTaskExisted) {
+                    throw 'Task already exist on this user!';
+                } else {
+                    console.log('Added task to the user');
+                    projectList[0].memberList.push(memberList);
+                    window.localStorage.setItem('Projects', JSON.stringify(projectList));
+                }
+            }
+        }
+    })
+});
+
+
+
+const members = document.querySelector('#add-members-form__assigned-members');
+const projects = document.querySelector('#add-members-form__project');
+
+for (const list of projectList) {
+    const { ProjectID, projectName } = list;
+    createOption(projects, ProjectID, projectName);
+}
+for (const list of userList) {
+    const { id, firstName, lastName } = list;
+    createOption(members, id, firstName + ' ' + lastName);
+}
+
+// Event Listener for delegating members to a project
+document.querySelector('.add-members-form__submit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const userValue = members.value;
+    const projectValue = projects.value;
+    const memberList = { userId: userValue, projectId: projectValue };
+
+    for (const list of projectList) {
+        if (projectValue == list.ProjectID) {
+            // some() function will loop through the array and will return value if is either true or false
+            const checkUserExist = list.memberList.some(user => user.userId === userValue);
+            if (checkUserExist) {
+                throw 'User Already Exist!';
+            } else {
+                console.log('Added User to the memberList');
+                list.memberList.push(memberList);
+                window.localStorage.setItem('Projects', JSON.stringify(projectList));
+            }
         }
     }
 });
+
+
+//setatributes
+//https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_setattribute1
