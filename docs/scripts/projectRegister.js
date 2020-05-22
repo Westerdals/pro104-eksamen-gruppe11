@@ -37,6 +37,7 @@ function createProject(event) {
         // Display the new member list and project list to the user.
         createProjectDropdownList();
         createMembersDropdownList();
+        showAddProjectDetails();
     }
 }
 
@@ -211,6 +212,10 @@ function isTaskDateValidForProject(taskStartDateAsString, taskEndDateAsString, p
     } else {
         return true;
     }
+}
+
+function showAddProjectDetails() {
+    document.getElementById('add-project-details-container').style = "block";
 }
 
 function showStatusMessage(message, isSuccess) {
