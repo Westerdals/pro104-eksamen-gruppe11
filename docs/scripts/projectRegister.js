@@ -25,21 +25,21 @@ function createProject(event) {
 
     const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, tasks: [], delegate: [], memberList: [] };
 
-    const projectList = getAllProjectsFromLocalStorage();
+    const projectList = getProjects();
 
     // Don't add the project if form is not valid or the project name is duplicate
 
     if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)){
         projectList.push(projectInfo);
-        window.localStorage.setItem("Projects", JSON.stringify(projectList));
+        saveProjects(projectList);
         showStatusMessage("Project created.", true);
 
-        // Display the new member list and project list to the user.
-        createProjectDropdownList();
+        // Display the new member list to the user.
         createMembersDropdownList();
+        showAssignedProject();
+        showAddProjectDetails();
     }
 }
-
 
 // This function is a part of projectregister popup. Add task to the new created project.
 
@@ -53,25 +53,16 @@ function addTaskProject(event) {
     const taskEndDate = document.getElementById("taskEndDate").value;
     const task = { taskText, priorities, taskStartDate, taskEndDate }
 
-    const projects = getAllProjectsFromLocalStorage();
+    const projects = getProjects();
 
     const lastProject = projects[projects.length - 1];
 
     if(isTaskDateValidForProject(taskStartDate, taskEndDate, lastProject)) {
         lastProject.tasks.push(task);
-        window.localStorage.setItem("Projects", JSON.stringify(projects));
+        saveProjects(projects)
         event.target.reset();
         showStatusMessage("Added task to project", true);
     }
-}
-
-function getAllMembersFromLocalStorage() {
-    return JSON.parse(window.localStorage.getItem('UserList')) ?? [];
-}
-
-function getAllProjectsFromLocalStorage() {
-    // [] in project here is for situation where local storage is emtpy
-    return JSON.parse(window.localStorage.getItem("Projects")) ?? [];
 }
 
 // function to create option for the select element
@@ -85,7 +76,7 @@ const createOption = (parentElement, id, value) => {
 // create the dropdown menu for selecting member
 function createMembersDropdownList() {
     const members = document.querySelector('#add-members-form__assigned-members');
-    const userList = getAllMembersFromLocalStorage();
+    const userList = getMembers();
 
     // Make the dropdown empty before creating the new elements.
     if (members.length != 0) {
@@ -99,22 +90,10 @@ function createMembersDropdownList() {
     }
 }
 
-// create the dropdown menu for selecting project
-function createProjectDropdownList() {
-    const projects = document.querySelector('#add-members-form__project');
-    const projectList = getAllProjectsFromLocalStorage();
-
-    // Make the dropdown empty before creating the new elements.
-    if (projects.length != 0) {
-        while (projects.lastElementChild) {
-            projects.removeChild(projects.lastElementChild);
-        }
-    }
-
-    for (const list of projectList) {
-        const { ProjectID, projectName } = list;
-        createOption(projects, ProjectID, projectName);
-    }
+function showAssignedProject() {
+    const projectElement = document.querySelector('#add-members-form__project');
+    const allProjects = getProjects();
+    projectElement.innerHTML = allProjects[allProjects.length - 1].projectName;
 }
 
 // Event Listener for delegating members to a project
@@ -125,15 +104,16 @@ document.querySelector('.add-members-form__submit').addEventListener('click', (e
     const userValue = members.value;
     const projectValue = projects.value;
     const memberList = { userId: userValue, projectId: projectValue };
-    const projectList = getAllProjectsFromLocalStorage();
-    const checkUserExist = projectList[0].memberList.some(user => user.userId === userValue)
+    const projectList = getProjects();
+    const lastProject = projectList[projectList.length - 1]
+    const checkUserExist = lastProject.memberList.some(user => user.userId === userValue)
 
     if (checkUserExist) {
         showStatusMessage("User is already assigned to this project", false);
     } else {
         showStatusMessage("Added member to project.", true);
-        projectList[0].memberList.push(memberList);
-        window.localStorage.setItem('Projects', JSON.stringify(projectList));
+        lastProject.memberList.push(memberList);
+        saveProjects(projectList);
     }
 });
 
@@ -213,6 +193,10 @@ function isTaskDateValidForProject(taskStartDateAsString, taskEndDateAsString, p
     }
 }
 
+function showAddProjectDetails() {
+    document.getElementById('add-project-details-container').style = "block";
+}
+
 function showStatusMessage(message, isSuccess) {
     const statusBox = document.getElementById('status');
     statusBox.style.display = 'block';
@@ -228,7 +212,6 @@ function showStatusMessage(message, isSuccess) {
 
 // Fill the members & project dropdown once the page loads
 createMembersDropdownList();
-createProjectDropdownList();
 
 //https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
 //http://getbem.com/naming/

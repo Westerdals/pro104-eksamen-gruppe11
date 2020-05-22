@@ -41,42 +41,38 @@
             <input type="reset" value="Reset">
 
         </form>
-
-        <form class="add-members-form">
-            <h1>Deleger Medlemmer til Prosjektet</h1>
-            <label for="add-members-form__assigned-members">Deleger Medlemmer</label>
-            <select id="add-members-form__assigned-members">
-                <option value="" selected disabled hidden>Choose here</option>
-            </select>
-
-            <label for="add-members-form__project">Prosjekt</label>
-            <select id="add-members-form__project">
-                <option value="" selected disabled hidden>Choose here</option>
-            </select>
-            <input type="submit" class="add-members-form__submit" value="Submit">
-        </form>
-
-        <form class="add-task-form" style="display: block;" onsubmit="addTaskProject(event)">
-            <h4>Opprett Oppgaver</h4>
-            <label for="addTask">Add Task</label>
-            <input type="text" id="taskText" placeholder="Add task" required>
-            <label for="priority">Choose priority:</label>
-            <input list="priority" name="priorities" id="priorities">
-            <datalist id="priority">
-                <option value="Low">
-                <option value="Medium">
-                <option value="High">
-            </datalist>
-            <br>
-
-            <!-- Adding start and end date for the Project -->
-            <label for="taskStartDate">Start Date</label>
-            <input type="date" id="taskStartDate" name="taskStartDate" required>
-            <label for="taskEndtDate">End Date</label>
-            <input type="date" id="taskEndDate" name="taskEndDate" required>
-            <br>
-            <input class="add-delegate-project__submit" type="submit">
-        </form>
+        <div id="add-project-details-container" style="display: none;">
+            <form class="add-members-form">
+                <h1>Deleger Medlemmer til Prosjektet</h1>
+                <label for="add-members-form__assigned-members">Deleger medlemmer til <span id="add-members-form__project"></span></label>
+                <select id="add-members-form__assigned-members">
+                    <option value="" selected disabled hidden>Choose here</option>
+                </select>
+                <input type="submit" class="add-members-form__submit" value="Submit">
+            </form>
+    
+            <form class="add-task-form" onsubmit="addTaskProject(event)">
+                <h4>Opprett Oppgaver</h4>
+                <label for="addTask">Add Task</label>
+                <input type="text" id="taskText" placeholder="Add task" required>
+                <label for="priority">Choose priority:</label>
+                <input list="priority" name="priorities" id="priorities">
+                <datalist id="priority">
+                    <option value="Low">
+                    <option value="Medium">
+                    <option value="High">
+                </datalist>
+                <br>
+    
+                <!-- Adding start and end date for the Project -->
+                <label for="taskStartDate">Start Date</label>
+                <input type="date" id="taskStartDate" name="taskStartDate" required>
+                <label for="taskEndtDate">End Date</label>
+                <input type="date" id="taskEndDate" name="taskEndDate" required>
+                <br>
+                <input class="add-delegate-project__submit" type="submit">
+            </form>
+        </div>
 
     <!-- delegate task to exisiting users -->
     <form onsubmit="delegate(event)" class="delegate-form" style="display: none;">
@@ -92,9 +88,9 @@
     </div>
     <div><!-- Empty right --></div>
     </div>
-
+    
+    <script src="/docs/scripts/functions.js"></script>
     <script src="/docs/scripts/projectRegister.js"></script>
-    <script src="/docs/scripts/userRegister.js"></script>
 
 
 
