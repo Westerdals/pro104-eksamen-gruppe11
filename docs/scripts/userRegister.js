@@ -41,20 +41,23 @@ function userRegister(event) {
 
 
 
-//Pushes created users to list
+// //Pushes created users to list
 function showUserList() {
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 
-    const userListEl = document.getElementById("userList");
-    userList.innerHTML = "";
+    const userListEl = document.getElementsByClassName("userList");
+    //  userListEl.innerHTML = "";
 
 
-    for (const users of userList) {
+    for (let users of userList) {
         userListEl.innerHTML += `<option value = ${users.id}>${users.firstName}</option>"`;
     }
 }
 
 showUserList()
+
+
+
 
 
 //https://stackoverflow.com/questions/24403732/check-if-array-is-empty-or-does-not-exist-js

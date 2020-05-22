@@ -1,14 +1,31 @@
 
+#popUp{
+
+    background-color: skyblue;
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
 #todo-text-head{
     width: 120px;
+    z-index: 1;
  }
  #todo-text{
-     width: 400px; 
+     width: 400px;
+     z-index: 1; 
  }
  #button-todo{
  background-color: rgb(156, 146, 146);
  border: 1px solid black;
  box-shadow: grey 2px 2px 2px 2px;
+ z-index: 1;
  
  }
  
@@ -17,6 +34,7 @@
      font-size: 20px;
      height: 20px;
      background-color: rgb(150, 190, 223);
+     z-index: 1;
  }
  
  #container{
@@ -26,6 +44,7 @@
  height: 600px;
  width: 1200px;
  text-align: center;
+ z-index: 1;
  
   }
  .post-it-divs{
@@ -35,21 +54,25 @@
  border:2px solid black;
  margin:20px;
  overflow: scroll;
+ z-index: 1;
  }
  #todo-div{
      border: 2px solid black;
      flex: 1;
      position: relative;
+     z-index: 1;
  }
  #during-div{
      border: 2px solid black;
      flex: 1;
      position: relative;
+     z-index: 1;
  }
  #finished-div{
      border: 2px solid black;
      flex: 1;
      position: relative;
+     z-index: 1;
  }
  
  .post-it-divs:hover{
@@ -58,7 +81,11 @@
      box-shadow:10px 10px 7px rgba(0,0,0,.7);
      transform: scale(1.25);
      z-index: 5;
+     z-index: 1;
  }
  #main-container{
      display: flex;
+     z-index: 1;
  }
+
+ 
