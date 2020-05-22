@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/docs/css/projectRegister.css" />
     <title>Document</title>
 </head>
 
 <body>
     <a href="index.html">Trykk her for startsiden</a>
-    <div>
-
+    <div class="gridContainer">
+        <div><!-- Empty left. --></div>
+        <div>
         <!-- Register new Project -->
         <form class="create-project-forms" onsubmit="createProject(event)">
             <h1>Register new Project</h1>
@@ -54,7 +56,7 @@
             <input type="submit" class="add-members-form__submit" value="Submit">
         </form>
 
-        <form class="add-task-form" style="display: none;" onsubmit="addTaskProject(event)">
+        <form class="add-task-form" style="display: block;" onsubmit="addTaskProject(event)">
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
             <input type="text" id="taskText" placeholder="Add task" required>
@@ -71,11 +73,10 @@
             <label for="taskStartDate">Start Date</label>
             <input type="date" id="taskStartDate" name="taskStartDate" required>
             <label for="taskEndtDate">End Date</label>
-            <input type="date" id="taskEndtDate" name="taskEndtDate" required>
+            <input type="date" id="taskEndDate" name="taskEndDate" required>
             <br>
             <input class="add-delegate-project__submit" type="submit">
         </form>
-    </div>
 
     <!-- delegate task to exisiting users -->
     <form onsubmit="delegate(event)" class="delegate-form" style="display: none;">
@@ -87,6 +88,10 @@
         <input type="submit" value="Legg til" />
     </form>
 
+    <div id="status" style="display: none;"></div>
+    </div>
+    <div><!-- Empty right --></div>
+    </div>
 
     <script src="/docs/scripts/projectRegister.js"></script>
     <script src="/docs/scripts/userRegister.js"></script>

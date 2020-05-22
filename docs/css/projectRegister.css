@@ -1,28 +1,23 @@
+:root {
+    font-size: 16px;
+}
+
 * {
     box-sizing: border-box;
   }
 
 .gridContainer {
     display: grid;
-    grid-row-gap: 50px;
-    grid-column-gap: 50px;
-    grid-template-columns: 10% auto 10%;
-    grid-template-rows: 300px;
+    grid-template-columns: 25rem 1fr 25rem;
     justify-content: center;
     align-content: space-evenly;
-}
-
-.flexContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 
 /* Small mobile devices */
 @media screen and (max-width: 414px) {
 
     .gridContainer {
-        grid-template-columns: 0 100% 0;
+        grid-template-columns: 0 1fr 0;
     }
 
 }
