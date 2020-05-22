@@ -55,8 +55,10 @@ function userRegister(event) {
 //showUserList()
 
 //https://stackoverflow.com/questions/24403732/check-if-array-is-empty-or-does-not-exist-js
-const registeredMembersOpenBtn = document.getElementById("testBtn");
-const registeredMembersCloseBtn = document.getElementById("testBtn2")
+
+
+const registeredMembersOpenBtn = document.getElementById("openBtn");
+const registeredMembersCloseBtn = document.getElementById("closeBtn")
 const registeredMembers = document.getElementById("registeredMembersDropdown");
 
 registeredMembersOpenBtn.onclick = function(){
