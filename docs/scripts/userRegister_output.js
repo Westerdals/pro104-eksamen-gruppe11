@@ -3,7 +3,7 @@
 function userID() {
     let IdCounter = "";
 
-    let userList = JSON.parse(window.localStorage.getItem("UserList"));
+    let userList = JSON.parse(window.localStorage.getItem("Members"));
 
     if (userList === null || userList.length == 0) {
         IdCounter = 4000
@@ -27,10 +27,10 @@ function userRegister(event) {
 
     const userRegister = { id: userID(), userName, firstName, lastName };
 
-    const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
+    const userList = JSON.parse(window.localStorage.getItem("Members")) || [];
     userList.push(userRegister);
 
-    window.localStorage.setItem("UserList", JSON.stringify(userList));
+    window.localStorage.setItem("Members", JSON.stringify(userList));
 
 
     event.target.reset();
@@ -43,7 +43,7 @@ function userRegister(event) {
 
 //Pushes created users to list
 function showUserList() {
-    const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
+    const userList = JSON.parse(window.localStorage.getItem("Members")) || [];
 
     const userListEl = document.getElementById("userOutput");
     userListEl.innerHTML = "";

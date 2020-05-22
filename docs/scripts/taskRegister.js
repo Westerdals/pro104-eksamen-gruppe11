@@ -1,6 +1,6 @@
 // LocalStorage Items
 const projectList = JSON.parse(window.localStorage.getItem('Projects')) ?? [];
-const userList = JSON.parse(window.localStorage.getItem('UserList')) ?? [];
+const userList = JSON.parse(window.localStorage.getItem('Members')) ?? [];
 
 
 let projectListEl = '';

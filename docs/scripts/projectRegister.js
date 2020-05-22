@@ -25,7 +25,7 @@ function createProject(event) {
 
     const projectInfo = { ProjectID: ProjectID(), projectName, startDate, endDate, projectDesc, tasks: [], delegate: [], memberList: [] };
 
-    const projectList = getAllProjectsFromLocalStorage();
+    const projectList = getProjects();
 
     // Don't add the project if form is not valid or the project name is duplicate
 
@@ -53,7 +53,7 @@ function addTaskProject(event) {
     const taskEndDate = document.getElementById("taskEndDate").value;
     const task = { taskText, priorities, taskStartDate, taskEndDate }
 
-    const projects = getAllProjectsFromLocalStorage();
+    const projects = getProjects();
 
     const lastProject = projects[projects.length - 1];
 
@@ -76,7 +76,7 @@ const createOption = (parentElement, id, value) => {
 // create the dropdown menu for selecting member
 function createMembersDropdownList() {
     const members = document.querySelector('#add-members-form__assigned-members');
-    const userList = getAllMembersFromLocalStorage();
+    const userList = getMembers();
 
     // Make the dropdown empty before creating the new elements.
     if (members.length != 0) {
@@ -92,7 +92,7 @@ function createMembersDropdownList() {
 
 function showAssignedProject() {
     const projectElement = document.querySelector('#add-members-form__project');
-    const allProjects = getAllProjectsFromLocalStorage();
+    const allProjects = getProjects();
     projectElement.innerHTML = allProjects[allProjects.length - 1].projectName;
 }
 
@@ -104,7 +104,7 @@ document.querySelector('.add-members-form__submit').addEventListener('click', (e
     const userValue = members.value;
     const projectValue = projects.value;
     const memberList = { userId: userValue, projectId: projectValue };
-    const projectList = getAllProjectsFromLocalStorage();
+    const projectList = getProjects();
     const lastProject = projectList[projectList.length - 1]
     const checkUserExist = lastProject.memberList.some(user => user.userId === userValue)
 

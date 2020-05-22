@@ -1,18 +1,17 @@
 // File with common functions used across the project.
 
-function getAllMembersFromLocalStorage() {
-    return JSON.parse(window.localStorage.getItem('UserList')) ?? [];
+function getMembers() {
+    return JSON.parse(window.localStorage.getItem('Members')) ?? [];
 }
 
 function saveMembers(members) {
-
+    window.localStorage.setItem('Members', JSON.stringify(projects));
 }
 
-function getAllProjectsFromLocalStorage() {
-    // [] in project here is for situation where local storage is emtpy
-    return JSON.parse(window.localStorage.getItem("Projects")) ?? [];
+function getProjects() {
+    return JSON.parse(window.localStorage.getItem('Projects')) ?? [];
 }
 
 function saveProjects(projects) {
-    window.localStorage.setItem("Projects", JSON.stringify(projects));
+    window.localStorage.setItem('Projects', JSON.stringify(projects));
 }
