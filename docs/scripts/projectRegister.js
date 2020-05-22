@@ -31,7 +31,7 @@ function createProject(event) {
 
     if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)){
         projectList.push(projectInfo);
-        window.localStorage.setItem("Projects", JSON.stringify(projectList));
+        saveProjects(projectList);
         showStatusMessage("Project created.", true);
 
         // Display the new member list to the user.
@@ -59,19 +59,10 @@ function addTaskProject(event) {
 
     if(isTaskDateValidForProject(taskStartDate, taskEndDate, lastProject)) {
         lastProject.tasks.push(task);
-        window.localStorage.setItem("Projects", JSON.stringify(projects));
+        saveProjects(projects)
         event.target.reset();
         showStatusMessage("Added task to project", true);
     }
-}
-
-function getAllMembersFromLocalStorage() {
-    return JSON.parse(window.localStorage.getItem('UserList')) ?? [];
-}
-
-function getAllProjectsFromLocalStorage() {
-    // [] in project here is for situation where local storage is emtpy
-    return JSON.parse(window.localStorage.getItem("Projects")) ?? [];
 }
 
 // function to create option for the select element
@@ -122,7 +113,7 @@ document.querySelector('.add-members-form__submit').addEventListener('click', (e
     } else {
         showStatusMessage("Added member to project.", true);
         lastProject.memberList.push(memberList);
-        window.localStorage.setItem('Projects', JSON.stringify(projectList));
+        saveProjects(projectList);
     }
 });
 
