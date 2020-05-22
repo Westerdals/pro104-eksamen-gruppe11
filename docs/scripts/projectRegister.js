@@ -28,9 +28,11 @@ function createProject(event) {
     const projectList = getAllProjectsFromLocalStorage();
 
     // Don't add the project if form is not valid or the project name is duplicate
-    if (isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList)) {
+
+    if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)){
         projectList.push(projectInfo);
         window.localStorage.setItem("Projects", JSON.stringify(projectList));
+        showStatusMessage("Project created.", true);
 
         // Display the new member list and project list to the user.
         createProjectDropdownList();
@@ -48,19 +50,19 @@ function addTaskProject(event) {
     const taskText = document.getElementById("taskText").value;
     const priorities = document.getElementById("priorities").value;
     const taskStartDate = document.getElementById("taskStartDate").value;
-    const taskEndtDate = document.getElementById("taskEndtDate").value;
-    const task = { taskText, priorities, taskStartDate, taskEndtDate }
+    const taskEndDate = document.getElementById("taskEndDate").value;
+    const task = { taskText, priorities, taskStartDate, taskEndDate }
 
     const projects = getAllProjectsFromLocalStorage();
 
     const lastProject = projects[projects.length - 1];
 
-    lastProject.tasks.push(task);
-
-    window.localStorage.setItem("Projects", JSON.stringify(projects));
-
-    // console.log(lastProject.task.push)
-    event.target.reset();
+    if(isTaskDateValidForProject(taskStartDate, taskEndDate, lastProject)) {
+        lastProject.tasks.push(task);
+        window.localStorage.setItem("Projects", JSON.stringify(projects));
+        event.target.reset();
+        showStatusMessage("Added task to project", true);
+    }
 }
 
 function getAllMembersFromLocalStorage() {
@@ -127,9 +129,9 @@ document.querySelector('.add-members-form__submit').addEventListener('click', (e
     const checkUserExist = projectList[0].memberList.some(user => user.userId === userValue)
 
     if (checkUserExist) {
-        throw 'User Already Exist!';
+        showStatusMessage("User is already assigned to this project", false);
     } else {
-        console.log('Added User to the memberList');
+        showStatusMessage("Added member to project.", true);
         projectList[0].memberList.push(memberList);
         window.localStorage.setItem('Projects', JSON.stringify(projectList));
     }
@@ -152,16 +154,16 @@ function isValidProjectInput() {
         // Add delegate task Popup by changing display
         document.querySelector(".add-delegate-project__submit").addEventListener('click', () => {
             if (document.getElementById("taskText").value != "" && document.getElementById("priorities").value != ""
-                && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndtDate").value != "") {
+                && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndDate").value != "") {
                 document.querySelector(".delegate-form").style.display = "block";
             } else {
-                alert("please fill the blank");
+                showStatusMessage("Please fill out the blanks..", false);
                 return false;
             }
         })
         return true;
     } else {
-        alert("please fill the blank");
+        showStatusMessage("Please fill out the blanks..", false);
         return false;
     }
 }
@@ -169,11 +171,59 @@ function isValidProjectInput() {
 // returns true if the project name is not in the project list. We do not want duplicate project names.
 function isNotDuplicateProjectName(projectName, projectList) {
     const duplicateProjectName = projectList.filter(project => project.projectName == projectName) ?? [];
-    if (duplicateProjectName.length != 0) {
-        console.error(`Project with name: ${projectName} already exists.`);
-        // TODO: Disply the text to the user?
+
+    if(duplicateProjectName.length != 0) {
+        showStatusMessage(`Project with name: ${projectName} already exists.`, false);
         return false;
     } else return true;
+}
+
+function isProjectDateValid(projectStartDateAsString, projectEndDateAsString) {
+    const projectStartDate = new Date(projectStartDateAsString);
+    const projectEndDate = new Date(projectEndDateAsString);
+
+    if(projectStartDate > projectEndDate) {
+        showStatusMessage("Project can't end before start date..", false);
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+// returns true if the task start and end date is within the projects dates
+function isTaskDateValidForProject(taskStartDateAsString, taskEndDateAsString, project) {
+    const taskStartDate = new Date(taskStartDateAsString);
+    const taskEndDate = new Date(taskEndDateAsString);
+    const projectStartDate = new Date(project.startDate);
+    const projectEndDate = new Date(project.endDate);
+
+
+    if(taskStartDate < projectStartDate) {
+        showStatusMessage("Task can't start before project start..", false);
+        return false;
+    } else if(taskEndDate > projectEndDate) {
+        showStatusMessage("Task can't end after project end..", false);
+        return false;
+    } else if(taskStartDate > taskEndDate) {
+        showStatusMessage("Task can't end before start date..", false);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function showStatusMessage(message, isSuccess) {
+    const statusBox = document.getElementById('status');
+    statusBox.style.display = 'block';
+
+    if(isSuccess) {
+        statusBox.style.backgroundColor = '#00ca4e';
+    } else {
+        statusBox.style.backgroundColor = '#ff605c';
+    }
+
+    statusBox.innerHTML = `<p>${message}</p>`;
 }
 
 // Fill the members & project dropdown once the page loads
