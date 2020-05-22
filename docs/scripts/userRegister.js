@@ -45,7 +45,7 @@ function userRegister(event) {
 function showUserList() {
     const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
 
-    const userListEl = document.getElementById("userList");
+    const userListEl = document.getElementsByClassName("userList");
     //  userListEl.innerHTML = "";
 
 

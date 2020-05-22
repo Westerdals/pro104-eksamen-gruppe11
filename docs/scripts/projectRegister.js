@@ -28,7 +28,7 @@ function createProject(event) {
     const projectList = getAllProjectsFromLocalStorage();
 
     // Don't add the project if form is not valid or the project name is duplicate
-    if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList)){
+    if (isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList)) {
         projectList.push(projectInfo);
         window.localStorage.setItem("Projects", JSON.stringify(projectList));
 
@@ -86,10 +86,10 @@ function createMembersDropdownList() {
     const userList = getAllMembersFromLocalStorage();
 
     // Make the dropdown empty before creating the new elements.
-    if(members.length != 0) {
+    if (members.length != 0) {
         while (members.lastElementChild) {
             members.removeChild(members.lastElementChild);
-          }
+        }
     }
     for (const list of userList) {
         const { id, firstName, lastName } = list;
@@ -101,12 +101,12 @@ function createMembersDropdownList() {
 function createProjectDropdownList() {
     const projects = document.querySelector('#add-members-form__project');
     const projectList = getAllProjectsFromLocalStorage();
-    
+
     // Make the dropdown empty before creating the new elements.
-    if(projects.length != 0) {
+    if (projects.length != 0) {
         while (projects.lastElementChild) {
             projects.removeChild(projects.lastElementChild);
-          }
+        }
     }
 
     for (const list of projectList) {
@@ -169,7 +169,7 @@ function isValidProjectInput() {
 // returns true if the project name is not in the project list. We do not want duplicate project names.
 function isNotDuplicateProjectName(projectName, projectList) {
     const duplicateProjectName = projectList.filter(project => project.projectName == projectName) ?? [];
-    if(duplicateProjectName.length != 0) {
+    if (duplicateProjectName.length != 0) {
         console.error(`Project with name: ${projectName} already exists.`);
         // TODO: Disply the text to the user?
         return false;
@@ -189,3 +189,4 @@ createProjectDropdownList();
 
 //search in array
 //https://www.w3schools.com/jsref/jsref_find.asp
+
