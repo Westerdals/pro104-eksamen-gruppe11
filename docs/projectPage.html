@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/docs/css/projectPage.css">
+    
+    
 </head>
 <body>
 
@@ -29,7 +31,7 @@
 <option id="option3" class="options" value="red">Høy hastighetsgrad</option>
 </select>
 <br>
-<input type="button" id="button-todo" value="add todo">
+<input type="button" id="button-todo" value="add todo" data-modal-target="#modal">
 </div>
 </span>
 
@@ -50,6 +52,14 @@
   </span>
 </span>
 
+<div id="overlay"></div>
+
+
 <script src="/docs/scripts/projectPage.js"></script>
+
+<script src="/docs/scripts/Classes.js" defer></script>
+
+<script src="scripts/taskRegister.js" defer></script>
+
 </body>
 </html>
