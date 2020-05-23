@@ -98,12 +98,6 @@ function showUserList() {
 
 //}
 
-
-
-
-
-
-
 //showUserList.innerHTML += `${userName}: ${firstName}, ${lastName}`;
 
 //if (key && value){
