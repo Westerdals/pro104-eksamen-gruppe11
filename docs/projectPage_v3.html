@@ -3,11 +3,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/docs/css/projectPage.css">
-    <script src="/docs/scripts/taskRegister.js" defer></script>
+    <link rel="stylesheet" href="css/projectPage.css">
+    <script src="scripts/taskRegister.js" defer></script>
     
 </head>
 <body>
+  <!--NAVBAR-->
+  <ul id="navbarMain">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">Projects</a></li>
+    <li><a href="#contact">Teams</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
 
 <a href="index.html">Trykk her for startsiden</a>
   <!--Kanskje bruke dependecies mapper, som vi kan ha andres code i, som vi bruker.
@@ -25,13 +32,13 @@
 <input type="textbox" id="todo-text" placeholder="Tekst">
 <br>
 <label for="prioritySelector">Velg hastighetsgrad</label>
-<select id="prioritySelector"> 
-<option id="option1" class="options" value="green">Lav hastighetsgrad</option>
-<option id="option2" class="options"  value="yellow">Medium hastighetsgrad</option>
-<option id="option3" class="options" value="red">Høy hastighetsgrad</option>
+<select id="prioritySelector" class="select"> 
+<option id="option1" class="options" value="green" class="option">Lav hastighetsgrad</option>
+<option id="option2" class="options"  value="yellow" class="option">Medium hastighetsgrad</option>
+<option id="option3" class="options" value="red" class="option">Høy hastighetsgrad</option>
 </select>
 <br>
-<input type="button" id="button-todo" value="add todo">
+<input type="button" id="button-todo" value="Add Task" class="large-button">
 </div>
 </span>
 
@@ -52,9 +59,9 @@
   </span>
 </span>
 
-<script src="/docs/scripts/projectPage_v3.js"></script>
+<script src="scripts/projectPage_v3.js"></script>
 
-<script src="/docs/scripts/Classes.js" defer></script>
+<script src="scripts/Classes.js" defer></script>
 
 
 </body>

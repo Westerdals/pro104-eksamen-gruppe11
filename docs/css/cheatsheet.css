@@ -16,12 +16,14 @@ body {
   background-color: var(--dGray);
 }
 
+
 #textbox-rounded {
   border-radius: 5px;
   border: black solid 1px;
   height: 20px;
 }
 
+/* Login Textbox */
 #textbox-elipse {
   border-radius: 50px;
   border: black solid 1px;
@@ -37,6 +39,7 @@ body {
   color: var(--Gray);
   opacity: 30%;
 }
+
 /* LOGIN BUTTONS */
 #login-button {
   width: 120px;

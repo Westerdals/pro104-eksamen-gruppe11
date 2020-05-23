@@ -1,50 +1,91 @@
 
-#popUp{
+:root {
+  background-color: var(--lBlack);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--Gray);
+    --green: #00ca4e;
+    --red: #ff605c;
+    --yellow: #ffbd44;
+    --lBlack: #2c2c2c; 
+    --dBlack: #131313;
+    --placeholder: #3D3D3D;
+    --offWhite: #F3F3F3;
+    --Gray:   #BBBBBB;
+    --dGray: #3D3D3D;
+  }
 
-    background-color: skyblue;
-    width: 40%;
-    height: 50%;
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
+
+
+/* BUTTONS */
+.large-button {
+  width: 120px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: var(--dBlack);
+  border: 0px;
+  outline: none;
+  color: var(--Gray);
 }
 
-#todo-text-head{
-    width: 120px;
+/* URGENCY DROPDOWN */
+.select {
+  border-radius: 5px;
+  border: black solid 1px;
+  height: 25px;
     z-index: 1;
+    color: var(--Gray);
+    background-color: var(--dBlack);
+    outline: none;
+}
+
+/*TEXT INPUT FIELDS */
+
+#todo-text-head{
+    border-radius: 5px;
+  border: black solid 1px;
+  height: 25px;
+    z-index: 1;
+    color: var(--Gray);
+    background-color: var(--dBlack);
  }
+
+ #todo-text-head::placeholder {
+    text-align: center;
+    font-style: italic;
+    color: var(--dGray);
+ }
+
  #todo-text{
      width: 400px;
      z-index: 1; 
- }
- #button-todo{
- background-color: rgb(156, 146, 146);
- border: 1px solid black;
- box-shadow: grey 2px 2px 2px 2px;
- z-index: 1;
- 
+     border-radius: 5px;
+     border: black solid 1px;
+     height: 25px;
+     color: var(--Gray);
+     background-color: var(--dBlack);
+     
  }
  
  .headers{
      text-align: center;
-     font-size: 20px;
+     font-size: 15px;
      height: 20px;
-     background-color: rgb(150, 190, 223);
+     background-color: var(--lBlack);
      z-index: 1;
+     border: solid black 1px;
+     border-radius: 2px;
+     color: var(--Gray);
  }
  
  #container{
- background-color: rgb(208, 231, 252);
+ background-color: var(--dBlack);
  display: flex;
  flex-direction: column;
  height: 600px;
  width: 1200px;
  text-align: center;
  z-index: 1;
+ position: absolute;
  
   }
  .post-it-divs{
@@ -75,7 +116,7 @@
      z-index: 1;
  }
  
- .post-it-divs:hover{
+ .post-it-divs:hover {
      -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
      -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
      box-shadow:10px 10px 7px rgba(0,0,0,.7);
@@ -88,4 +129,49 @@
      z-index: 1;
  }
 
- 
+ /* NAVBAR */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  li a {
+    display: block;
+    color: var(--green);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+ /* POPUP */
+ #popUp{
+
+    background-color: var(--dGray);
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border-radius: 12px;
+    border: black solid 3px;
+    opacity: 0;
+}
