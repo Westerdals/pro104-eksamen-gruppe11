@@ -1,177 +1,192 @@
-
 :root {
-  background-color: var(--lBlack);
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--Gray);
-    --green: #00ca4e;
-    --red: #ff605c;
-    --yellow: #ffbd44;
-    --lBlack: #2c2c2c; 
-    --dBlack: #131313;
-    --placeholder: #3D3D3D;
-    --offWhite: #F3F3F3;
-    --Gray:   #BBBBBB;
-    --dGray: #3D3D3D;
-  }
-
-
+	background-color: var(--lBlack);
+	font-family: Arial, Helvetica, sans-serif;
+	color: var(--Gray);
+	--green: #00ca4e;
+	--red: #ff605c;
+	--yellow: #ffbd44;
+	--lBlack: #2c2c2c;
+	--dBlack: #131313;
+	--placeholder: #3d3d3d;
+	--offWhite: #f3f3f3;
+	--Gray: #bbbbbb;
+	--dGray: #3d3d3d;
+}
 
 /* BUTTONS */
 .large-button {
-  width: 120px;
-  height: 30px;
-  border-radius: 30px;
-  background-color: var(--dBlack);
-  border: 0px;
-  outline: none;
-  color: var(--Gray);
+	width: 120px;
+	height: 30px;
+	border-radius: 30px;
+	background-color: var(--dBlack);
+	border: 0px;
+	outline: none;
+	color: var(--Gray);
 }
 
 /* URGENCY DROPDOWN */
-.select {
-  border-radius: 5px;
-  border: black solid 1px;
-  height: 25px;
-    z-index: 1;
-    color: var(--Gray);
-    background-color: var(--dBlack);
-    outline: none;
+.urgency-select {
+	border-radius: 5px;
+	border: black solid 1px;
+	height: 25px;
+	z-index: 1;
+	color: var(--Gray);
+	background-color: var(--dBlack);
+	outline: none;
 }
 
 /*TEXT INPUT FIELDS */
 
-#todo-text-head{
-    border-radius: 5px;
-  border: black solid 1px;
-  height: 25px;
-    z-index: 1;
-    color: var(--Gray);
-    background-color: var(--dBlack);
- }
+.small-textbox {
+	border-radius: 5px;
+	border: black solid 1px;
+	height: 25px;
+	z-index: 1;
+	color: var(--Gray);
+	background-color: var(--dBlack);
+}
 
- #todo-text-head::placeholder {
-    text-align: center;
-    font-style: italic;
-    color: var(--dGray);
- }
+.small-textbox::placeholder {
+	text-align: center;
+	font-style: italic;
+	color: var(--dGray);
+}
 
- #todo-text{
-     width: 400px;
-     z-index: 1; 
-     border-radius: 5px;
-     border: black solid 1px;
-     height: 25px;
-     color: var(--Gray);
-     background-color: var(--dBlack);
-     
- }
- 
- .headers{
-     text-align: center;
-     font-size: 15px;
-     height: 20px;
-     background-color: var(--lBlack);
-     z-index: 1;
-     border: solid black 1px;
-     border-radius: 2px;
-     color: var(--Gray);
- }
- 
- #container{
- background-color: var(--dBlack);
- display: flex;
- flex-direction: column;
- height: 600px;
- width: 1200px;
- text-align: center;
- z-index: 1;
- position: absolute;
- 
-  }
- .post-it-divs{
- display: inline-block;
- width:50px;
- height:50px;
- border:2px solid black;
- margin:20px;
- overflow: scroll;
- z-index: 1;
- }
- #todo-div{
-     border: 2px solid black;
-     flex: 1;
-     position: relative;
-     z-index: 1;
- }
- #during-div{
-     border: 2px solid black;
-     flex: 1;
-     position: relative;
-     z-index: 1;
- }
- #finished-div{
-     border: 2px solid black;
-     flex: 1;
-     position: relative;
-     z-index: 1;
- }
- 
- .post-it-divs:hover {
-     -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
-     -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
-     box-shadow:10px 10px 7px rgba(0,0,0,.7);
-     transform: scale(1.25);
-     z-index: 5;
-     z-index: 1;
- }
- #main-container{
-     display: flex;
-     z-index: 1;
- }
+/* #todo-text-head {
+	border-radius: 5px;
+	border: black solid 1px;
+	height: 25px;
+	z-index: 1;
+	color: var(--Gray);
+	background-color: var(--dBlack);
+}
 
- /* NAVBAR */
+#todo-text-head::placeholder {
+	text-align: center;
+	font-style: italic;
+	color: var(--dGray);
+}
+
+#todo-text {
+	width: 400px;
+	z-index: 1;
+	border-radius: 5px;
+	border: black solid 1px;
+	height: 25px;
+	color: var(--Gray);
+	background-color: var(--dBlack);
+} */
+
+.headers {
+	text-align: center;
+	font-size: 15px;
+	height: 20px;
+	background-color: var(--lBlack);
+	z-index: 1;
+	border: solid black 1px;
+	border-radius: 2px;
+	color: var(--Gray);
+}
+
+#container {
+	background-color: var(--dBlack);
+	display: flex;
+	flex-direction: column;
+	height: 600px;
+	width: 1200px;
+	text-align: center;
+	z-index: 1;
+	position: absolute;
+}
+.post-it-divs {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border: 2px solid black;
+	margin: 20px;
+	overflow: scroll;
+	z-index: 1;
+}
+#todo-div {
+	border: 2px solid black;
+	flex: 1;
+	position: relative;
+	z-index: 1;
+}
+#during-div {
+	border: 2px solid black;
+	flex: 1;
+	position: relative;
+	z-index: 1;
+}
+#finished-div {
+	border: 2px solid black;
+	flex: 1;
+	position: relative;
+	z-index: 1;
+}
+
+.post-it-divs:hover {
+	-moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+	-webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+	box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+	transform: scale(1.25);
+	z-index: 5;
+	z-index: 1;
+}
+#main-container {
+	display: flex;
+	z-index: 1;
+}
+
+/* NAVBAR */
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  li a {
-    display: block;
-    color: var(--green);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
 
- /* POPUP */
- #popUp{
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
 
-    background-color: var(--dGray);
-    width: 40%;
-    height: 50%;
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    border-radius: 12px;
-    border: black solid 3px;
-    opacity: 0;
+li {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+li a {
+	display: block;
+	color: var(--green);
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+ul img {
+	width: 100px;
+	background-color: var(--Gray);
+	margin-left: 30%;
+}
+
+/* POPUP */
+#popUp {
+	background-color: var(--lBlack);
+	width: 70%;
+	height: 90%;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+	border-radius: 12px;
+	border: black solid 3px;
+	color: black;
 }

@@ -7,7 +7,7 @@ let toDoText = document.getElementById("todo-text");
 
 let headContainer = document.getElementById("head-container");
 let toDoTextHeader = document.getElementById("todo-text");
-let duringText= document.getElementById("during-text");
+let duringText = document.getElementById("during-text");
 let finishedText = document.getElementById("finished-text");
 
 
@@ -15,77 +15,75 @@ let toDoDiv = document.getElementById("todo-div");
 let duringDiv = document.getElementById("during-div");
 let finishedDiv = document.getElementById("finished-div");
 
-counter= 0;
+counter = 0;
 
 //The event that happens when you click create task - div is created. 
-toDoButton.onclick = function dothis(){
+toDoButton.onclick = function dothis() {
 
-  const priorityColor= document.getElementById("prioritySelector").value;
+  const priorityColor = document.getElementById("prioritySelector").value;
 
-toDoDiv.innerHTML +=
-`<div class="post-it-divs" draggable="true" ondragenter="allowDrop(event)" 
+  toDoDiv.innerHTML +=
+    `<div class="post-it-divs" draggable="true" ondragenter="allowDrop(event)" 
 ondragleave="allowDrop(event)" ondragstart="dragStart(event)" id="dragtarget${counter}" 
 style="background-color:white; border: 5px solid ${priorityColor}">
 <p>
 <h3>${toDoHeadtext.value}</h3>
 ${toDoText.value}<p>
 </div>`;
-counter++;
+  counter++;
 }
 var data = "";
 
 //Drag and drop functions
 function dragStart(event) {
   event.dataTransfer.setData("Text", event.target.id);
-  }
-  
+}
+
 function allowDrop(event) {
-    event.preventDefault();
-  }
+  event.preventDefault();
+}
 function drop(event) {
-    event.preventDefault();
-   
- var data = event.dataTransfer.getData("Text");
-  if(event.target.className !='post-it-divs'){
+  event.preventDefault();
+
+  var data = event.dataTransfer.getData("Text");
+  if (event.target.className != 'post-it-divs') {
     event.target.appendChild(document.getElementById(data));
   }
-    data = "";
-   
-  }
+  data = "";
+
+}
 
 
- //Dette er en funksjon som vi kan bruke til å sette påminnelser. 
- // https://www.plus2net.com/javascript_tutorial/timer-set.php
-    //mytime = setTimeout(expression, msec); 
+//Dette er en funksjon som vi kan bruke til å sette påminnelser. 
+// https://www.plus2net.com/javascript_tutorial/timer-set.php
+//mytime = setTimeout(expression, msec); 
 
+
+
+document.getElementById("button-todo").onclick = function () {
+  document.getElementById("popUp").style.zIndex = "2";
+}
+
+
+const taskPopupWindow = document.createElement("div");
+
+taskPopupWindow.setAttribute("id", "popUp");
+
+document.body.appendChild(taskPopupWindow);
+
+
+document.getElementById("popUp").innerHTML = `
     
    
-    document.getElementById("button-todo").onclick = function() {
-      document.getElementById("popUp").style.zIndex = "2";
-    }
-
-      
-      const taskPopupWindow = document.createElement("div");
-      
-      taskPopupWindow.setAttribute("id", "popUp");
-      
-      document.body.appendChild(taskPopupWindow);
-      
-
-      document.getElementById("popUp").innerHTML = `
-    
-    <br> 
-    <br> 
-    <br> 
     
     <div>
-    <input type="button" value="Close" id="closeButton">
+    <input type="button" value="Close" id="closeButton" class="large-button">
         <form>
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
-            <input type="text" placeholder="Add task" required>
+            <input type="text" class="small-textbox" placeholder="Add task" required><br>
             <label for="priority">Choose priority:</label>
-            <input list="priority" name="priorities" id="priorities">
+            <input list="priority" name="priorities" id="priorities" class="urgency-select">
             <datalist id="priority">
                 <option value="Low">
                 <option value="Medium">
@@ -99,12 +97,14 @@ function drop(event) {
             <label for="taskEndtDate">End Date</label>
             <input type="date" name="taskEndtDate" required>
             <br>
-            <input type="submit">
+            <input type="submit" class="large-button">
         </form>
     </div>
+
     
     <!-- delegate task to exisiting users -->
     <div>
+    <br>
         <form onsubmit="delegate(event)">
             <h3>Deleger Oppgaver (alternativt) </h3>
             <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
@@ -120,8 +120,8 @@ function drop(event) {
     
     `;
 
-    let close = document.getElementById("closeButton");
+let close = document.getElementById("closeButton");
 
-    close.onclick = function(){
-      taskPopupWindow.style.zIndex = "-1";
-  }  
+close.onclick = function () {
+  taskPopupWindow.style.zIndex = "-1";
+}  
