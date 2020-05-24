@@ -4,34 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/projectRegister.css">
+    <link rel="stylesheet" href="/docs/css/projectRegister.css" />
     <title>Document</title>
 </head>
 
 <body>
     <a href="index.html">Trykk her for startsiden</a>
-<<<<<<< HEAD
-    <div class="forms">
-        <div><!-- Empty left. --></div>
-        <div>
-        <!-- Register new Project -->
-        <form class="createProject_form" onsubmit="createProject(event)">
-            <h1>Register new Project</h1>
-
-            <div>
-                <!-- Adding Project id and Project Name -->
-                <label for="projectName">Project Name</label>
-                <input type="text" placeholder="Enter Project Name" id="projectName" required>
-            </div>
-
-            <!-- Adding start and end date for the Project -->
-            <div class="labelForm">
-                <label for="startDate">Start Date</label>
-                <input type="date" id="startDate" required>
-                <label for="endDate">End Date</label>
-                <input type="date" id="endDate" required>
-            </div>
-=======
     <div class="gridContainer">
         <div>
             <!-- Empty left. -->
@@ -99,63 +77,8 @@
                 </form>
             </div>
 
->>>>>>> df75c6f013360d456be1cb1dc8d25214885ceba4
 
 
-<<<<<<< HEAD
-            <button type="submit" class="add-task-project__submit" id="projectRegBtn">Create Project</button>
-            <input type="reset" value="Reset">
-
-        </form>
-        <form class="addMembersForm">
-            <h1>Delegate members to project</h1>
-            <label for="assignedMembers">Delegate members</label>
-            <select id="assignedMembers">
-                <option value="" selected disabled hidden>Choose here</option>
-            </select>
-
-            <label for="addMembers_Project">Project</label>
-            <select id="addMembers_Project">
-                <option value="" selected disabled hidden>Choose here</option>
-            </select>
-            <input type="submit" class="addMembersForm__submit" value="Submit">
-        </form>
-
-        <form class="addTask" style="display: block;" onsubmit="addTaskProject(event)">
-            <h5>Opprett Oppgaver</h5>
-            <label for="taskText">Add Task</label>
-            <input type="text" id="taskText" placeholder="Add task" required>
-            <label for="priorities">Choose priority</label>
-            <input list="priority" name="priorities" id="priorities">
-            <datalist id="priority">
-                <option value="Low">
-                <option value="Medium">
-                <option value="High">
-            </datalist>
-            <br>
-
-            <!-- Adding start and end date for the Project -->
-            <label for="taskStartDate">Start Date</label>
-            <input type="date" id="taskStartDate" name="taskStartDate" required>
-            <label for="taskEndDate">End Date</label>
-            <input type="date" id="taskEndDate" name="taskEndDate" required>
-            <br>
-            <input class="add-delegate-project__submit" type="submit">
-        </form>
-
-    <!-- delegate task to exisiting users -->
-
-    <form onsubmit="delegate(event)" class="delegateForm" style="display: none;">
-        <h3>Deleger Oppgaver (alternativt) </h3>
-        <label for="userList">Choose User</label>
-        <select id="userList"></select>
-        <label for="taskList">Choose Created Task</label>
-        <select id="taskList"></select>
-        <input type="submit" value="Legg til" />
-    </form>
-
-    <div id="status" style="display: none;"></div>
-=======
 
         </div>
 
@@ -181,7 +104,6 @@
     </div>
     <div>
         <!-- Empty right -->
->>>>>>> df75c6f013360d456be1cb1dc8d25214885ceba4
     </div>
     </div>
 
