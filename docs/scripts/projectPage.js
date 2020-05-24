@@ -1,5 +1,3 @@
-
-
 let toDoContainer = document.getElementById("container");
 let toDoButton = document.getElementById("button-todo");
 let toDoHeadtext = document.getElementById("todo-text-head");
@@ -10,7 +8,6 @@ let toDoTextHeader = document.getElementById("todo-text");
 let duringText= document.getElementById("during-text");
 let finishedText = document.getElementById("finished-text");
 
-
 let toDoDiv = document.getElementById("todo-div");
 let duringDiv = document.getElementById("during-div");
 let finishedDiv = document.getElementById("finished-div");
@@ -18,7 +15,7 @@ let finishedDiv = document.getElementById("finished-div");
 counter= 0;
 
 //The event that happens when you click create task - div is created. 
-toDoButton.onclick = function dothis(){
+toDoButton.onclick = () => {
 
   const priorityColor= document.getElementById("prioritySelector").value;
 
@@ -60,112 +57,44 @@ function drop(event) {
 
     
    
-    // Function to make taskregister popup.
-    toDoButton.onclick = function() {
-      document.getElementById("popUp").style.zIndex = "2";
-      taskPopupWindow.style.display = "flex";
-    }
+// Function to make taskregister popup.
+toDoButton.onclick = function() {
+  const taskPopupWindow = document.getElementById("popUp");
+  taskPopupWindow.style.zIndex = "2";
+  taskPopupWindow.style.display = "flex";
+  fetch('/docs/taskPopUp.html')
+    .then(data => data.text())
+    .then(html => document.getElementById('popUp').innerHTML = html)
+    .then(() => {
+          // Close-button to close the taskregister window.
+          const close = document.getElementById("closeButton");
 
-      
-      const taskPopupWindow = document.createElement("div");
-      
-      taskPopupWindow.setAttribute("id", "popUp");
-      
-      document.body.appendChild(taskPopupWindow);
-      
+          close.onclick = function(){
+            taskPopupWindow.style.zIndex = "-1";
+            taskPopupWindow.style.display = "none";
+          }
 
-      document.getElementById("popUp").innerHTML = `
-    
-    <br> 
-    <br> 
-    <br> 
-    
-    <div>
-        <form action="">
-            <label for="createdProject">Choose Project to add task:</label>
-            <select id="createdProject">
-                <option class="created-project__none" value="" selected disabled hidden>Choose here</option>
-            </select>
-        </form>
-    </div>
+          const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
+          const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
+        
+          openModalButtons.forEach(toDoButton =>{
+            toDoButton.addEventListener(`click`, () => {
+              const modal = document.querySelector(toDoButton.dataset.modalTarget)
+              openModal(modal);
+          })
+        })
 
-    <div id="modal" class="modal">
-    <input type="button" data-close-button value="Close" id="closeButton">
-        <form>
-            <h4>Opprett Oppgaver</h4>
-            <label for="addTask">Add Task</label>
-            <input type="text" placeholder="Add task" required>
-            <label for="priority">Choose priority:</label>
-            <input list="priority" name="priorities" id="priorities">
-            <datalist id="priority">
-                <option value="Low">
-                <option value="Medium">
-                <option value="High">
-            </datalist>
-            <br>
+        closeModalButtons.forEach(toDoButton =>{
+          toDoButton.addEventListener(`click`, () => {
+            const modal = toDoButton.closest(`.modal`);
+            closeModal(modal);
+          })
+        })
 
-            <!-- Adding start and end date for the Project -->
-            <label for="taskStartDate">Start Date</label>
-            <input type="date" name="taskStartDate" required>
-            <label for="taskEndtDate">End Date</label>
-            <input type="date" name="taskEndtDate" required>
-            <br>
-            <input type="submit">
-        </form>
-    </div>
-    
-    <!-- delegate task to exisiting users -->
-    <div>
-        <form onsubmit="delegate(event)">
-            <h3>Deleger Oppgaver (alternativt) </h3>
-            <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
-            <datalist id="userList"></datalist>
-            <input list="taskList" id="taskListInput" name="taskListInput" type="text"
-                placeholder="Tildel registrert oppgave..." required>
-            <datalist id="taskList"></datalist>
-
-            <input type="submit" value="Legg til" />
-        </form>
-
-    </div>
-    
+    });  
+}
 
 
-    `;
-
-    // Close-button to close the taskregister window.
-    const close = document.getElementById("closeButton");
-
-    close.onclick = function(){
-      taskPopupWindow.style.zIndex = "-1";
-      taskPopupWindow.style.display = "none";
-  }  
-
-  const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-  const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-  const overlay = document.getElementById(`overlay`);
-
-  openModalButtons.forEach(toDoButton =>{
-    toDoButton.addEventListener(`click`, () => {
-      const modal = document.querySelector(toDoButton.dataset.modalTarget)
-      openModal(modal);
-  })
-})
-
-// Make popUp close when clicking outside in the overlay
-//overlay.addEventListener(`click`, () => {
-  //const modals = document.querySelectorAll(`.modal.active`);
-  //modals.forEach(modal => {
-    //closeModal(modal);
-  //})
-//})
-
-closeModalButtons.forEach(toDoButton =>{
-  toDoButton.addEventListener(`click`, () => {
-    const modal = toDoButton.closest(`.modal`);
-    closeModal(modal);
-  })
-})
   
 function openModal(modal){
   if(modal == null) return
