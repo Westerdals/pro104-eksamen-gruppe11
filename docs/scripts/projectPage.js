@@ -191,7 +191,7 @@ function createTaskElement(task) {
   
   element.innerHTML = `<h3>${task.taskText}</h3>`;
   element.innerHTML += `<p>${task.taskStartDate}</p>`;
-  element.innerHTML += `<p>${task.taskEndDate}</p>`;
+  element.innerHTML += `<p>${task.taskEndtDate}</p>`;
   element.innerHTML += `<p>${task.priorities}</p>`;
 
   return element;
