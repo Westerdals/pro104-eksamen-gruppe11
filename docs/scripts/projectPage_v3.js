@@ -75,9 +75,34 @@ document.body.appendChild(taskPopupWindow);
 document.getElementById("popUp").innerHTML = `
     
    
+<<<<<<< HEAD
     
     <div>
     <input type="button" value="Close" id="closeButton" class="large-button">
+=======
+    // Function to make taskregister popup.
+    toDoButton.onclick = function() {
+      document.getElementById("popUp").style.zIndex = "2";
+      taskPopupWindow.style.display = "flex";
+    }
+
+      
+      const taskPopupWindow = document.createElement("div");
+      
+      taskPopupWindow.setAttribute("id", "popUp");
+      
+      document.body.appendChild(taskPopupWindow);
+      
+
+      document.getElementById("popUp").innerHTML = `
+    
+    <br> 
+    <br> 
+    <br> 
+    
+    <div id="modal" class="modal">
+    <input type="button" data-close-button value="Close" id="closeButton">
+>>>>>>> 965ad5b1e0334836d8d19c48ccd8645ec4dd17db
         <form>
             <h4>Opprett Oppgaver</h4>
             <label for="addTask">Add Task</label>
@@ -120,6 +145,7 @@ document.getElementById("popUp").innerHTML = `
     
     `;
 
+<<<<<<< HEAD
 // Close-button to close the taskregister window.
 const close = document.getElementById("closeButton");
 
@@ -164,3 +190,50 @@ function closeModal(modal) {
   if (modal == null) return
   modal.classList.remove(`active`);
   overlay.classList.remove(`active`);
+=======
+    // Close-button to close the taskregister window.
+    const close = document.getElementById("closeButton");
+
+    close.onclick = function(){
+      taskPopupWindow.style.zIndex = "-1";
+      taskPopupWindow.style.display = "none";
+  }  
+
+  const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
+  const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
+  const overlay = document.getElementById(`overlay`);
+
+  openModalButtons.forEach(toDoButton =>{
+    toDoButton.addEventListener(`click`, () => {
+      const modal = document.querySelector(toDoButton.dataset.modalTarget)
+      openModal(modal);
+  })
+})
+
+// Make popUp close when clicking outside in the overlay
+//overlay.addEventListener(`click`, () => {
+  //const modals = document.querySelectorAll(`.modal.active`);
+  //modals.forEach(modal => {
+    //closeModal(modal);
+  //})
+//})
+
+closeModalButtons.forEach(toDoButton =>{
+  toDoButton.addEventListener(`click`, () => {
+    const modal = toDoButton.closest(`.modal`);
+    closeModal(modal);
+  })
+})
+  
+function openModal(modal){
+  if(modal == null) return
+  modal.classList.add(`active`);
+  overlay.classList.add(`active`);
+}
+
+function closeModal(modal){
+  if(modal == null) return
+  modal.classList.remove(`active`);
+  overlay.classList.remove(`active`);
+}
+>>>>>>> 965ad5b1e0334836d8d19c48ccd8645ec4dd17db
