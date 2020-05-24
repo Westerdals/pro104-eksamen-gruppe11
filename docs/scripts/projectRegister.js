@@ -40,7 +40,7 @@ function createProject(event) {
         showAddProjectDetails();
     }
 
-    //   printproject(projectInfo);
+    printproject(projectInfo);
 }
 
 // This function is a part of projectregister popup. Add task to the new created project.
@@ -225,30 +225,46 @@ createMembersDropdownList();
 //https://www.w3schools.com/jsref/jsref_find.asp
 
 
+let poop12 = document.getElementById("poop1");
+
+function printproject(projectInfo) {
+
+    for (const project of projectInfo) {
+
+        let { projectName, projectDesc, startDate, endDate } = project;
+
+        poop12.innerHTML +=
+            `<div style=" display: inline-block">
+<h3>${projectName}</h3>
+${projectDesc} </div>a
+`;
+    }
+}
 
 // function that renders prject list to the page. 
-(() => {
-    const projectInLocalStorage = getProjects();
+function RenderProjectList() {
+    const projectList = getProjects();
+    const projectListEl = document.getElementById("project-container");
 
+    for (project of projectList) {
+        let projectEl = document.createElement("div");
+        let { ProjectID, endDate, projectDesc, projectName, startDate } = project;
 
-    let projectListEl = "";
-    projectListEl = document.getElementById("project-container");
+        // Redirect to project page with project id in the url.
+        projectEl.onclick = () => window.location.href = `./projectPage.html#${ProjectID}`;
 
+        //The parts of the project that is shown on the webpage, inside the divs. 
+        projectEl.innerHTML = `
+            <h4>Project name: ${projectName}</h4>
+            <p>Description: ${projectDesc}</p>
+            <h6> Startdate: ${startDate}</h6>
+            <h6> Enddate: ${endDate}</h6>
+        `;
 
-    for (project of projectInLocalStorage) {
+        projectListEl.appendChild(projectEl);
 
-        projectListEl.innerHTML += `
-            <div>
-                <h4>Project name: ${project.projectName}</h4>
-                <p>Description: ${project.projectDesc}</p>
-                <h6> Startdate: ${project.startDate}</h6>
-                <h6> Enddate: ${project.endDate}</h6>
-            </div>
-            `;
-
-
-
+        //The divs containing the project information is assinged the class projectBoxes
+         projectEl.classList.add(`projectBoxes`);
+         projectEl.style.cursor = "pointer"; // TODO: probably better with css.
     }
-})(); //TODO : fixed bug and syntax for render function useing an anonomys function of IIFE
-
-//https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+}
