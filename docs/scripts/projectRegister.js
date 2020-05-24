@@ -29,7 +29,7 @@ function createProject(event) {
 
     // Don't add the project if form is not valid or the project name is duplicate
 
-    if(isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)){
+    if (isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)) {
         projectList.push(projectInfo);
         saveProjects(projectList);
         showStatusMessage("Project created.", true);
@@ -40,7 +40,7 @@ function createProject(event) {
         showAddProjectDetails();
     }
 
-    printproject(projectInfo);
+    //   printproject(projectInfo);
 }
 
 // This function is a part of projectregister popup. Add task to the new created project.
@@ -59,7 +59,7 @@ function addTaskProject(event) {
 
     const lastProject = projects[projects.length - 1];
 
-    if(isTaskDateValidForProject(taskStartDate, taskEndDate, lastProject)) {
+    if (isTaskDateValidForProject(taskStartDate, taskEndDate, lastProject)) {
         lastProject.tasks.push(task);
         saveProjects(projects)
         event.target.reset();
@@ -154,7 +154,7 @@ function isValidProjectInput() {
 function isNotDuplicateProjectName(projectName, projectList) {
     const duplicateProjectName = projectList.filter(project => project.projectName == projectName) ?? [];
 
-    if(duplicateProjectName.length != 0) {
+    if (duplicateProjectName.length != 0) {
         showStatusMessage(`Project with name: ${projectName} already exists.`, false);
         return false;
     } else return true;
@@ -164,7 +164,7 @@ function isProjectDateValid(projectStartDateAsString, projectEndDateAsString) {
     const projectStartDate = new Date(projectStartDateAsString);
     const projectEndDate = new Date(projectEndDateAsString);
 
-    if(projectStartDate > projectEndDate) {
+    if (projectStartDate > projectEndDate) {
         showStatusMessage("Project can't end before start date..", false);
         return false;
     } else {
@@ -181,13 +181,13 @@ function isTaskDateValidForProject(taskStartDateAsString, taskEndDateAsString, p
     const projectEndDate = new Date(project.endDate);
 
 
-    if(taskStartDate < projectStartDate) {
+    if (taskStartDate < projectStartDate) {
         showStatusMessage("Task can't start before project start..", false);
         return false;
-    } else if(taskEndDate > projectEndDate) {
+    } else if (taskEndDate > projectEndDate) {
         showStatusMessage("Task can't end after project end..", false);
         return false;
-    } else if(taskStartDate > taskEndDate) {
+    } else if (taskStartDate > taskEndDate) {
         showStatusMessage("Task can't end before start date..", false);
         return false;
     } else {
@@ -203,7 +203,7 @@ function showStatusMessage(message, isSuccess) {
     const statusBox = document.getElementById('status');
     statusBox.style.display = 'block';
 
-    if(isSuccess) {
+    if (isSuccess) {
         statusBox.style.backgroundColor = '#00ca4e';
     } else {
         statusBox.style.backgroundColor = '#ff605c';
@@ -225,59 +225,30 @@ createMembersDropdownList();
 //https://www.w3schools.com/jsref/jsref_find.asp
 
 
-let poop12 = document.getElementById("poop1");
-
-function printproject(projectInfo){
- 
-for(const project of projectInfo){
-
-    let {projectName ,projectDesc, startDate, endDate} = project;
-   
-    poop12.innerHTML +=
-`<div style=" display: inline-block">
-<h3>${projectName}</h3>
-
-${projectDesc} </div>a
-`;
-}
-}
 
 // function that renders prject list to the page. 
-function RenderProjectList(){
-    const projectInLocalStorage = localStorage.getItem("Projects");
+(() => {
+    const projectInLocalStorage = getProjects();
 
-    let projectList = JSON.parse(projectInLocalStorage);
-    
-    if(projectList == undefined){
-        projectList = [];
-    }   
 
-    const projectListEl = document.getElementById("project-container");
-    projectListEl.innerHTML = "";
+    let projectListEl = "";
+    projectListEl = document.getElementById("project-container");
 
-    for(project of projectList){
 
-        let projectEl = document.createElement("div");
+    for (project of projectInLocalStorage) {
 
-        let {ProjectID, delegate, endDate, memberList, projectDesc, projectName, startDate, task} = project;
+        projectListEl.innerHTML += `
+            <div>
+                <h4>Project name: ${project.projectName}</h4>
+                <p>Description: ${project.projectDesc}</p>
+                <h6> Startdate: ${project.startDate}</h6>
+                <h6> Enddate: ${project.endDate}</h6>
+            </div>
+            `;
 
-    //The parts of the project that is shown on the webpage, inside the divs. 
-        projectEl.innerHTML = `
-            <h4>Project name: ${projectName}</h4>
-            <p>Description: ${projectDesc}</p>
-            <h6> Startdate: ${startDate}</h6>
-            <h6> Enddate: ${endDate}</h6>
-        `;
 
-        projectListEl.appendChild(projectEl);
-       
-     //The divs containing the project information is assinged the class projectBoxes
-        projectEl.classList.add(projectBoxes);
-
-        
 
     }
+})(); //TODO : fixed bug and syntax for render function useing an anonomys function of IIFE
 
-
-
-}
+//https://developer.mozilla.org/en-US/docs/Glossary/IIFE

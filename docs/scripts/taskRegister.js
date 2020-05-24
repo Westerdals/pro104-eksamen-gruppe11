@@ -124,14 +124,17 @@ document.querySelector('#createdProject').addEventListener('change', (e) => {
         // Getting the values from the option
         const userId = selectUserElement.value;
         const taskId = taskList.value;
-        const selectedMember = { userId: userId, taskId: taskId };
-        
+
+        //TODO, få navn og alt fra arrayet
+        const selectedMember = { userId: userId };
+
         const projectList = getProjects();
         for (let i = 0; i < projectList.length; i++) {
             if (selectedProject == projectList[i].ProjectID) {
                 const thisTask = projectList[i].tasks.find(task => task.id == taskId);
+                console.log(thisTask);
                 const checkTaskExisted = thisTask.delegate.some(user => user.taskId == taskId && user.userId == userId);
-                
+
                 if (checkTaskExisted) {
                     throw 'Task already exist on this user!';
                 } else {
