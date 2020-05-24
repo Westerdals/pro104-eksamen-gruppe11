@@ -1,3 +1,4 @@
+/* Elements on the page for quick access. */
 let toDoContainer = document.getElementById("container");
 let toDoButton = document.getElementById("button-todo");
 let toDoHeadtext = document.getElementById("todo-text-head");
@@ -14,14 +15,20 @@ let finishedDiv = document.getElementById("finished-div");
 
 let counter= 0;
 
-
+// Handy function to create option elements for html select
 const createOption = (parentEl, id, value) => {
-  // Create Option Element
   let option = document.createElement('option');
   option.setAttribute('value', id);
   option.innerHTML = value;
   parentEl.appendChild(option);
 };
+
+
+/* Start rendering the page.
+- Get all projects from local storage and create html select options for them
+- Look for a # in the url. If there is a hashtag, use that number as the selected project
+- Change the hash in the url whenever a project changes.
+*/
 
 const projectList = getProjects();
 const projectListEl = document.getElementById('projectSelector');
@@ -31,16 +38,29 @@ for (let project of projectList) {
 }
 
 let selectedProject = getSelectedProjectFromUrlHash();
-projectListEl.childNodes.forEach(child => {
-  if(parseInt(child.value) === selectedProject) {
-    child.selected = true;
+
+if(selectedProject === null) {
+  const firstProjectInList = projectListEl.childNodes[0] ?? null;
+  if(firstProjectInList != null) {
+    firstProjectInList.selected = true;
+    setSelectedProjectToUrlHash(firstProjectInList.value);
+  } else {
+    console.log("No projects.");
   }
-})
+} else {
+  projectListEl.childNodes.forEach(child => {
+    if(parseInt(child.value) === selectedProject) {
+      child.selected = true;
+    }
+  })
+}
 
 projectListEl.onchange = (changeEvent) => {
   setSelectedProjectToUrlHash(changeEvent.target.value);
   selectedProject = getSelectedProjectFromUrlHash();
 }
+
+
 
 //The event that happens when you click create task - div is created. 
 toDoButton.onclick = () => {
