@@ -229,20 +229,15 @@ createMembersDropdownList();
 
 // function that renders project list to the page. 
 function RenderProjectList() {
-    const projectInLocalStorage = localStorage.getItem("Projects");
+    const projectList = getProjects();
+    const projectListEl = document.getElementById("project-container");
 
-    let projectList = JSON.parse(projectInLocalStorage);
+    for (project of projectList) {
+        let projectEl = document.createElement("div");
+        let { ProjectID, endDate, projectDesc, projectName, startDate } = project;
 
-    if (projectList == undefined) {
-        projectList = [];
-    }
-
-
-    let projectListEl = "";
-    projectListEl = document.getElementById("project-container");
-
-
-    for (project of projectInLocalStorage) {
+        // Redirect to project page with project id in the url.
+        projectEl.onclick = () => window.location.href = `./projectPage.html#${ProjectID}`;
 
         //The parts of the project that is shown on the webpage, inside the divs. 
         projectEl.innerHTML = `<a href="projectPage.html">
@@ -257,12 +252,7 @@ function RenderProjectList() {
 
 
         //The divs containing the project information is assinged the class projectBoxes
-        //  projectEl.classList.add(projectBoxes);
-
-        projectEl.setAttribute("onclick", "renderProjectPage()");
-
-
+        projectEl.classList.add(`projectBoxes`);
+        projectEl.style.cursor = "pointer"; // TODO: probably better with css.
     }
-
-
 }
