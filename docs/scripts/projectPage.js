@@ -82,7 +82,7 @@ function drop(event) {
   if(event.target.className != 'post-it-divs') {
     const droppedOnDiv = event.target;
     droppedOnDiv.appendChild(document.getElementById(dataTransfer));
-    const taskId = parseInt(dataTransfer.split('-')[1]);
+    const taskId = dataTransfer;
     
     switch (droppedOnDiv) {
       case toDoDiv:
@@ -172,7 +172,7 @@ function createTaskElement(task) {
   element.ondragenter = (event) => allowDrop(event);
   element.ondragleave = (event) => allowDrop(event);
   element.ondragstart = (event) => dragStart(event);
-  element.id = `task-${task.id}` ?? generateUuid(); // if the task is missing a id, just use a uuid
+  element.id = task.id
   element.classList.add('post-it-divs');
   
   switch(task.priorities.toUpperCase()) {
@@ -219,4 +219,37 @@ function renderTasks(tasks) {
         toDoDiv.appendChild(element);
     }
   });
+}
+
+function createTask(event) {
+  event.preventDefault();
+
+  const taskText = document.getElementById('taskText').value;
+  const priorities = document.getElementById('priorities').value;
+  const taskStartDate = document.getElementById('taskStartDate').value;
+  const taskEndtDate = document.getElementById('taskEndtDate').value;
+
+  const task = {
+      id: generateUuid(),
+      taskText,
+      priorities,
+      taskStartDate,
+      taskEndtDate,
+      delegate: []
+  };
+
+  const projectList = getProjects();
+  projectList.forEach((el) => {
+      if (el.ProjectID === selectedProject) {
+          el.tasks.push(task);
+      }
+  });
+
+  saveProjects(projectList);
+  renderTasks(getTasksForProject(selectedProject));
+
+  // Close the popup
+  const taskPopupWindow = document.getElementById("popUp");
+  taskPopupWindow.style.zIndex = "-1";
+  taskPopupWindow.style.display = "none";
 }
