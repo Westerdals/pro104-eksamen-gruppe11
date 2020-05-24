@@ -1,3 +1,4 @@
+/* Elements on the page for quick access. */
 let toDoContainer = document.getElementById("container");
 let toDoButton = document.getElementById("button-todo");
 let toDoHeadtext = document.getElementById("todo-text-head");
@@ -14,14 +15,21 @@ let finishedDiv = document.getElementById("finished-div");
 
 let counter= 0;
 
-
+// Handy function to create option elements for html select
 const createOption = (parentEl, id, value) => {
-  // Create Option Element
   let option = document.createElement('option');
   option.setAttribute('value', id);
   option.innerHTML = value;
   parentEl.appendChild(option);
 };
+
+
+/* Start rendering the page.
+- Get all projects from local storage and create html select options for them
+- Look for a # in the url. If there is a hashtag, use that number as the selected project
+- Change the hash in the url whenever a project changes.
+- Render all the tasks for the selected project on the page.
+*/
 
 const projectList = getProjects();
 const projectListEl = document.getElementById('projectSelector');
@@ -31,57 +39,70 @@ for (let project of projectList) {
 }
 
 let selectedProject = getSelectedProjectFromUrlHash();
-projectListEl.childNodes.forEach(child => {
-  if(parseInt(child.value) === selectedProject) {
-    child.selected = true;
-  }
-})
 
+if(selectedProject === null) {
+  const firstProjectInList = projectListEl.childNodes[0] ?? null;
+  if(firstProjectInList != null) {
+    firstProjectInList.selected = true;
+    setSelectedProjectToUrlHash(firstProjectInList.value);
+    selectedProject = getSelectedProjectFromUrlHash();
+  } else {
+    console.log("No projects.");
+  }
+} else {
+  projectListEl.childNodes.forEach(child => {
+    if(parseInt(child.value) === selectedProject) {
+      child.selected = true;
+    }
+  })
+}
+
+let tasks = getTasksForProject(selectedProject);
+renderTasks(tasks);
+
+// When the project changes: create a new hash in the url and re-render all tasks
 projectListEl.onchange = (changeEvent) => {
   setSelectedProjectToUrlHash(changeEvent.target.value);
   selectedProject = getSelectedProjectFromUrlHash();
+  renderTasks(getTasksForProject(selectedProject));
 }
-
-//The event that happens when you click create task - div is created. 
-toDoButton.onclick = () => {
-
-  const priorityColor= document.getElementById("prioritySelector").value;
-
-toDoDiv.innerHTML +=
-`<div class="post-it-divs" draggable="true" ondragenter="allowDrop(event)" 
-ondragleave="allowDrop(event)" ondragstart="dragStart(event)" id="dragtarget${counter}" 
-style="background-color:white; border: 5px solid ${priorityColor}">
-<p>
-<h3>${toDoHeadtext.value}</h3>
-${toDoText.value}<p>
-</div>`;
-counter++;
-}
-var data = "";
 
 //Drag and drop functions
 function dragStart(event) {
   event.dataTransfer.setData("Text", event.target.id);
-  }
+}
   
 function allowDrop(event) {
-    event.preventDefault();
-  }
+  event.preventDefault();
+}
+
 function drop(event) {
-    event.preventDefault();
-   
- var data = event.dataTransfer.getData("Text");
-  if(event.target.className !='post-it-divs'){
-    event.target.appendChild(document.getElementById(data));
+  event.preventDefault();
+  const dataTransfer = event.dataTransfer.getData('Text');
+  if(event.target.className != 'post-it-divs') {
+    const droppedOnDiv = event.target;
+    droppedOnDiv.appendChild(document.getElementById(dataTransfer));
+    const taskId = parseInt(dataTransfer.split('-')[1]);
+    
+    switch (droppedOnDiv) {
+      case toDoDiv:
+        saveTaskStatus(selectedProject, taskId, "TODO");
+        break;
+
+      case duringDiv:
+        saveTaskStatus(selectedProject, taskId, "IN_PROGRESS");
+        break;
+
+      case finishedDiv:
+        saveTaskStatus(selectedProject, taskId, "DONE");
+      break;
+      
+      default:
+        console.error(`Task dropped on unknown element ${droppedOnDiv}`);
+    }    
   }
-    data = "";
-   
-  }
+}
 
-
-
-  
-   
 // Function to make taskregister popup.
 toDoButton.onclick = function() {
   const taskPopupWindow = document.getElementById("popUp");
@@ -143,4 +164,59 @@ function getSelectedProjectFromUrlHash() {
 
 function setSelectedProjectToUrlHash(projectId) {
   window.location.hash = projectId;
+}
+
+function createTaskElement(task) {
+  const element = document.createElement('div');
+  element.draggable = true;
+  element.ondragenter = (event) => allowDrop(event);
+  element.ondragleave = (event) => allowDrop(event);
+  element.ondragstart = (event) => dragStart(event);
+  element.id = `task-${task.id}` ?? generateUuid(); // if the task is missing a id, just use a uuid
+  element.classList.add('post-it-divs');
+  
+  switch(task.priorities.toUpperCase()) {
+    case "LOW":
+      element.classList.add('lowPriority');
+      break;
+    case "MEDIUM":
+      element.classList.add('mediumPriority');
+      break;
+    case "HIGH":
+      element.classList.add('highPriority');
+      break;
+    default:
+      element.classList.add('unknownPriority');
+  }
+  
+  element.innerHTML = `<h3>${task.taskText}</h3>`;
+  element.innerHTML += `<p>${task.taskStartDate}</p>`;
+  element.innerHTML += `<p>${task.taskEndtDate}</p>`;
+  element.innerHTML += `<p>${task.priorities}</p>`;
+
+  return element;
+}
+
+// Function to render (and re-render) tasks on the board
+function renderTasks(tasks) {
+  // first remove all tasks on the board.
+  removeAllChildren(toDoDiv);
+  removeAllChildren(duringDiv);
+  removeAllChildren(finishedDiv);
+
+  // loop through all the tasks. Check their status.. todo, doing or done
+  tasks.forEach((task) => {
+    const status = task.status ?? "TODO";
+    const element = createTaskElement(task);
+    switch(status.toUpperCase()) {
+      case "IN_PROGRESS":
+        duringDiv.appendChild(element);
+        break;
+      case "DONE":
+        finishedDiv.appendChild(element);
+        break;
+      default:
+        toDoDiv.appendChild(element);
+    }
+  });
 }
