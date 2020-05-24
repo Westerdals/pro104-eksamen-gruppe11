@@ -243,22 +243,15 @@ ${projectDesc} </div>a
 
 // function that renders prject list to the page. 
 function RenderProjectList() {
-    const projectInLocalStorage = localStorage.getItem("Projects");
-
-    let projectList = JSON.parse(projectInLocalStorage);
-
-    if (projectList == undefined) {
-        projectList = [];
-    }
-
+    const projectList = getProjects();
     const projectListEl = document.getElementById("project-container");
-    projectListEl.innerHTML = "";
 
     for (project of projectList) {
-
         let projectEl = document.createElement("div");
+        let { ProjectID, endDate, projectDesc, projectName, startDate } = project;
 
-        let { ProjectID, delegate, endDate, memberList, projectDesc, projectName, startDate, task } = project;
+        // Redirect to project page with project id in the url.
+        projectEl.onclick = () => window.location.href = `./projectPage.html#${ProjectID}`;
 
         //The parts of the project that is shown on the webpage, inside the divs. 
         projectEl.innerHTML = `
@@ -271,12 +264,7 @@ function RenderProjectList() {
         projectListEl.appendChild(projectEl);
 
         //The divs containing the project information is assinged the class projectBoxes
-        // projectEl.classList.add(projectBoxes);
-
-
-
+         projectEl.classList.add(`projectBoxes`);
+         projectEl.style.cursor = "pointer"; // TODO: probably better with css.
     }
-
-
-
 }
