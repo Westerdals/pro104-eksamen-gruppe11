@@ -12,7 +12,35 @@ let toDoDiv = document.getElementById("todo-div");
 let duringDiv = document.getElementById("during-div");
 let finishedDiv = document.getElementById("finished-div");
 
-counter= 0;
+let counter= 0;
+
+
+const createOption = (parentEl, id, value) => {
+  // Create Option Element
+  let option = document.createElement('option');
+  option.setAttribute('value', id);
+  option.innerHTML = value;
+  parentEl.appendChild(option);
+};
+
+const projectList = getProjects();
+const projectListEl = document.getElementById('projectSelector');
+
+for (let project of projectList) {
+    createOption(projectListEl, project.ProjectID, project.projectName);
+}
+
+let selectedProject = getSelectedProjectFromUrlHash();
+projectListEl.childNodes.forEach(child => {
+  if(parseInt(child.value) === selectedProject) {
+    child.selected = true;
+  }
+})
+
+projectListEl.onchange = (changeEvent) => {
+  setSelectedProjectToUrlHash(changeEvent.target.value);
+  selectedProject = getSelectedProjectFromUrlHash();
+}
 
 //The event that happens when you click create task - div is created. 
 toDoButton.onclick = () => {
@@ -51,11 +79,8 @@ function drop(event) {
   }
 
 
- //Dette er en funksjon som vi kan bruke til å sette påminnelser. 
- // https://www.plus2net.com/javascript_tutorial/timer-set.php
-    //mytime = setTimeout(expression, msec); 
 
-    
+  
    
 // Function to make taskregister popup.
 toDoButton.onclick = function() {
@@ -93,8 +118,6 @@ toDoButton.onclick = function() {
 
     });  
 }
-
-
   
 function openModal(modal){
   if(modal == null) return
@@ -106,4 +129,18 @@ function closeModal(modal){
   if(modal == null) return
   modal.classList.remove(`active`);
   overlay.classList.remove(`active`);
+}
+
+function getSelectedProjectFromUrlHash() {
+  if(window.location.hash) { 
+    const projectId = window.location.hash.split(`#`)[1];
+    return parseInt(projectId);
+  } else {
+    console.log(`No project selected.`);
+    return null;
+  }
+}
+
+function setSelectedProjectToUrlHash(projectId) {
+  window.location.hash = projectId;
 }
