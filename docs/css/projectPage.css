@@ -231,12 +231,11 @@ ul img {
 	position: absolute;
 	top: 25%;
 	left: 25%;
-	display: flex;
+	display: none; /* JavaScript changes this to flex dynamically. */
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
 	border-radius: 12px;
 	border: black solid 3px;
   color: black;
-
 }
