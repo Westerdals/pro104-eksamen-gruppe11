@@ -40,7 +40,6 @@ function createProject(event) {
         showAddProjectDetails();
     }
 
-    printproject(projectInfo);
 }
 
 // This function is a part of projectregister popup. Add task to the new created project.
@@ -225,23 +224,10 @@ createMembersDropdownList();
 //https://www.w3schools.com/jsref/jsref_find.asp
 
 
-let poop12 = document.getElementById("poop1");
 
-function printproject(projectInfo) {
 
-    for (const project of projectInfo) {
 
-        let { projectName, projectDesc, startDate, endDate } = project;
-
-        poop12.innerHTML +=
-            `<div style=" display: inline-block">
-<h3>${projectName}</h3>
-${projectDesc} </div>a
-`;
-    }
-}
-
-// function that renders prject list to the page. 
+// function that renders project list to the page. 
 function RenderProjectList() {
     const projectInLocalStorage = localStorage.getItem("Projects");
 
@@ -251,32 +237,32 @@ function RenderProjectList() {
         projectList = [];
     }
 
-    const projectListEl = document.getElementById("project-container");
-    projectListEl.innerHTML = "";
 
-    for (project of projectList) {
+    let projectListEl = "";
+    projectListEl = document.getElementById("project-container");
 
-        let projectEl = document.createElement("div");
 
-        let { ProjectID, delegate, endDate, memberList, projectDesc, projectName, startDate, task } = project;
+    for (project of projectInLocalStorage) {
 
         //The parts of the project that is shown on the webpage, inside the divs. 
-        projectEl.innerHTML = `
+        projectEl.innerHTML = `<a href="projectPage.html">
             <h4>Project name: ${projectName}</h4>
             <p>Description: ${projectDesc}</p>
             <h6> Startdate: ${startDate}</h6>
             <h6> Enddate: ${endDate}</h6>
+            </a>
         `;
 
         projectListEl.appendChild(projectEl);
 
-        //The divs containing the project information is assinged the class projectBoxes
-        // projectEl.classList.add(projectBoxes);
 
+        //The divs containing the project information is assinged the class projectBoxes
+        //  projectEl.classList.add(projectBoxes);
+
+        projectEl.setAttribute("onclick", "renderProjectPage()");
 
 
     }
-
 
 
 }
