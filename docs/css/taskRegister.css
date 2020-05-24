@@ -6,7 +6,7 @@
     --dBlack: #131313;
     --placeholder: #3D3D3D;
     --offWhite: #F3F3F3;
-    --Gray:   #BBBBBB;
+    --Gray: #BBBBBB;
     --dGray: #3D3D3D;
     --blue: #2c44b0;
 
@@ -17,7 +17,7 @@
     letter-spacing: 0.3px;
 }
 body {
-    background-color: var(--offWhite);
+    background-color: var(--dBlack);
 }
 
 
@@ -29,9 +29,6 @@ body {
     left: 10px;
 }
 
-
-#createdProject {
-}
 
 .forms{
     width: 500px;
@@ -47,7 +44,7 @@ h4{
     font-family: "Roboto Light",sans-serif;
     font-style:normal;
     font-weight: normal;
-    color:var(--dBlack);
+    color:var(--offWhite);
     font-size: 23px;
     padding: 10px 10px;
     margin:50px;
@@ -57,7 +54,7 @@ h4{
 
 #taskText{
     border-radius: 5px;
-    border: black solid 1px;
+    border: var(--offWhite) solid 1px;
     width: 150px;
     height: 25px;
     text-align: center;
@@ -79,13 +76,14 @@ label[for=taskText]{
     font-style: normal;
     font-weight: normal;
     font-family: "Roboto Light",sans-serif;
+    color: var(--offWhite);
     text-decoration: none;
     right: 20px;
 }
 
 #priorities{
     border-radius:5px;
-    border: black solid 1px;
+    border: var(--offWhite) solid 1px;
     width: 150px;
     height: 25px;
     text-align: center;
@@ -102,12 +100,13 @@ label[for=priorities]{
     font-family: "Roboto Light",sans-serif;
     text-decoration:none;
     left:80px;
+    color: var(--offWhite);
 }
 
 
 #taskStartDate{
     border-radius: 5px;
-    border: black solid 1px;
+    border: var(--offWhite) solid 1px;
     width: 150px;
     height: 25px;
     text-align: center;
@@ -124,12 +123,13 @@ label[for=taskStartDate]{
     font-family: "Roboto Light",sans-serif;
     text-decoration: none;
     right: 15px;
+    color:var(--offWhite);
 }
 
 
 #taskEndDate{
     border-radius:5px;
-    border: black solid 1px;
+    border: var(--offWhite) solid 1px;
     width: 150px;
     height: 25px;
     text-align: center;
@@ -147,6 +147,7 @@ label[for=taskEndDate]{
     font-family: "Roboto Light",sans-serif;
     text-decoration:none;
     left: 60px;
+    color: var(--offWhite);
 }
 
 input[type=date]{
@@ -163,7 +164,7 @@ h3{
     font-style:normal;
     font-weight: normal;
     text-align: center;
-    color:var(--dBlack);
+    color:var(--offWhite);
     font-size: 22px;
     margin-top: 260px;
     margin-bottom: 5px;
@@ -188,11 +189,9 @@ h3{
     display: inline-block;
     vertical-align: middle;
     border-radius: 5px;
-    border: black solid 1px;
+    border: var(--offWhite) solid 1px;
     width: 155px;
     height: 30px;
-
-
 
 
 
@@ -201,6 +200,7 @@ label[for=userList]{
     position: relative;
     text-decoration:none;
     right:8px;
+    color: var(--offWhite);
 
 
 }
@@ -217,7 +217,7 @@ label[for=userList]{
     display: inline-block;
     vertical-align: middle;
     border-radius:5px;
-    border: black solid 1px;
+    border: var(--offWhite) solid 1px;
     width: 160px;
     height: 30px;
     margin-left: 40px;
@@ -229,6 +229,7 @@ label[for=taskList]{
     position: relative;
     text-decoration:none;
     left: 35px;
+    color: var(--offWhite);
 
 }
 
@@ -248,7 +249,7 @@ input[value="Create Task"]{
     width:145px;
     height:35px;
     border-radius: 3em;
-    border: black solid 0.5px;
+    border: var(--offWhite) solid 0.5px;
     box-sizing: border-box;
     font-family: "Roboto Light",sans-serif;
     font-style: normal;
