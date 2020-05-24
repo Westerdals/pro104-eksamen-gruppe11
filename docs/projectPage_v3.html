@@ -3,13 +3,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/docs/css/projectPage.css">
-    <script src="/docs/scripts/taskRegister.js" defer></script>
+    <link rel="stylesheet" href="css/projectPage.css">
+    <script src="scripts/taskRegister.js" defer></script>
     
 </head>
 <body>
 
-<a href="index.html">Trykk her for startsiden</a>
+  <!--NAVBAR-->
+
+  <div id="navBar-container" class="navigation">
+      <div class="dropdown">
+      <button class="dropBtn">Menu</button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="projectRegister.html">Projects</a>
+          <a href="userRegister.html">Teams</a>
+        </div> 
+      </div>
+      <label for="companyLogo">toDew</label>
+  </div>
+
+
   <!--Kanskje bruke dependecies mapper, som vi kan ha andres code i, som vi bruker.
   Det er visst lov. pluss at vi kan fullcalendar.io - den er visst helt innafor
 å bruke. -->
@@ -20,18 +34,8 @@
   <h3></h3>
 </p>
 </div>
-<div id="div-text">
-<input type="textbox" id="todo-text-head" placeholder="Overskrift">
-<input type="textbox" id="todo-text" placeholder="Tekst">
-<br>
-<label for="prioritySelector">Velg hastighetsgrad</label>
-<select id="prioritySelector"> 
-<option id="option1" class="options" value="green">Lav hastighetsgrad</option>
-<option id="option2" class="options"  value="yellow">Medium hastighetsgrad</option>
-<option id="option3" class="options" value="red">Høy hastighetsgrad</option>
-</select>
-<br>
-<input type="button" id="button-todo" value="add todo" data-modal-target="#modal">
+
+<input type="button" id="button-todo" value="Add Task" class="large-button">
 </div>
 </span>
 
@@ -52,11 +56,8 @@
   </span>
 </span>
 
-<div id="overlay"></div>
-
-<script src="/docs/scripts/projectPage_v3.js"></script>
-
-<script src="/docs/scripts/Classes.js" defer></script>
+<script src="scripts/projectPage.js"></script>
+<script src="scripts/Classes.js" defer></script>
 
 
 </body>
