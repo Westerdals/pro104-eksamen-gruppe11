@@ -16,7 +16,7 @@
         </div>
         <div>
             <!-- Register new Project -->
-            <form class="create-project-forms" onsubmit="createProject(event)">
+            <form class="createProject_forms" onsubmit="createProject(event)">
                 <h1>Register new Project</h1>
 
                 <div>
@@ -35,26 +35,26 @@
 
                 <!-- Project description -->
                 <div>
-                    <h4>Project Description</h4>
+                    <h5>Project Description</h5>
                     <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
                 </div>
 
-                <button type="submit" class="add-task-project__submit" id="projectRegBtn">Opprett Prosjekt</button>
+               <button type="submit" class="add-task-project__submit" id="projectRegBtn">Create Project</button>
                 <input type="reset" value="Reset">
 
             </form>
-            <div id="add-project-details-container" style="display: none;">
-                <form class="add-members-form">
-                    <h1>Deleger Medlemmer til Prosjektet</h1>
-                    <label for="add-members-form__assigned-members">Deleger medlemmer til <span
-                            id="add-members-form__project"></span></label>
-                    <select id="add-members-form__assigned-members">
+            <div id="addProjectDetails_container" style="display: none;">
+                <form class="addMembersForm">
+                    <h2>Deleger Medlemmer til Prosjektet</h2>
+                    <label for="addMembersForm_assignedMembers">Deleger medlemmer til <span
+                            id="addMembers_formProject"></span></label>
+                    <select id="addMembersForm_assignedMembers">
                         <option value="" selected disabled hidden>Choose here</option>
                     </select>
-                    <input type="submit" class="add-members-form__submit" value="Submit">
+                    <input type="submit" class="addMembersForm_submit" value="Submit">
                 </form>
 
-                <form class="add-task-form" onsubmit="addTaskProject(event)">
+                <form class="addTaskForm" onsubmit="addTaskProject(event)">
                     <h4>Opprett Oppgaver</h4>
                     <label for="taskText">Add Task</label>
                     <input type="text" id="taskText" placeholder="Add task" required>
@@ -73,7 +73,7 @@
                     <label for="taskEndDate">End Date</label>
                     <input type="date" id="taskEndDate" name="taskEndDate" required>
                     <br>
-                    <input class="add-delegate-project__submit" type="submit">
+                    <input class="addDelegate_projectSubmit" type="submit">
                 </form>
             </div>
 
@@ -84,7 +84,7 @@
 
 
 
-        <div id="project-container">
+        <div id="projectContainer">
 
         </div>
 
@@ -106,6 +106,12 @@
         <!-- Empty right -->
     </div>
     </div>
+
+    <div id="styleBoxes">
+ <div classList="projectBoxes">
+ </div>
+    </div>
+
 
     <script src="/docs/scripts/functions.js"></script>
     <script src="/docs/scripts/projectRegister.js"></script>
