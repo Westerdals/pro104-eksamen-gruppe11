@@ -73,31 +73,30 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-function drop(event) {
+function drop(event, element) {
   event.preventDefault();
   const dataTransfer = event.dataTransfer.getData('Text');
-  if(event.target.className != 'post-it-divs') {
-    const droppedOnDiv = event.target;
-    droppedOnDiv.appendChild(document.getElementById(dataTransfer));
-    const taskId = dataTransfer;
-    
-    switch (droppedOnDiv) {
-      case toDoDiv:
-        saveTaskStatus(selectedProject, taskId, "TODO");
-        break;
-
-      case duringDiv:
-        saveTaskStatus(selectedProject, taskId, "IN_PROGRESS");
-        break;
-
-      case finishedDiv:
-        saveTaskStatus(selectedProject, taskId, "DONE");
+  const droppedOnDiv = event.target;
+  const taskId = dataTransfer;
+  switch (droppedOnDiv) {
+    case toDoDiv:
+      saveTaskStatus(selectedProject, taskId, "TODO");
+      droppedOnDiv.appendChild(document.getElementById(dataTransfer));
       break;
-      
-      default:
-        console.error(`Task dropped on unknown element ${droppedOnDiv}`);
-    }    
-  }
+
+    case duringDiv:
+      saveTaskStatus(selectedProject, taskId, "IN_PROGRESS");
+      droppedOnDiv.appendChild(document.getElementById(dataTransfer));
+      break;
+
+    case finishedDiv:
+      saveTaskStatus(selectedProject, taskId, "DONE");
+      droppedOnDiv.appendChild(document.getElementById(dataTransfer));
+    break;
+    
+    default:
+      console.error(`Task dropped on unknown element`);
+  }    
 }
 
 // Function to make taskregister popup.
@@ -186,11 +185,31 @@ function createTaskElement(task) {
       element.classList.add('unknownPriority');
   }
   
-  element.innerHTML = `<h3>${task.taskText}</h3>`;
-  element.innerHTML += `<p>${task.taskStartDate}</p>`;
-  element.innerHTML += `<p>${task.taskEndtDate}</p>`;
-  element.innerHTML += `<p>${task.priorities}</p>`;
+  const startDate = new Date(task.taskStartDate);
+  const startMonth = startDate.getMonth() < 10 ? `0${startDate.getMonth()}` : startDate.getMonth();
+  const dueDate = new Date(task.taskEndtDate);
+  const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
+  const delegates = task.delegate ?? [];
 
+  element.innerHTML = `<h3>${task.taskText}</h3>`;
+  element.innerHTML += `<p>Start date: ${startDate.getDate()}.${startMonth}.${startDate.getFullYear()}</p>`;
+  element.innerHTML += `<p>Due date: ${dueDate.getDate()}.${dueMonth}.${dueDate.getFullYear()}</p>`;
+  element.innerHTML += `<p>Priority: ${task.priorities}</p>`;
+  
+  if(delegates.length != 0){
+    let taskDelegates = ""
+    delegates.forEach(delegate => {
+      console.log(delegate);
+      const member = getMemberById(parseInt(delegate.userId));
+      if(member != null) {
+        console.log(member);
+        taskDelegates += `${member.firstName} ${member.lastName}, `
+      } else {
+        console.error(`Could not find member with id: ${delegate}`);
+      }
+    });
+    element.innerHTML += `<p>Responsible: ${taskDelegates.slice(0, -2)}</p>`;
+  }
   return element;
 }
 

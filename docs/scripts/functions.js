@@ -4,6 +4,12 @@ function getMembers() {
     return JSON.parse(window.localStorage.getItem('Members')) ?? [];
 }
 
+function getMemberById(memberId){
+    const allMembers = getMembers();
+    const foundMember = allMembers.find(member => member.id === memberId);
+    return foundMember ?? null;
+}
+
 function saveMembers(members) {
     window.localStorage.setItem('Members', JSON.stringify(projects));
 }
