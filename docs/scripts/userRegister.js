@@ -32,8 +32,9 @@ function userRegister(event) {
 
     getItems()
     window.localStorage.setItem("Members", JSON.stringify(userList));
+    RegisteredMembersDropdownList();
 
-
+    window.alert(userName + " " + lastName + "added to user list!")
     event.target.reset();
 
 
