@@ -38,6 +38,7 @@ function createProject(event) {
         createMembersDropdownList();
         showAssignedProject();
         showAddProjectDetails();
+        renderProjectList();
     }
 
 }
@@ -52,7 +53,7 @@ function addTaskProject(event) {
     const priorities = document.getElementById("priorities").value;
     const taskStartDate = document.getElementById("taskStartDate").value;
     const taskEndDate = document.getElementById("taskEndDate").value;
-    const task = { taskText, priorities, taskStartDate, taskEndDate }
+    const task = { id: generateUuid(), taskText, priorities, taskStartDate, taskEndtDate, delegate: [] }
 
     const projects = getProjects();
 
@@ -136,7 +137,7 @@ function isValidProjectInput() {
         document.querySelector(".add-delegate-project__submit").addEventListener('click', () => {
             if (document.getElementById("taskText").value != "" && document.getElementById("priorities").value != ""
                 && document.getElementById("taskStartDate").value != "" && document.getElementById("taskEndDate").value != "") {
-                document.querySelector(".delegate-form").style.display = "block";
+                return true;
             } else {
                 showStatusMessage("Please fill out the blanks..", false);
                 return false;
@@ -211,26 +212,13 @@ function showStatusMessage(message, isSuccess) {
     statusBox.innerHTML = `<p>${message}</p>`;
 }
 
-// Fill the members & project dropdown once the page loads
-createMembersDropdownList();
 
-//https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
-//http://getbem.com/naming/
+// function that renders prject list to the page. 
+function renderProjectList() {
 
-//const {id} = task;
-
-
-//search in array
-//https://www.w3schools.com/jsref/jsref_find.asp
-
-
-
-
-
-// function that renders project list to the page. 
-function RenderProjectList() {
     const projectList = getProjects();
     const projectListEl = document.getElementById("project-container");
+    removeAllChildren(projectListEl);
 
     for (project of projectList) {
         let projectEl = document.createElement("div");
@@ -256,3 +244,10 @@ function RenderProjectList() {
         projectEl.style.cursor = "pointer"; // TODO: probably better with css.
     }
 }
+
+
+// Fill the members & project dropdown once the page loads
+createMembersDropdownList();
+// render all the projects
+renderProjectList();
+

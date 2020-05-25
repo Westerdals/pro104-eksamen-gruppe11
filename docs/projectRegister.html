@@ -18,7 +18,7 @@
             <!-- Register new Project -->
             <form class="create-project-forms" onsubmit="createProject(event)">
                 <h1>Register new Project</h1>
-
+                <div id="status" style="display: none;"></div>
                 <div>
                     <!-- Adding Project id and Project Name -->
                     <label for="projectName">Project Name</label>
@@ -84,23 +84,7 @@
 
 
 
-        <div id="project-container">
-
-        </div>
-
-
-
-        <!-- delegate task to exisiting users -->
-        <form onsubmit="delegate(event)" class="delegate-form" style="display: none;">
-            <h3>Deleger Oppgaver (alternativt) </h3>
-            <label for="userList">Choose User</label>
-            <select id="userList"></select>
-            <label for="taskList">Choose Created Task</label>
-            <select id="taskList"></select>
-            <input type="submit" value="Legg til" />
-        </form>
-
-        <div id="status" style="display: none;"></div>
+        <div id="project-container"></div>
     </div>
     <div>
         <!-- Empty right -->
@@ -110,9 +94,6 @@
     <script src="/docs/scripts/Classes.js"></script>
     <script src="/docs/scripts/functions.js"></script>
     <script src="/docs/scripts/projectRegister.js"></script>
-    <script>
-        RenderProjectList();
-    </script>
 
 
 

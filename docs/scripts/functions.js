@@ -4,8 +4,46 @@ function getMembers() {
     return JSON.parse(window.localStorage.getItem('Members')) ?? [];
 }
 
+function getMemberById(memberId){
+    const allMembers = getMembers();
+    const foundMember = allMembers.find(member => member.id === memberId);
+    return foundMember ?? null;
+}
+
 function saveMembers(members) {
     window.localStorage.setItem('Members', JSON.stringify(projects));
+}
+
+function delegateMemberToTask(projectId, task, memberId) {
+    const allProjects = getProjects();
+
+    allProjects
+        .find(project => project.ProjectID === projectId)
+        .tasks
+        .find(t => t.id == task.id)
+        .delegate
+        .push({ userId: memberId });
+    
+    saveProjects(allProjects);
+}
+
+function removeMemberFromTask(projectId, task, memberId) {
+    const allProjects = getProjects();
+
+    const filtered = allProjects
+        .find(project => project.ProjectID === projectId)
+        .tasks
+        .find(t => t.id == task.id)
+        .delegate 
+        .filter(d => d.userId != memberId)
+    
+    allProjects
+        .find(project => project.ProjectID === projectId)
+        .tasks
+        .find(t => t.id == task.id)
+        .delegate = filtered;
+
+    saveProjects(allProjects);
 }
 
 function getProjects() {

@@ -22,22 +22,7 @@
         <label for="taskEndtDate">End Date</label>
         <input type="date" name="taskEndtDate" id="taskEndtDate" required>
         <br>
-        <input type="submit" id="addTaskSubBtn" class="large-button">
+        <input type="submit" id="addTaskSubBtn" class="large-button" value="Add task">
     </form>
     <br><br>
-</div>
-
-<!-- delegate task to exisiting users -->
-<div id="deleTaskDiv">
-    <form onsubmit="delegate(event)">
-        <h3>Delegate Task (Optional) </h3>
-        <input list="userList" id="user" name="memberListInput" type="text" placeholder="Select person..." required>
-        <datalist id="userList"></datalist>
-        <input list="taskList" id="taskListInput" name="taskListInput" type="text"
-            placeholder="Tildel registrert oppgave..." required>
-        <datalist id="taskList"></datalist>
-            <br>
-            <br>
-        <input type="submit" value="Add member" />
-    </form>
 </div>

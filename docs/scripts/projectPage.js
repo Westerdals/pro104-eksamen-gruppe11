@@ -10,8 +10,6 @@ let toDoDiv = document.getElementById("todo-div");
 let duringDiv = document.getElementById("during-div");
 let finishedDiv = document.getElementById("finished-div");
 
-let counter= 0;
-
 // Handy function to create option elements for html select
 const createOption = (parentEl, id, value) => {
   let option = document.createElement('option');
@@ -19,7 +17,6 @@ const createOption = (parentEl, id, value) => {
   option.innerHTML = value;
   parentEl.appendChild(option);
 };
-
 
 /* Start rendering the page.
 - Get all projects from local storage and create html select options for them
@@ -73,31 +70,30 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-function drop(event) {
+function drop(event, element) {
   event.preventDefault();
   const dataTransfer = event.dataTransfer.getData('Text');
-  if(event.target.className != 'post-it-divs') {
-    const droppedOnDiv = event.target;
-    droppedOnDiv.appendChild(document.getElementById(dataTransfer));
-    const taskId = dataTransfer;
-    
-    switch (droppedOnDiv) {
-      case toDoDiv:
-        saveTaskStatus(selectedProject, taskId, "TODO");
-        break;
-
-      case duringDiv:
-        saveTaskStatus(selectedProject, taskId, "IN_PROGRESS");
-        break;
-
-      case finishedDiv:
-        saveTaskStatus(selectedProject, taskId, "DONE");
+  const droppedOnDiv = event.target;
+  const taskId = dataTransfer;
+  switch (droppedOnDiv) {
+    case toDoDiv:
+      saveTaskStatus(selectedProject, taskId, "TODO");
+      droppedOnDiv.appendChild(document.getElementById(dataTransfer));
       break;
-      
-      default:
-        console.error(`Task dropped on unknown element ${droppedOnDiv}`);
-    }    
-  }
+
+    case duringDiv:
+      saveTaskStatus(selectedProject, taskId, "IN_PROGRESS");
+      droppedOnDiv.appendChild(document.getElementById(dataTransfer));
+      break;
+
+    case finishedDiv:
+      saveTaskStatus(selectedProject, taskId, "DONE");
+      droppedOnDiv.appendChild(document.getElementById(dataTransfer));
+    break;
+    
+    default:
+      console.error(`Task dropped on unknown element`);
+  }    
 }
 
 // Function to make taskregister popup.
@@ -106,37 +102,36 @@ toDoButton.onclick = function() {
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
   fetch('/docs/taskPopUp.html')
-    .then(data => data.text())
-    .then(html => document.getElementById('popUp').innerHTML = html)
-    .then(() => {
-          // Close-button to close the taskregister window.
-          const close = document.getElementById("closeButton");
+  .then(data => data.text())
+  .then(html => document.getElementById('popUp').innerHTML = html)
+  .then(() => {
+        // Close-button to close the taskregister window.
+        const close = document.getElementById("closeButton");
 
-          close.onclick = function(){
-            taskPopupWindow.style.zIndex = "-1";
-            taskPopupWindow.style.display = "none";
-          }
+        close.onclick = function(){
+          taskPopupWindow.style.zIndex = "-1";
+          taskPopupWindow.style.display = "none";
+        }
 
-          const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-          const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-        
-          openModalButtons.forEach(toDoButton =>{
-            toDoButton.addEventListener(`click`, () => {
-              const modal = document.querySelector(toDoButton.dataset.modalTarget)
-              openModal(modal);
-          })
-        })
-
-        closeModalButtons.forEach(toDoButton =>{
+        const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
+        const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
+      
+        openModalButtons.forEach(toDoButton =>{
           toDoButton.addEventListener(`click`, () => {
-            const modal = toDoButton.closest(`.modal`);
-            closeModal(modal);
-          })
+            const modal = document.querySelector(toDoButton.dataset.modalTarget)
+            openModal(modal);
         })
+      })
 
-    });  
+      closeModalButtons.forEach(toDoButton =>{
+        toDoButton.addEventListener(`click`, () => {
+          const modal = toDoButton.closest(`.modal`);
+          closeModal(modal);
+        })
+      })
+  }); 
 }
-  
+
 function openModal(modal){
   if(modal == null) return
   modal.classList.add(`active`);
@@ -169,6 +164,7 @@ function createTaskElement(task) {
   element.ondragenter = (event) => allowDrop(event);
   element.ondragleave = (event) => allowDrop(event);
   element.ondragstart = (event) => dragStart(event);
+  element.ondblclick = () => createTaskSettingsPopup(task.id);
   element.id = task.id
   element.classList.add('post-it-divs');
   
@@ -185,12 +181,30 @@ function createTaskElement(task) {
     default:
       element.classList.add('unknownPriority');
   }
-  
-  element.innerHTML = `<h3>${task.taskText}</h3>`;
-  element.innerHTML += `<p>${task.taskStartDate}</p>`;
-  element.innerHTML += `<p>${task.taskEndtDate}</p>`;
-  element.innerHTML += `<p>${task.priorities}</p>`;
 
+  const startDate = new Date(task.taskStartDate);
+  const startMonth = startDate.getMonth() < 10 ? `0${startDate.getMonth()}` : startDate.getMonth();
+  const dueDate = new Date(task.taskEndtDate);
+  const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
+  const delegates = task.delegate ?? [];
+
+  element.innerHTML += `<h3>${task.taskText}</h3>`;
+  element.innerHTML += `<p>Start date: ${startDate.getDate()}.${startMonth}.${startDate.getFullYear()}</p>`;
+  element.innerHTML += `<p>Due date: ${dueDate.getDate()}.${dueMonth}.${dueDate.getFullYear()}</p>`;
+  element.innerHTML += `<p>Priority: ${task.priorities}</p>`;
+  
+  if(delegates.length != 0){
+    let taskDelegates = ""
+    delegates.forEach(delegate => {
+      const member = getMemberById(parseInt(delegate.userId));
+      if(member != null) {
+        taskDelegates += `${member.firstName} ${member.lastName}, `
+      } else {
+        console.error(`Could not find member with id: ${delegate}`);
+      }
+    });
+    element.innerHTML += `<p>Responsible: ${taskDelegates.slice(0, -2)}</p>`;
+  }
   return element;
 }
 
@@ -249,4 +263,53 @@ function createTask(event) {
   const taskPopupWindow = document.getElementById("popUp");
   taskPopupWindow.style.zIndex = "-1";
   taskPopupWindow.style.display = "none";
+}
+
+function createTaskSettingsPopup(taskId) {
+  const taskPopupWindow = document.getElementById("popUp");
+  taskPopupWindow.style.zIndex = "2";
+  taskPopupWindow.style.display = "flex";
+  fetch('/docs/taskSettingsPopUp.html')
+  .then(data => data.text())
+  .then(html => document.getElementById('popUp').innerHTML = html)
+  .then(() => {
+        const close = document.getElementById("closeButton");
+        close.onclick = () => {
+          taskPopupWindow.style.zIndex = "-1";
+          taskPopupWindow.style.display = "none";
+          renderTasks(getTasksForProject(selectedProject));
+        }
+        
+        const memberList = getMembers();
+        const memberTable = document.getElementById('membersTable');
+        const task = getTasksForProject(selectedProject).find(task => task.id == taskId);
+
+        if(memberList.length == 0) {
+          removeAllChildren(memberTable);
+          const errorMsgElement = document.createElement('p');
+          errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/docs/userRegister.html">here</a></p>`;
+          document.getElementById('modal').appendChild(errorMsgElement);
+        }
+
+        memberList.forEach(member => {
+          const tableRow = document.createElement('tr');
+          const tableCellMember = document.createElement('td');
+          const tableCellResponsible = document.createElement('td');
+
+          tableCellMember.innerText = `${member.firstName} ${member.lastName}`;
+
+          const responsibleCheckBox = document.createElement('input');
+          responsibleCheckBox.type = 'checkbox';
+          
+          responsibleCheckBox.value = member.id;
+          responsibleCheckBox.checked = task.delegate.find(d => d.userId == member.id) ? true : false;
+
+          tableCellResponsible.appendChild(responsibleCheckBox);
+          tableRow.appendChild(tableCellMember);
+          tableRow.appendChild(tableCellResponsible);
+          memberTable.appendChild(tableRow);
+
+          responsibleCheckBox.onclick = (event) => event.target.checked ? delegateMemberToTask(selectedProject, task, event.target.value) : removeMemberFromTask(selectedProject, task, event.target.value)
+        });
+  });
 }

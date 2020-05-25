@@ -293,3 +293,23 @@ h1 {
 	position: absolute;
 	width: 50%;
 }
+
+.post-it-divs {
+	cursor: grab;
+	position: relative;
+}
+
+.post-it-divs:active {
+	cursor: grabbing;
+}
+
+#membersTable {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#membersTable td, #memberTable th {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 1rem;
+}
