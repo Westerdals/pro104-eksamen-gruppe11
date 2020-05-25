@@ -2,31 +2,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>toDew - Project Page</title>
     <link rel="stylesheet" href="/docs/css/projectPage.css">
-    
-    
 </head>
 <body>
+<!--NAVBAR-->
 
-<a href="index.html">Trykk her for startsiden</a>
+<div id="navBar-container" class="navigation">
+  <div class="dropdown">
+  <button class="dropBtn">Menu</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="projectRegister.html">Projects</a>
+      <a href="userRegister.html">Teams</a>
+    </div> 
+  </div>
+  <label for="companyLogo">toDew</label>
+</div>
+
   <!--Kanskje bruke dependecies mapper, som vi kan ha andres code i, som vi bruker.
   Det er visst lov. pluss at vi kan fullcalendar.io - den er visst helt innafor
 å bruke. -->
+<main>
  <span>
  <div>
 <p>
-  <h1>Prosjekt manager</h1>
+  <h1>Project Manager</h1>
   <h3></h3>
 </p>
 
 <br>
-
-<label for="projectSelector">Velg prosjekt</label>
+<div id="projectSelector-div">
+<label for="projectSelector">Select Project</label>
 <select id="projectSelector"></select>
-
+</div>
 <br>
-<input type="button" id="button-todo" value="add todo" data-modal-target="#modal">
+<div id="addTaskBtnDiv">
+<input type="button" id="button-todo" value="Add Task +" data-modal-target="#modal" class="large-button">
 </div>
 </span>
 
@@ -34,11 +46,11 @@
 
 <span id="containerToGetDisplayHorizontal">
   <span id="container">
-    <div id="todo-text-header" class="headers">TODO</div>
+    <div id="todo-text-header" class="headers"><p>TO DO</p></div>
     <div id="todo-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="during-text-head"class="headers">WORK IN PROGRESS</div>
+    <div id="during-text-head"class="headers"><p>WORK IN PROGRESS</p></div>
     <div id="during-div" ondrop="drop(event)"  ondragover="allowDrop(event)"></div>
-    <div id="finished-text-head"class="headers">FINISHED</div>
+    <div id="finished-text-head"class="headers"><p>FINISHED</p></div>
     <div id="finished-div"ondrop="drop(event)" ondragover="allowDrop(event)"></div>
   </span>
   </span>  
@@ -50,7 +62,7 @@
 <div id="overlay"></div>
 <div id="popUp"></div>
 
-
+</main>
 <script src="/docs/scripts/functions.js"></script>
 <script src="/docs/scripts/projectPage.js"></script>
 

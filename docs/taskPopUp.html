@@ -1,9 +1,11 @@
 <div id="modal" class="modal">
-    <input type="button" data-close-button value="Close" id="closeButton">
+    <input type="button" data-close-button value="X" id="closeButton">
     <form onsubmit="createTask(event)">
-        <h4>Opprett Oppgaver</h4>
+        <h4>Create Task</h4>
         <label for="addTask">Add Task</label>
-        <input type="text" placeholder="Add task" id="taskText" required>
+        <input type="text" placeholder="Task Name" id="taskText" class="small-textbox" required>
+        <br>
+        <br>
         <label for="priority">Choose priority:</label>
         <input list="priority" name="priorities" id="priorities">
         <datalist id="priority">
@@ -12,6 +14,7 @@
             <option value="High">
         </datalist>
         <br>
+        <br>
 
         <!-- Adding start and end date for the Project -->
         <label for="taskStartDate">Start Date</label>
@@ -19,20 +22,22 @@
         <label for="taskEndtDate">End Date</label>
         <input type="date" name="taskEndtDate" id="taskEndtDate" required>
         <br>
-        <input type="submit">
+        <input type="submit" id="addTaskSubBtn" class="large-button">
     </form>
+    <br><br>
 </div>
 
 <!-- delegate task to exisiting users -->
-<div>
+<div id="deleTaskDiv">
     <form onsubmit="delegate(event)">
-        <h3>Deleger Oppgaver (alternativt) </h3>
-        <input list="userList" id="user" name="memberListInput" type="text" placeholder="Velg person..." required>
+        <h3>Delegate Task (Optional) </h3>
+        <input list="userList" id="user" name="memberListInput" type="text" placeholder="Select person..." required>
         <datalist id="userList"></datalist>
         <input list="taskList" id="taskListInput" name="taskListInput" type="text"
             placeholder="Tildel registrert oppgave..." required>
         <datalist id="taskList"></datalist>
-
-        <input type="submit" value="Legg til" />
+            <br>
+            <br>
+        <input type="submit" value="Add member" />
     </form>
 </div>
