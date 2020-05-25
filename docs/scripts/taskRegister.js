@@ -58,24 +58,6 @@ function refreshProjectTitle() {
     document.getElementById('add-members-form__project').innerHTML = projectName;
 }
 
-//User IdGenerator
-function taskGen() {
-    taskId();
-
-    let counter = JSON.parse(window.localStorage.getItem('taskCounter'));
-
-    IdCounter = 1999 + counter.length;
-
-    return IdCounter;
-}
-
-//fake localstorage to a store id numbers
-function taskId() {
-    const counter = JSON.parse(window.localStorage.getItem('taskCounter')) || [];
-    counter.push('0');
-    window.localStorage.setItem('taskCounter', JSON.stringify(counter));
-}
-
 // Creates new task
 function createTask(event) {
     event.preventDefault();
@@ -85,13 +67,12 @@ function createTask(event) {
     const taskEndtDate = document.getElementById('taskEndtDate').value;
 
     const task = {
-        id: taskGen(),
+        id: generateUuid(),
         taskText,
         priorities,
         taskStartDate,
         taskEndtDate,
-        delegate: [],
-        memberList: []
+        delegate: []
     };
 
     const selectedProject = getSelectedProject();

@@ -28,7 +28,7 @@ function saveTaskStatus(projectId, taskId, status) {
     allProjects
         .find(project => project.ProjectID === projectId)
         .tasks
-        .find(task => task.id === taskId)
+        .find(task => task.id == taskId)
         .status = status;
 
     saveProjects(allProjects);
