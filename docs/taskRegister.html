@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register task</title>
-    <link rel="stylesheet" href="/docs/css/taskRegister.css" />
 
 </head>
 
@@ -22,9 +21,9 @@
         </form>
     </div>
 
-    <form onsubmit="createTask(event)" class="createTaskForm_submit" style="display: none;">
-        <h4 class="createTaskForm_submit__h4"></h4>
-        <label for="taskText">Add Task</label>
+    <form onsubmit="createTask(event)" class="create-task-form-submit" style="display: none;">
+        <h4 class="create-task-form-submit__h4"></h4>
+        <label for="addTask">Add Task</label>
         <input type="text" id="taskText" placeholder="Add task" required />
         <label for="priority">Choose priority:</label>
         <input list="priority" name="priorities" id="priorities" />
@@ -39,31 +38,31 @@
         <!-- Adding start and end date for the Project -->
         <label for="taskStartDate">Start Date</label>
         <input type="date" id="taskStartDate" name="taskStartDate" required />
-        <label for="taskEndDate">End Date</label>
-        <input type="date" id="taskEndDate" name="taskEndDate" required />
+        <label for="taskEndtDate">End Date</label>
+        <input type="date" id="taskEndtDate" name="taskEndtDate" required />
         <br />
-        <input type="submit" class="createTaskForm_submit" />
+        <input type="submit" class="create-task-form-submit__submit" />
     </form>
 
     <!-- delegate task to exisiting users -->
-    <form onsubmit="delegate(event)" class="delegateForm_submit" style="display: none;">
+    <form onsubmit="delegate(event)" class="delegate-form-submit" style="display: none;">
         <h3>Deleger Oppgaver (alternativt)</h3>
         <label for="userList">Choose User</label>
         <select id="userList"></select>
         <label for="taskList">Choose Created Task</label>
         <select id="taskList"></select>
-        <input type="submit" class="delegateForm_submitButton" value="Delegate Task" />
+        <input type="submit" class="delegate-form-submit__legg--til" value="Legg til" />
     </form>
 
     <!--Add members to projects-->
     <form class="add-members-form" style="display: none;">
-        <h1>Deleger Medlemmer til <span id=addMembers_formProject"></span></h1>
-        <label for="addMembersForm_assignedMembers">Deleger Medlemmer</label>
-        <select id="addMembersForm_assignedMembers">
+        <h1>Deleger Medlemmer til <span id="add-members-form__project"></span></h1>
+        <label for="add-members-form__assigned-members">Deleger Medlemmer</label>
+        <select id="add-members-form__assigned-members">
             <option value="" selected disabled hidden>Choose here</option>
         </select>
 
-        <input type="submit" class="addMembersForm_submit" value="Submit">
+        <input type="submit" class="add-members-form__submit" value="Submit">
     </form>
 
     <script src="scripts/functions.js" defer></script>
