@@ -1,0 +1,277 @@
+:root {
+    --green: #00ca4e;
+    --red: #ff605c;
+    --yellow: #ffbd44;
+    --lBlack: #2c2c2c;
+    --dBlack: #131313;
+    --placeholder: #3D3D3D;
+    --offWhite: #F3F3F3;
+    --Gray: #BBBBBB;
+    --dGray: #3D3D3D;
+    --blue: #2c44b0;
+
+
+}
+
+* {
+    letter-spacing: 0.3px;
+}
+
+body{
+    background-color: var(--dBlack);
+    align-content: center;
+}
+
+/* Styling Created Project */
+
+#createdProject{
+    position:absolute;
+    border-radius: 5px;
+    border-color: var(--offWhite) solid 1px;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    margin:1em 12px;
+    padding: 1px 1px;
+    left: 440px;
+    display: inline-block;
+    top: 140px;
+
+}
+
+label[for=createdProject]{
+    position: absolute;
+    font-size: 17px;
+    font-style: normal;
+    font-weight:  bold;
+    text-decoration: underline;
+    color:var(--offWhite);
+    left: 220px;
+    top: 160px;
+}
+
+/* Styling Task form */
+
+#taskText{
+    position: absolute;
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    font-style: italic;
+    margin-right: 100px;
+    left: 300px;
+    padding: 1px 1px;
+    bottom: 150px;
+
+}
+label[for=taskText]{
+    position:absolute;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: underline;
+    float: left;
+    bottom: 160px;
+    left: 220px;
+    color: var(--offWhite);
+}
+
+#priorities{
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    font-style: italic;
+    margin-left: 110px;
+    padding: 1px 1px;
+    float: right;
+    left: 540px;
+    position: absolute;
+    bottom: 150px;
+}
+label[for=priority]{
+    position: absolute;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: underline;
+    float: right;
+    left: 530px;
+    bottom: 160px;
+    color:var(--offWhite);
+}
+
+
+/* Styling Start and End Date for tasks, and labels for Start and End Date */
+
+#taskStartDate{
+    position: absolute;
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    font-style: italic;
+    margin-right: 100px;
+    float: left;
+    left: 300px;
+    padding: 1px 1px;
+    bottom: 80px;
+    color: rgba(0,0,0,0.5);
+}
+
+label[for="taskStartDate"]{
+    position:absolute;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: underline;
+    float: left;
+    bottom: 90px;
+    left: 220px;
+    color: var(--offWhite);
+}
+
+#taskEndDate{
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    font-style: italic;
+    margin-left: 110px;
+    padding: 1px 1px;
+    float: right;
+    left: 540px;
+    position: absolute;
+    bottom: 80px;
+}
+
+label[for="taskEndDate"]{
+    position: absolute;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: underline;
+    float: right;
+    left: 570px;
+    bottom: 90px;
+    color:var(--offWhite);
+}
+
+/* Styling delegate task to excisting user */
+
+h3{
+    font-family: "Roboto Light",sans-serif;
+    font-style:normal;
+    font-weight: normal;
+    color:var(--offWhite);
+    font-size: 23px;
+    padding: 10px 10px;
+    margin:140px;
+    text-align: center;
+
+}
+
+#userList{
+    position: absolute;
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-style: italic;
+    margin-right: 100px;
+    float: left;
+    left: 300px;
+    bottom: 220px;
+    padding: 1px 1px;
+    color: rgba(0,0,0,0.5);
+}
+
+label[for=userList]{
+    position:absolute;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: underline;
+    float: left;
+    left: 195px;
+    bottom: 230px;
+    color: var(--offWhite);
+}
+
+#taskList {
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-style: italic;
+    margin-left: 110px;
+    padding: 1px 1px;
+    float: right;
+    bottom: 220px;
+    left: 540px;
+    position: absolute;
+}
+
+label[for=taskList]{
+    position: absolute;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: underline;
+    float: right;
+    left: 500px;
+    bottom: 230px;
+    color:var(--offWhite);
+}
+
+/* Styling submit buttons */
+
+input[type="submit"]{
+    display: block;
+    padding: 0.5em 1em;
+    margin: 3em 12em;
+    position: absolute;
+    border-radius: 3em;
+    border: var(--dBlack) solid 1px;
+    box-sizing: border-box;
+    font-weight: 300;
+    text-transform: none;
+    text-align: center;
+    color: var(--dBlack);
+    opacity: 90%;
+    transition: all 0.2s;
+
+}
+
+input[type="submit"]:hover{
+    background-color:var(--dGray);
+    color:var(--offWhite);
+    opacity: 80%;
+}
+input.createTaskForm_submit{
+    width: 90px;
+    height: 30px;
+    bottom: -40px;
+    left: 540px;}
+
+
+input.delegateForm_submitButton{
+    width: 160px;
+    height: 40px;
+   bottom:-120px;
+    left: 500px;
+
+}
