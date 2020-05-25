@@ -30,9 +30,11 @@ function userRegister(event) {
     const userList = JSON.parse(window.localStorage.getItem("Members")) || [];
     userList.push(userRegister);
 
+    getItems()
     window.localStorage.setItem("Members", JSON.stringify(userList));
+    RegisteredMembersDropdownList();
 
-
+    window.alert(userName + " " + lastName + "added to user list!")
     event.target.reset();
 
 
@@ -78,6 +80,7 @@ function getItems() {
 }
 
 // function to create option for the select element.
+
 const createElOption = (parentElement, id, name) => {
     const option = document.createElement('option');
     option.setAttribute('value', id);

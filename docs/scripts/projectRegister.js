@@ -40,6 +40,7 @@ function createProject(event) {
         showAddProjectDetails();
         renderProjectList();
     }
+
 }
 
 // This function is a part of projectregister popup. Add task to the new created project.
@@ -211,8 +212,10 @@ function showStatusMessage(message, isSuccess) {
     statusBox.innerHTML = `<p>${message}</p>`;
 }
 
+
 // function that renders prject list to the page. 
 function renderProjectList() {
+
     const projectList = getProjects();
     const projectListEl = document.getElementById("project-container");
     removeAllChildren(projectListEl);
@@ -225,22 +228,26 @@ function renderProjectList() {
         projectEl.onclick = () => window.location.href = `./projectPage.html#${ProjectID}`;
 
         //The parts of the project that is shown on the webpage, inside the divs. 
-        projectEl.innerHTML = `
+        projectEl.innerHTML = `<a href="projectPage.html">
             <h4>Project name: ${projectName}</h4>
             <p>Description: ${projectDesc}</p>
             <h6> Startdate: ${startDate}</h6>
             <h6> Enddate: ${endDate}</h6>
+            </a>
         `;
 
         projectListEl.appendChild(projectEl);
 
+
         //The divs containing the project information is assinged the class projectBoxes
-         projectEl.classList.add(`projectBoxes`);
-         projectEl.style.cursor = "pointer"; // TODO: probably better with css.
+        projectEl.classList.add(`projectBoxes`);
+        projectEl.style.cursor = "pointer"; // TODO: probably better with css.
     }
 }
+
 
 // Fill the members & project dropdown once the page loads
 createMembersDropdownList();
 // render all the projects
 renderProjectList();
+
