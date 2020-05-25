@@ -1,11 +1,8 @@
 /* Elements on the page for quick access. */
 let toDoContainer = document.getElementById("container");
 let toDoButton = document.getElementById("button-todo");
-let toDoHeadtext = document.getElementById("todo-text-head");
-let toDoText = document.getElementById("todo-text");
 
 let headContainer = document.getElementById("head-container");
-let toDoTextHeader = document.getElementById("todo-text");
 let duringText= document.getElementById("during-text");
 let finishedText = document.getElementById("finished-text");
 
