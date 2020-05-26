@@ -1,0 +1,51 @@
+:root {
+	background-color: var(--lBlack);
+	font-family: Arial, Helvetica, sans-serif;
+	color: var(--Gray);
+	--green: #00ca4e;
+	--red: #ff605c;
+	--yellow: #ffbd44;
+	--lBlack: #2c2c2c;
+	--dBlack: #131313;
+	--placeholder: #3d3d3d;
+	--offWhite: #f3f3f3;
+	--Gray: #bbbbbb;
+	--dGray: #3d3d3d;
+	--postIt: #1c1c21;
+}
+
+
+main {
+display: grid;
+grid-template-columns: 25% 50% 25%;
+margin-top: 100px;  
+text-align: center;
+
+}
+
+
+/*  BUTTONS */
+.large-button {
+	width: 170px;
+	height: 50px;
+	border-radius: 30px;
+	background-color: var(--dBlack);
+	border: 1px solid var(--Gray);
+	outline: none;
+	color: var(--Gray);
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+.large-button:hover {
+  background-color: var(--Gray);
+  color: black;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+
+img {
+  width: 200px;
+  margin-bottom: 20px;
+}
