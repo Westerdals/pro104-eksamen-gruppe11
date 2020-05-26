@@ -21,7 +21,6 @@ function userID() {
 function userRegister(event) {
     event.preventDefault();
 
-   // const userName = document.getElementById("userName").value;
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
 
@@ -34,7 +33,7 @@ function userRegister(event) {
     window.localStorage.setItem("Members", JSON.stringify(userList));
     RegisteredMembersDropdownList();
 
-    window.alert(firstName + " " + lastName + " added to user list!")
+    window.alert(firstName + " " + lastName + " is added to user list!")
     event.target.reset();
 
 

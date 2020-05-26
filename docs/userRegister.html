@@ -28,15 +28,17 @@
 
             <div>
                 <form onsubmit="userRegister(event)">
+                    <br>
                     <h1>Create new User</h1>
-                   <!--<input type="text" id="userName" placeholder="Choose User name" required /> --> 
-                    First name <input type="text" id="firstName" placeholder="Enter First Name" required />
+                    <br>
+                    First name <input type="text" id="firstName" class="small-textbox" placeholder="Enter First Name" required />
                     <br>
                     <br>
-                    Last name <input type="text" id="lastName" placeholder="Enter Last  Name" required />
+                    Last name <input type="text" id="lastName" class="small-textbox"  placeholder="Enter Last  Name" required />
                     <br>
                     <br>
-                    <input type="submit" id ="button" />
+                    <br>
+                    <input type="submit" class ="button" />
 
                 </form>
             </div>
@@ -46,13 +48,16 @@
 
     <form class="registeredMembersForm">
         <br>
-        <input type="button" value="Registrerte medlemmer:" id="openBtn"></input><br>
+        <br>
+        <input type="button" value="Saved users" id="openBtn" class=" user-button button"></input><br>
+       <br>
         <label for="registeredMembersDropdown"></label>
-        <select id="registeredMembersDropdown" size="5" autocomplete="off" style="visibility: hidden;">
+        <select id="registeredMembersDropdown" size="10" autocomplete="off" style="visibility: hidden;">
             <option value="">Choose here</option>
         </select>
         <br>
-        <input type="button" value="Close" id="closeBtn" style="visibility: hidden;"></input>
+        <br>
+        <input type="button" value="Close" id="closeBtn" class="user-button button" style="visibility: hidden;"></input>
     </form>
 
     <script src="scripts/userRegister.js"></script>
