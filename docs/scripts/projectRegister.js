@@ -93,18 +93,11 @@ function renderProjectList() {
         const projectEl = document.createElement("div");
         const { ProjectID, endDate, projectDesc, projectName, startDate } = project;
 
-        const startDateAsDate = new Date(startDate);
-        const startMonth = startDateAsDate.getMonth() < 10 ? `0${startDateAsDate.getMonth()}` : startDateAsDate.getMonth();
-        const startDay = startDateAsDate.getDate() < 10 ? `0${startDateAsDate.getDate()}` : startDateAsDate.getDate();
-        const endDateAsDate = new Date(endDate);
-        const dueDay = endDateAsDate.getDate() < 10 ? `0${endDateAsDate.getDate()}` : endDateAsDate.getDate();
-        const dueMonth = endDateAsDate.getMonth() < 10 ? `0${endDateAsDate.getMonth()}` : endDateAsDate.getMonth();
-
         //The parts of the project that is shown on the webpage, inside the divs. 
         projectEl.innerHTML = `<a class="project-link" href="projectPage.html#${ProjectID}">
             <p class="project-name-text">Project name <h2 class="project-name-header">${projectName}</h2></p>
             <p class="project-description">Description <p> ${projectDesc}</p></p>
-            <p class="project-dates"> Start date: ${startDay}.${startMonth}.${startDateAsDate.getFullYear()}  End date: ${dueDay}.${dueMonth}.${endDateAsDate.getFullYear()}</p>
+            <p class="project-dates"> Start date: ${getFormattedDate(startDate)}  End date: ${getFormattedDate(endDate)}</p>
             </a>
         `;
         

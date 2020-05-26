@@ -142,3 +142,12 @@ function showStatusMessage(message, isSuccess) {
 
     statusBox.innerHTML = `<p>${message}</p>`;
 }
+
+function getFormattedDate(dateAsString) {
+    const date = new Date(dateAsString);
+    const year = date.getFullYear();
+    const month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+
+    return `${day}.${month}.${year}`;
+}

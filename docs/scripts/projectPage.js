@@ -44,9 +44,13 @@ if(selectedProject === null) {
     console.log("No projects.");
     const projectSelectorDiv = document.getElementById('projectSelector-div');
     removeAllChildren(projectSelectorDiv);
+    
     const newElement = document.createElement('h3');
     newElement.innerHTML = `Seems like you do not have any projects. Click <a href="./projectRegister.html">here</a> to get started!`;
     projectSelectorDiv.appendChild(newElement);
+
+    const projectInformationDiv = document.getElementById('projDescriptionSec');
+    projectInformationDiv.style.display = 'none';
   }
 } else {
   projectListEl.childNodes.forEach(child => {
@@ -58,6 +62,7 @@ if(selectedProject === null) {
 
 if(selectedProject != null) {
   let tasks = getTasksForProject(selectedProject);
+  renderProjectInformation();
   renderTasks(tasks);
 } else {
   // remove add task button since there are no projects..
@@ -123,36 +128,7 @@ toDoButton.onclick = function() {
           taskPopupWindow.style.zIndex = "-1";
           taskPopupWindow.style.display = "none";
         }
-
-        const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-        const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-      
-        openModalButtons.forEach(toDoButton =>{
-          toDoButton.addEventListener(`click`, () => {
-            const modal = document.querySelector(toDoButton.dataset.modalTarget)
-            openModal(modal);
-        })
-      })
-
-      closeModalButtons.forEach(toDoButton =>{
-        toDoButton.addEventListener(`click`, () => {
-          const modal = toDoButton.closest(`.modal`);
-          closeModal(modal);
-        })
-      })
   }); 
-}
-
-function openModal(modal){
-  if(modal == null) return
-  modal.classList.add(`active`);
-  overlay.classList.add(`active`);
-}
-
-function closeModal(modal){
-  if(modal == null) return
-  modal.classList.remove(`active`);
-  overlay.classList.remove(`active`);
 }
 
 function getSelectedProjectFromUrlHash() {
@@ -193,18 +169,12 @@ function createTaskElement(task) {
       element.classList.add('unknownPriority');
   }
 
-  const startDate = new Date(task.taskStartDate);
-  const startMonth = startDate.getMonth() < 10 ? `0${startDate.getMonth()}` : startDate.getMonth();
-  const startDay = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
-  const dueDate = new Date(task.taskEndtDate);
-  const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
-  const dueDay = dueDate.getDate() < 10 ? `0${dueDate.getDate()}` : dueDate.getDate();
   const delegates = task.delegate ?? [];
 
   element.innerHTML += `<h4 class="header-for-tasks">${task.taskText}</h4>`;
   element.innerHTML += `<p class="priority-for-tasks">Priority: <b>${task.priorities}<b></p>`;
-  element.innerHTML += `<p class="date-for-tasks">Start date: ${startDay}.${startMonth}.${startDate.getFullYear()}</p>`;
-  element.innerHTML += `<p class="date-for-tasks"> Due date: ${dueDay}.${dueMonth}.${dueDate.getFullYear()}</p>`;
+  element.innerHTML += `<p class="date-for-tasks">Start date: ${getFormattedDate(task.taskStartDate)}</p>`;
+  element.innerHTML += `<p class="date-for-tasks"> Due date: ${getFormattedDate(task.taskEndtDate)}</p>`;
  
   
   if(delegates.length != 0){
@@ -245,6 +215,20 @@ function renderTasks(tasks) {
         toDoDiv.appendChild(element);
     }
   });
+}
+
+// Function to render project information on the board
+function renderProjectInformation(){
+  const project = getProjectById(selectedProject);
+
+  const projectDescriptionElement = document.getElementById('projectDescription');
+  projectDescriptionElement.innerHTML = project.projectDesc;
+
+  const projectStartDateElement = document.getElementById('projectStartDate');
+  projectStartDateElement.innerHTML = getFormattedDate(project.startDate);
+
+  const projectEndDateElement = document.getElementById('projectEndDate');
+  projectEndDateElement.innerHTML = getFormattedDate(project.endDate);
 }
 
 function createTask(event) {
@@ -409,90 +393,3 @@ function createTaskEndDateSelector(task) {
     }
   }
 }
-
-
-//Johann sin overlay kode
-/* 
-const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-const overlay = document.getElementById(`overlay`);
-
-openModalButtons.forEach(toDoButton => {
-  toDoButton.addEventListener(`click`, () => {
-    const modal = document.querySelector(toDoButton.dataset.modalTarget)
-    openModal(modal);
-  })
-})
-
-// Make popUp close when clicking outside in the overlay
-//overlay.addEventListener(`click`, () => {
-//const modals = document.querySelectorAll(`.modal.active`);
-//modals.forEach(modal => {
-//closeModal(modal);
-//})
-//})
-
-closeModalButtons.forEach(toDoButton => {
-  toDoButton.addEventListener(`click`, () => {
-    const modal = toDoButton.closest(`.modal`);
-    closeModal(modal);
-  })
-})
-
-function openModal(modal) {
-  if (modal == null) return
-  modal.classList.add(`active`);
-  overlay.classList.add(`active`);
-}
-
-function closeModal(modal) {
-  if (modal == null) return
-  modal.classList.remove(`active`);
-  overlay.classList.remove(`active`);
-=======
-    // Close-button to close the taskregister window.
-    const close = document.getElementById("closeButton");
-
-    close.onclick = function(){
-      taskPopupWindow.style.zIndex = "-1";
-      taskPopupWindow.style.display = "none";
-  }  
-
-  const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-  const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-  const overlay = document.getElementById(`overlay`);
-
-  openModalButtons.forEach(toDoButton =>{
-    toDoButton.addEventListener(`click`, () => {
-      const modal = document.querySelector(toDoButton.dataset.modalTarget)
-      openModal(modal);
-  })
-})
-
-// Make popUp close when clicking outside in the overlay
-//overlay.addEventListener(`click`, () => {
-  //const modals = document.querySelectorAll(`.modal.active`);
-  //modals.forEach(modal => {
-    //closeModal(modal);
-  //})
-//})
-
-closeModalButtons.forEach(toDoButton =>{
-  toDoButton.addEventListener(`click`, () => {
-    const modal = toDoButton.closest(`.modal`);
-    closeModal(modal);
-  })
-})
-  
-function openModal(modal){
-  if(modal == null) return
-  modal.classList.add(`active`);
-  overlay.classList.add(`active`);
-}
-
-function closeModal(modal){
-  if(modal == null) return
-  modal.classList.remove(`active`);
-  overlay.classList.remove(`active`);
-}
- */
