@@ -75,6 +75,7 @@ projectListEl.onchange = (changeEvent) => {
   setSelectedProjectToUrlHash(changeEvent.target.value);
   selectedProject = getSelectedProjectFromUrlHash();
   renderTasks(getTasksForProject(selectedProject));
+  renderProjectInformation();
 }
 
 //Drag and drop functions
