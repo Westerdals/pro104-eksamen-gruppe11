@@ -279,39 +279,105 @@ function createTaskSettingsPopup(taskId) {
           taskPopupWindow.style.display = "none";
           renderTasks(getTasksForProject(selectedProject));
         }
-        
-        const memberList = getMembers();
-        const memberTable = document.getElementById('membersTable');
+
         const task = getTasksForProject(selectedProject).find(task => task.id == taskId);
-
-        if(memberList.length == 0) {
-          removeAllChildren(memberTable);
-          const errorMsgElement = document.createElement('p');
-          errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/userRegister.html">here</a></p>`;
-          document.getElementById('modal').appendChild(errorMsgElement);
-        }
-
-        memberList.forEach(member => {
-          const tableRow = document.createElement('tr');
-          const tableCellMember = document.createElement('td');
-          const tableCellResponsible = document.createElement('td');
-
-          tableCellMember.innerText = `${member.firstName} ${member.lastName}`;
-
-          const responsibleCheckBox = document.createElement('input');
-          responsibleCheckBox.type = 'checkbox';
-          
-          responsibleCheckBox.value = member.id;
-          responsibleCheckBox.checked = task.delegate.find(d => d.userId == member.id) ? true : false;
-
-          tableCellResponsible.appendChild(responsibleCheckBox);
-          tableRow.appendChild(tableCellMember);
-          tableRow.appendChild(tableCellResponsible);
-          memberTable.appendChild(tableRow);
-
-          responsibleCheckBox.onclick = (event) => event.target.checked ? delegateMemberToTask(selectedProject, task, event.target.value) : removeMemberFromTask(selectedProject, task, event.target.value)
-        });
+        createMemberResponsibilityTable(task);
+        createPrioritySelector(task);
+        createTaskStartDateSelector(task);
+        createTaskEndDateSelector(task);
   });
+}
+
+function createMemberResponsibilityTable(task) {
+  const memberList = getMembers();
+  const memberTable = document.getElementById('membersTable');
+
+  if(memberList.length == 0) {
+    removeAllChildren(memberTable);
+    const errorMsgElement = document.createElement('p');
+    errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/userRegister.html">here</a></p>`;
+    document.getElementById('modal').appendChild(errorMsgElement);
+  }
+
+  memberList.forEach(member => {
+    const tableRow = document.createElement('tr');
+    const tableCellMember = document.createElement('td');
+    const tableCellResponsible = document.createElement('td');
+
+    tableCellMember.innerText = `${member.firstName} ${member.lastName}`;
+
+    const responsibleCheckBox = document.createElement('input');
+    responsibleCheckBox.type = 'checkbox';
+    
+    responsibleCheckBox.value = member.id;
+    responsibleCheckBox.checked = task.delegate.find(d => d.userId == member.id) ? true : false;
+
+    tableCellResponsible.appendChild(responsibleCheckBox);
+    tableRow.appendChild(tableCellMember);
+    tableRow.appendChild(tableCellResponsible);
+    memberTable.appendChild(tableRow);
+
+    responsibleCheckBox.onclick = (event) => event.target.checked ? delegateMemberToTask(selectedProject, task, event.target.value) : removeMemberFromTask(selectedProject, task, event.target.value);
+  });
+}
+
+function createPrioritySelector(task) {
+  const priorityElement = document.getElementById('taskPriority');
+  createOption(priorityElement, 'Low', 'Low');
+  createOption(priorityElement, 'Medium', 'Medium');
+  createOption(priorityElement, 'High', 'High');
+  
+  priorityElement.childNodes.forEach(option => {
+    if(option.value == task.priorities) {
+      option.selected = true;
+    }
+  })
+
+  priorityElement.onchange = (event) => setTaskPriority(selectedProject, task, event.target.value);
+}
+
+function createTaskStartDateSelector(task) {
+  const taskStartDateElement = document.getElementById('taskStartDate');
+  taskStartDateElement.value = task.taskStartDate;
+  taskStartDateElement.onchange = (event) => {
+    const project = getProjectById(selectedProject);
+    const taskStartDate = new Date(event.target.value);
+    const taskEndDate = new Date(document.getElementById('taskEndtDate').value);
+    const projectStartDate = new Date(project.startDate);
+
+    if (taskStartDate < projectStartDate) {
+      showStatusMessage("Task can't start before project start..", false);
+      taskStartDateElement.value = task.taskStartDate;
+    } else if(taskStartDate > taskEndDate){
+      showStatusMessage("Task can't start can't start before task end..", false);
+      taskStartDateElement.value = task.taskStartDate;
+    } else {
+      document.getElementById('status').style.display = 'none';
+      setTaskStartDate(selectedProject, task, event.target.value);
+    }
+  }
+}
+
+function createTaskEndDateSelector(task) {
+  const taskEndDateElement = document.getElementById('taskEndtDate');
+  taskEndDateElement.value = task.taskEndtDate;
+  taskEndDateElement.onchange = (event) => {
+    const project = getProjectById(selectedProject);
+    const taskStartDate = new Date(document.getElementById('taskStartDate').value);
+    const taskEndDate = new Date(event.target.value);
+    const projectEndDate = new Date(project.endDate);
+
+    if (taskEndDate > projectEndDate) {
+      showStatusMessage("Task can't end after project end..", false);
+      taskEndDateElement.value = task.taskEndtDate;
+    } else if (taskStartDate > taskEndDate) {
+      showStatusMessage("Task can't end before start date..", false);
+      taskEndDateElement.value = task.taskEndtDate;
+    } else {
+      document.getElementById('status').style.display = 'none';
+      setTaskEndDate(selectedProject, task, event.target.value);
+    }
+  }
 }
 
 
