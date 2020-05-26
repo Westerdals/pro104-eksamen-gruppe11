@@ -23,11 +23,7 @@ main {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-
 }
-
-
-
 
 .input {
   border-radius: 50px;
@@ -37,8 +33,7 @@ main {
   text-align: center;
   font-style: italic;
   color: var(--Gray);
-  outline: none
-  
+  outline: none 
 }
 
 #userLogin {
@@ -56,11 +51,11 @@ main {
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
+
 .input::placeholder {
   color: var(--Gray);
   opacity: 30%;
 }
-
 
 /* LOGIN BUTTONS */
 #login-button {
@@ -86,9 +81,7 @@ img {
     transform: translate(-50%, -50%)
 }
 
-
 /* NAVBAR */
-
 ul {
   list-style-type: none;
   margin: 0;

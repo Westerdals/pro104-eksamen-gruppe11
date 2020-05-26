@@ -10,12 +10,10 @@
     --Gray: #bbbbbb;
     --dGray: #3d3d3d;
     --blue: #2c44b0;
- 
 }
 
 * {
     box-sizing: border-box;
-
   }
 
 body{
@@ -54,21 +52,20 @@ h1, h4{
     line-height: 3em;
 }
 
-/* Small mobile devices */
+/*  SMALL MOBILE DEVICES */
 @media screen and (max-width: 414px) {
-
     .gridContainer {
         grid-template-columns: 0 1fr 0;
     }
-
 }
 
 #project-container{
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin: 1em;
-    
+    margin: 1em;  
 }
+
+/*STYLING OF CREATED PROJECT BOXES*/
 .projectBoxes{
     background-color: --dBlack;
     background: radial-gradient(rgb(36, 34, 34), rgb(10, 9, 9));
@@ -76,28 +73,29 @@ h1, h4{
     border:solid black;
     border-radius: 20px;
     margin :1em;
-
 }
+
 .project-link{
     text-decoration: none;
-    color: var(--Gray);
-    
+    color: var(--Gray);  
 }
+
 .project-name-text{
     color: var(--dGray);
     margin: 20px;
 }
+
 .project-name-header{
     margin: 20px;
-  
-    color: rgb(31, 82, 141);
-   
+    color: rgb(31, 82, 141);  
 }
+
 .project-description{
     margin-top: 20px;
     color: cadetblue;
     color: var(--dGray);
 }
+
 .project-dates{
     margin: 5px;
     margin-left: 30px;
@@ -105,14 +103,14 @@ h1, h4{
     font-size: 14px;
     color: var( --Gray);
 }
-/* Icon for add new */
+
+/* ICON FOR ADD NEW PROJECT */
 .add{
     height: 200px;
     width: 50%;
 }
 
-
-/* Button Styling*/
+/* BUTTON */
 button {
 	width: 170px;
 	height: 50px;
@@ -125,7 +123,7 @@ button {
 }
 
 
-/* Reset Styling*/
+/* RESET STYLING */
 
 [value~=Reset]{width: 170px;
 	height: 50px;
