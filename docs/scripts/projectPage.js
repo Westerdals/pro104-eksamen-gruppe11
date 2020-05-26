@@ -188,10 +188,11 @@ function createTaskElement(task) {
   const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
   const delegates = task.delegate ?? [];
 
-  element.innerHTML += `<h3>${task.taskText}</h3>`;
-  element.innerHTML += `<p>Start date: ${startDate.getDate()}.${startMonth}.${startDate.getFullYear()}</p>`;
-  element.innerHTML += `<p>Due date: ${dueDate.getDate()}.${dueMonth}.${dueDate.getFullYear()}</p>`;
-  element.innerHTML += `<p>Priority: ${task.priorities}</p>`;
+  element.innerHTML += `<h4 class="header-for-tasks">${task.taskText}</h4>`;
+  element.innerHTML += `<p class="priority-for-tasks">Priority: <b>${task.priorities}<b></p>`;
+  element.innerHTML += `<p class="date-for-tasks">Start date: ${startDate.getDate()}.${startMonth}.${startDate.getFullYear()}</p>`;
+  element.innerHTML += `<p class="date-for-tasks"> Due date: ${dueDate.getDate()}.${dueMonth}.${dueDate.getFullYear()}</p>`;
+ 
   
   if(delegates.length != 0){
     let taskDelegates = ""
@@ -203,9 +204,10 @@ function createTaskElement(task) {
         console.error(`Could not find member with id: ${delegate}`);
       }
     });
-    element.innerHTML += `<p>Responsible: ${taskDelegates.slice(0, -2)}</p>`;
+    element.innerHTML += `<p class="responsible-for-tasks"> ${taskDelegates.slice(0, -2)}</p>`;
   }
   return element;
+
 }
 
 // Function to render (and re-render) tasks on the board
