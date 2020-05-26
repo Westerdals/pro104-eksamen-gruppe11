@@ -224,11 +224,8 @@ function renderProjectList() {
         let projectEl = document.createElement("div");
         let { ProjectID, endDate, projectDesc, projectName, startDate } = project;
 
-        // Redirect to project page with project id in the url.
-        projectEl.onclick = () => window.location.href = `./projectPage.html#${ProjectID}`;
-
         //The parts of the project that is shown on the webpage, inside the divs. 
-        projectEl.innerHTML = `<a href="projectPage.html">
+        projectEl.innerHTML = `<a href="projectPage.html#${ProjectID}">
             <h4>Project name: ${projectName}</h4>
             <p>Description: ${projectDesc}</p>
             <h6> Startdate: ${startDate}</h6>
