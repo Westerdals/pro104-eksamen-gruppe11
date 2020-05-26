@@ -35,30 +35,29 @@ body {
 	width: 170px;
 	height: 50px;
 	border-radius: 30px;
-	background-color: var(--dBlack);
-	border: 1px solid var(--Gray);
-	outline: none;
-	color: var(--Gray);
+	background-color: rgb(31, 82, 141);
+    color: black;
+	border: 2px solid black;
 	font-weight: bold;
+	outline: none;
 }
 
  .button:hover {
-	background-color: var(--Gray);
-	color: black;
-	border: 2px solid black;
+	color: var(--Gray);
+	border: 2px solid var(--Gray);
 	cursor: pointer;
 }
 
 .user-button{
-    background-color: rgb(31, 82, 141);
-    color: black;
-	border: 2px solid black;
+	background-color: var(--dBlack);
+	border: 1px solid var(--Gray);
+	color: var(--Gray);
 }
 
 .user-button:hover{
-    color: var(--Gray);
-    background-color: rgb(31, 82, 141);
-    border: 1px solid var(--Gray);
+    color: var(--dBlack);
+    background-color: var(--Gray);
+    border: 1px solid var(--var(--dBlack));
 }
 
 /* TEXT INPUT FIELDS */
@@ -80,9 +79,10 @@ body {
 
 #registeredMembersDropdown{
     color: var(--Gray);
-    background-color: var(--dBlack);
-    border-radius: 20px;
-    width: 200px;
+	background-color: var(--dBlack);
+	border-radius: 20px;
+	border: 2px solid rgb(31, 82, 141);
+    width: 250px;
     text-align: center;
     font-size: medium;  
 }
