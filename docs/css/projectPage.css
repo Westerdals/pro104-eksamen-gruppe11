@@ -167,28 +167,35 @@ h1 {
 	margin: 20px;
 	overflow: scroll;
 	z-index: 1;
-	background-color: var(--postIt);
 	cursor: grab;
 	position: relative;
+	background-color: --dBlack;
+    background: radial-gradient(rgb(36, 34, 34), rgb(10, 9, 9));
+    box-shadow: 7px 2px 5px 2px black;
+    border:solid black;
+    border-radius: 20px;
 }
 
 .header-for-tasks{
 	margin: 10px;
-
+	color: var(--Gray);
 }
 .priority-for-tasks{
 	margin: 10px;
 	font-size: small;
+	
 	color: cadetblue;
 	
 }
 .responsible-for-tasks{
 	margin: 10px;
+	font-size: 14px;
+	color: rgb(31, 82, 141);
 	
 }
 .date-for-tasks{
-	color: darkgrey;
-	font-size: smaller;
+	color: var(--Gray);
+	font-size: x-small;
 	margin: 1px;
 }
 
