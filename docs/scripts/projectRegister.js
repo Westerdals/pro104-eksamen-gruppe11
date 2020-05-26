@@ -120,6 +120,16 @@ function renderProjectList() {
 renderProjectList();
 
 // Icon project adder
-function openProjectForm() {
-    document.getElementById("add-project-form").style = "block";
+let projectFormOpened = false;
+function openCloseProjectForm(element) {
+    const icon = document.getElementById('ionIcon');
+    const projectContainer = document.getElementById("add-project-form")
+    if(projectFormOpened) {
+        projectContainer.style.display = "none";
+        icon.name = "add-circle-outline";
+    } else {
+        projectContainer.style.display = "block";
+        icon.name = "remove-circle-outline";
+    }
+    projectFormOpened = projectFormOpened ? false : true;
 }
