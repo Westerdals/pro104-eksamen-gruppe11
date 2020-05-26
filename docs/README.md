@@ -88,7 +88,6 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
  
 <a name="logo"></a>
 ## Logo
-
 - We wanted to include an recognizable graphic design element, that will identify our own website, and hopefully increase our own app recognition.
   Considering that the overall design of the website itself is very simple, clean and user-friendly, we focused on creating a logo that will be simple,
   and easy to recognize, as well as our logo to be associated with the product( the responsive app) it represents.
@@ -99,8 +98,8 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
   We have decided to go for "Combination Mark" logo, by including the Water-drop symbol, and the name of the app. The "Water Drop"
   has an intertwined design where multiple shapes are combined together in one water drop, which again gives association of something in common and easy merging
   in order to achieve a common goal. The color that we used for our logo is mostly "Blue", which is often associated with harmony,trust and stability.Considering that, 
-  we strove to deliver an app will have an visual harmony, will be stable, easy to use and in other words, an application which our users can trust/count on.
-  
+  we strove to deliver an app will have an visual harmony, will be stable, easy to use. In other words, an application that will be helpful tool and that our users can rely on.
+ ![](images/logoToDew.png)
   
 
 
