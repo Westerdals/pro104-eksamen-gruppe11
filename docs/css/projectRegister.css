@@ -10,6 +10,7 @@
     --Gray: #bbbbbb;
     --dGray: #3d3d3d;
     --blue: #2c44b0;
+ 
 }
 
 * {
@@ -19,7 +20,7 @@
 
 body{
     font-family: "Roboto Light", sans-serif;
-    background-color: var(--dBlack);
+    background-color: var(--lBlack);
     color: var(--offWhite);
     margin:0;
     font-size: 1em;
@@ -62,14 +63,48 @@ h1, h4{
 
 }
 
-
 #project-container{
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin: 1em;
+    
+}
+.projectBoxes{
+    background-color: --dBlack;
+    background: radial-gradient(rgb(36, 34, 34), rgb(10, 9, 9));
+    box-shadow: 7px 2px 5px 2px black;
+    border:solid black;
+    border-radius: 20px;
+    margin :1em;
 
 }
-
+.project-link{
+    text-decoration: none;
+    color: var(--Gray);
+    
+}
+.project-name-text{
+    color: var(--dGray);
+    margin: 20px;
+}
+.project-name-header{
+    margin: 20px;
+  
+    color: rgb(31, 82, 141);
+   
+}
+.project-description{
+    margin-top: 20px;
+    color: cadetblue;
+    color: var(--dGray);
+}
+.project-dates{
+    margin: 5px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 14px;
+    color: var( --Gray);
+}
 /* Icon for add new */
 .add{
     height: 200px;
