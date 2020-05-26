@@ -223,6 +223,10 @@ function renderProjectList() {
     for (project of projectList) {
         let projectEl = document.createElement("div");
         let { ProjectID, endDate, projectDesc, projectName, startDate } = project;
+        projectEl.style.backgroundColor = "white";
+        projectEl.style.border = "solid green";
+        projectEl.style.borderRadius = "25px";
+        projectEl.style.margin = "1em";
 
         //The parts of the project that is shown on the webpage, inside the divs. 
         projectEl.innerHTML = `<a href="projectPage.html#${ProjectID}">

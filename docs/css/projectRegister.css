@@ -75,3 +75,29 @@ h1, h4{
     height: 200px;
     width: 50%;
 }
+
+
+/* Button Styling*/
+button {
+	width: 170px;
+	height: 50px;
+	border-radius: 30px;
+	background-color: var(--dBlack);
+	border: 1px solid var(--Gray);
+	outline: none;
+	color: var(--Gray);
+	font-weight: bold;
+}
+
+
+/* Reset Styling*/
+
+[value~=Reset]{width: 170px;
+	height: 50px;
+	border-radius: 30px;
+	background-color: var(--dBlack);
+	border: 1px solid var(--Gray);
+	outline: none;
+	color: var(--Gray);
+	font-weight: bold;
+}
