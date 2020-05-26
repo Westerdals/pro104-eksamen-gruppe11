@@ -42,6 +42,11 @@ if(selectedProject === null) {
     selectedProject = getSelectedProjectFromUrlHash();
   } else {
     console.log("No projects.");
+    const projectSelectorDiv = document.getElementById('projectSelector-div');
+    removeAllChildren(projectSelectorDiv);
+    const newElement = document.createElement('h3');
+    newElement.innerHTML = `Seems like you do not have any projects. Click <a href="./projectRegister.html">here</a> to get started!`;
+    projectSelectorDiv.appendChild(newElement);
   }
 } else {
   projectListEl.childNodes.forEach(child => {
@@ -51,8 +56,14 @@ if(selectedProject === null) {
   })
 }
 
-let tasks = getTasksForProject(selectedProject);
-renderTasks(tasks);
+if(selectedProject != null) {
+  let tasks = getTasksForProject(selectedProject);
+  renderTasks(tasks);
+} else {
+  // remove add task button since there are no projects..
+  const addTaskButtonDiv = document.getElementById('addTaskBtnDiv');
+  removeAllChildren(addTaskButtonDiv);
+}
 
 // When the project changes: create a new hash in the url and re-render all tasks
 projectListEl.onchange = (changeEvent) => {
