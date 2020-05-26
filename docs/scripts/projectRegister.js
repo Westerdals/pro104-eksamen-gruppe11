@@ -35,8 +35,6 @@ function createProject(event) {
         showStatusMessage("Project created.", true);
 
         // Display the new member list to the user.
-        createMembersDropdownList();
-        showAssignedProject();
         showAddProjectDetails();
         renderProjectList();
     }
@@ -74,55 +72,6 @@ const createOption = (parentElement, id, value) => {
     option.textContent = value;
     parentElement.appendChild(option);
 }
-
-// create the dropdown menu for selecting member
-function createMembersDropdownList() {
-    const members = document.querySelector('#add-members-form__assigned-members');
-    const userList = getMembers();
-
-    // Make the dropdown empty before creating the new elements.
-    if (members.length != 0) {
-        while (members.lastElementChild) {
-            members.removeChild(members.lastElementChild);
-        }
-    }
-    for (const list of userList) {
-        const { id, firstName, lastName } = list;
-        createOption(members, id, firstName + ' ' + lastName);
-    }
-}
-
-function showAssignedProject() {
-    const projectElement = document.querySelector('#add-members-form__project');
-    const allProjects = getProjects();
-    projectElement.innerHTML = allProjects[allProjects.length - 1].projectName;
-}
-
-// Event Listener for delegating members to a project
-document.querySelector('.add-members-form__submit').addEventListener('click', (e) => {
-    e.preventDefault();
-    const members = document.querySelector('#add-members-form__assigned-members');
-    const projects = document.querySelector('#add-members-form__project');
-    const userValue = members.value;
-    const projectValue = projects.value;
-    const memberList = { userId: userValue, projectId: projectValue };
-    const projectList = getProjects();
-    const lastProject = projectList[projectList.length - 1]
-    const checkUserExist = lastProject.memberList.some(user => user.userId === userValue)
-
-    if (checkUserExist) {
-        showStatusMessage("User is already assigned to this project", false);
-    } else {
-        showStatusMessage("Added member to project.", true);
-        lastProject.memberList.push(memberList);
-        saveProjects(projectList);
-    }
-});
-
-/**
- * For some() funksjon
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
- */
 
 // Add task Popup by changing display
 //if no input in the form the next form wont show. Returns true if project is valid
@@ -227,14 +176,10 @@ function renderProjectList() {
     }
 }
 
-
-// Fill the members & project dropdown once the page loads
-createMembersDropdownList();
-// render all the projects
+// render all the projects on page load
 renderProjectList();
 
 //Icon project adder
-
 function addProjectForm() {
     document.getElementById("add-project-form").style = "block";
 }
