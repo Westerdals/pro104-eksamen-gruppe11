@@ -22,14 +22,16 @@ body{
     font-family: "Roboto Light", sans-serif;
 }
 
-.gridContainer {
+/*.gridContainer {
     display: grid;
     grid-template-columns: 25rem 1fr 25rem;
     justify-content: center;
     align-content: space-evenly;
 }
+*/
 
 /* Small mobile devices */
+/*
 @media screen and (max-width: 414px) {
 
     .gridContainer {
@@ -37,7 +39,7 @@ body{
     }
 
 }
-
+*/
 /* Styling Register New Project */
 
 #status{
