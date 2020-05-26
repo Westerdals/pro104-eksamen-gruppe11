@@ -281,52 +281,6 @@ h1 {
 	cursor: grabbing;
 }
 
-/* NAVBAR */
-#navBar-container {
-  width: auto;
-  height: 50px;
-  background-color: var(--dBlack);
-  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-}
-
-.dropBtn {
-  height: 50px;
-  width: 90px;
-  position: relative;
-  background-color: var(--lBlack);
-  color: var(--Gray);
-  padding: 5px;
-  border: solid var(--dBlack) 2px;
-  outline: none;
-  border-radius: 5px;
-  margin-left: 2px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--dBlack);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1; 
-}
-
-.dropdown-content a {
-  color: var(--Gray);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /* POPUP */
 #popUp {
 	background-color: var(--lBlack);
