@@ -102,7 +102,7 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
   we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on. <br/>
   ![](images/logoToDew.png)
 
- **Adobe Illustrator for designing the logo** 
+ **Adobe Illustrator is used for designing the logo** 
   
 <a name="class"></a>
 ## Class Description
