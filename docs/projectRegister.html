@@ -16,16 +16,16 @@
     <div>
 
         <div>
-            <a onclick="addProjectForm()">
+            <a onclick="openProjectForm()" style="cursor: pointer;">
                 <ion-icon name="add-circle-outline" class="add"></ion-icon>
             </a>
-
         </div>
+
+        <div id="status" style="display: none;"></div>
 
         <div class=grid id="add-project-form" style="display: none" ;>
             <form class="create-project-forms" onsubmit="createProject(event)">
                 <h1>Register new Project</h1>
-                <div id="status" style="display: none;"></div>
                 <div>
                     <!-- Adding Project id and Project Name -->
                     <label for="projectName">Project Name</label>
@@ -48,55 +48,13 @@
                     <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
                 </div>
 
-                <button type="submit" class="add-task-project__submit" id="projectRegBtn">Opprett Prosjekt</button>
-                <input type="reset" value="Reset">
+                <button type="submit" class="add-task-project__submit" id="projectRegBtn" style="cursor: pointer;">Opprett Prosjekt</button>
+                <input type="reset" value="Reset" style="cursor: pointer;">
             </form>
         </div>
-
-
-        <div class="grid" id="add-project-details-container" style="display: none;">
-            <form class="add-members-form">
-                <h1>Deleger Medlemmer til Prosjektet</h1>
-                <label for="add-members-form__assigned-members">Deleger medlemmer til <span
-                        id="add-members-form__project"></span></label>
-                <select id="add-members-form__assigned-members">
-                    <option value="" selected disabled hidden>Choose here</option>
-                </select>
-                <input type="submit" class="add-members-form__submit" value="Submit">
-            </form>
-
-            <form class="add-task-form" onsubmit="addTaskProject(event)">
-                <h4>Opprett Oppgaver</h4>
-                <label for="addTask">Add Task</label>
-                <input type="text" id="taskText" placeholder="Add task" required>
-                <label for="priority">Choose priority:</label>
-                <select name="priorities" id="priorities">
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-                <br>
-
-                <!-- Adding start and end date for the Project -->
-                <label for="taskStartDate">Start Date</label>
-                <input type="date" id="taskStartDate" name="taskStartDate" required>
-                <label for="taskEndtDate">End Date</label>
-                <input type="date" id="taskEndDate" name="taskEndDate" required>
-                <br>
-                <input class="add-delegate-project__submit" type="submit">
-            </form>
-        </div>
-
     </div>
 
     <div id="project-container"></div>
-
-    </div>
-
-
-
-
-    </div>
 
     <script src="./scripts/functions.js"></script>
     <script src="./scripts/projectRegister.js"></script>
@@ -104,20 +62,3 @@
 </body>
 
 </html>
-
-
-<!--
-        https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_textarea
-        https://www.w3schools.com/tags/tag_datalist.asp
-        https://stackoverflow.com/questions/29629458/saving-and-retrieving-date-from-local-storage/29629610
-        https://www.w3schools.com/jsref/met_form_reset.asp
-        https://www.freecodecamp.org/news/when-and-why-you-should-use-es6-arrow-functions-and-when-you-shouldnt-3d851d7f0b26/
-        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset
-           <div>
-            <label for=""></label>
-            <input type="text" placeholder="" name="" required>
-            <label for=""></label>
-            <input type="text" placeholder="" name="" required>
-        </div>
-    
-    -->

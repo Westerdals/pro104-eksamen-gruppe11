@@ -195,14 +195,16 @@ function createTaskElement(task) {
 
   const startDate = new Date(task.taskStartDate);
   const startMonth = startDate.getMonth() < 10 ? `0${startDate.getMonth()}` : startDate.getMonth();
+  const startDay = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
   const dueDate = new Date(task.taskEndtDate);
   const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
+  const dueDay = dueDate.getDate() < 10 ? `0${dueDate.getDate()}` : dueDate.getDate();
   const delegates = task.delegate ?? [];
 
   element.innerHTML += `<h4 class="header-for-tasks">${task.taskText}</h4>`;
   element.innerHTML += `<p class="priority-for-tasks">Priority: <b>${task.priorities}<b></p>`;
-  element.innerHTML += `<p class="date-for-tasks">Start date: ${startDate.getDate()}.${startMonth}.${startDate.getFullYear()}</p>`;
-  element.innerHTML += `<p class="date-for-tasks"> Due date: ${dueDate.getDate()}.${dueMonth}.${dueDate.getFullYear()}</p>`;
+  element.innerHTML += `<p class="date-for-tasks">Start date: ${startDay}.${startMonth}.${startDate.getFullYear()}</p>`;
+  element.innerHTML += `<p class="date-for-tasks"> Due date: ${dueDay}.${dueMonth}.${dueDate.getFullYear()}</p>`;
  
   
   if(delegates.length != 0){
