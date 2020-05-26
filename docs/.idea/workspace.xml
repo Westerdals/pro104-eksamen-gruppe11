@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c5f410c-a6f9-48ea-a52d-b8b841e3f704" name="Default Changelist" comment="Merge branch 'master' of https://github.com/Westerdals/pro104-eksamen-gruppe-11 into MakkeBranch&#10;&#10;# Conflicts:&#10;#&#9;docs/css/projectRegister.css&#10;#&#9;docs/projectRegister.html" />
+    <list default="true" id="1c5f410c-a6f9-48ea-a52d-b8b841e3f704" name="Default Changelist" comment="Merge branch 'master' of https://github.com/Westerdals/pro104-eksamen-gruppe-11 into MakkeBranch&#10;&#10;# Conflicts:&#10;#&#9;docs/css/projectRegister.css&#10;#&#9;docs/projectRegister.html">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/LogoToDew.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/conceptGif" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +76,8 @@
       <workItem from="1590414406767" duration="4447000" />
       <workItem from="1590428551150" duration="10799000" />
       <workItem from="1590439579922" duration="2571000" />
-      <workItem from="1590442752098" duration="61381000" />
+      <workItem from="1590442752098" duration="62362000" />
+      <workItem from="1590534525838" duration="133000" />
     </task>
     <servers />
   </component>
@@ -103,10 +109,10 @@
       <screen x="0" y="0" width="1080" height="680" />
     </state>
     <state x="0" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1080.680@0.0.1080.680" timestamp="1590530853871" />
-    <state x="236" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1590442752086">
+    <state x="236" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1590534536350">
       <screen x="0" y="0" width="1080" height="680" />
     </state>
-    <state x="236" y="164" key="com.intellij.ide.util.TipDialog/0.0.1080.680@0.0.1080.680" timestamp="1590442752086" />
+    <state x="236" y="164" key="com.intellij.ide.util.TipDialog/0.0.1080.680@0.0.1080.680" timestamp="1590534536350" />
     <state x="205" y="4" width="672" height="678" key="search.everywhere.popup" timestamp="1590486637012">
       <screen x="0" y="0" width="1080" height="680" />
     </state>

@@ -62,7 +62,7 @@ The reason behind creating a concept sketch,was because we wanted to visualize t
 which helped our team to shape/share our ideas, and to get a clear idea of what kind of design we will go for. 
 Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. <br/>
  
- ![](images/conceptGif.gif)
+![](images/conceptScGif)
  
 
 <a name="development"></a>
@@ -102,7 +102,7 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
   we strove to deliver an app that will have an visual harmony, will be stable and easy to use. In other words, 
   we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on. <br/>
  
-  ![](images/logoToDew.png)
+ ![](images/LogoToDewSc.png)
 
  **Adobe Illustrator is used for designing the logo** 
   
