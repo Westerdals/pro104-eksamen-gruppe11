@@ -14,28 +14,31 @@
         <div>
             <!-- Empty left. -->
         </div>
+
         <div>
             <!-- Register new Project -->
             <form class="create-project-forms" onsubmit="createProject(event)">
                 <h1>Register new Project</h1>
                 <div id="status" style="display: none;"></div>
-                <div>
+
+                <div class="newProjectRegister">
                     <!-- Adding Project id and Project Name -->
                     <label for="projectName">Project Name</label>
                     <input type="text" placeholder="Enter Project Name" id="projectName" required>
                 </div>
 
                 <!-- Adding start and end date for the Project -->
-                <div>
+                <div class="dates">
                     <label for="startDate">Start Date</label>
                     <input type="date" id="startDate" required>
                     <label for="endDate">End Date</label>
                     <input type="date" id="endDate" required>
+
                 </div>
 
                 <!-- Project description -->
-                <div>
-                    <h4>Project Description</h4>
+                <div class="description">
+                    <h3>Project Description</h3>
                     <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
                 </div>
 
@@ -43,7 +46,13 @@
                 <input type="reset" value="Reset">
 
             </form>
-            <div id="add-project-details-container" style="display: none;">
+            </div>
+
+        <div id="styleBoxes" classList="projectBoxes" ></div>
+
+
+
+      <div id="add-project-details-container" style="display: none;">
                 <form class="add-members-form">
                     <h1>Deleger Medlemmer til Prosjektet</h1>
                     <label for="add-members-form__assigned-members">Deleger medlemmer til <span
@@ -54,7 +63,7 @@
                     <input type="submit" class="add-members-form__submit" value="Submit">
                 </form>
 
-                <form class="add-task-form" onsubmit="addTaskProject(event)">
+               <form class="add-task-form" onsubmit="addTaskProject(event)">
                     <h4>Opprett Oppgaver</h4>
                     <label for="addTask">Add Task</label>
                     <input type="text" id="taskText" placeholder="Add task" required>
@@ -65,10 +74,10 @@
                         <option value="Medium">
                         <option value="High">
                     </datalist>
-                    <br>
+                    <br> 
 
-                    <!-- Adding start and end date for the Project -->
-                    <label for="taskStartDate">Start Date</label>
+                  <!-- Adding start and end date for the Project -->
+                  <label for="taskStartDate">Start Date</label>
                     <input type="date" id="taskStartDate" name="taskStartDate" required>
                     <label for="taskEndtDate">End Date</label>
                     <input type="date" id="taskEndDate" name="taskEndDate" required>
@@ -77,11 +86,7 @@
                 </form>
             </div>
 
-
-
-
         </div>
-
 
 
         <div id="project-container"></div>
@@ -90,6 +95,8 @@
         <!-- Empty right -->
     </div>
     </div>
+
+
 
     <script src="/docs/scripts/functions.js"></script>
     <script src="/docs/scripts/projectRegister.js"></script>
