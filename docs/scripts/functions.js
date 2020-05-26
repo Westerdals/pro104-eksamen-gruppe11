@@ -46,8 +46,48 @@ function removeMemberFromTask(projectId, task, memberId) {
     saveProjects(allProjects);
 }
 
+function setTaskPriority(projectId, task, priority) {
+    const allProjects = getProjects();
+
+    allProjects
+        .find(project => project.ProjectID === projectId)
+        .tasks
+        .find(t => t.id == task.id)
+        .priorities = priority;
+
+    saveProjects(allProjects);
+}
+
+function setTaskStartDate(projectId, task, startDate) {
+    const allProjects = getProjects();
+
+    allProjects
+        .find(project => project.ProjectID === projectId)
+        .tasks
+        .find(t => t.id == task.id)
+        .taskStartDate = startDate;
+
+    saveProjects(allProjects);
+}
+
+function setTaskEndDate(projectId, task, endDate) {
+    const allProjects = getProjects();
+
+    allProjects
+        .find(project => project.ProjectID === projectId)
+        .tasks
+        .find(t => t.id == task.id)
+        .taskEndtDate = endDate;
+
+    saveProjects(allProjects);
+}
+
 function getProjects() {
     return JSON.parse(window.localStorage.getItem('Projects')) ?? [];
+}
+
+function getProjectById(projectId) {
+    return getProjects().find(project => project.ProjectID == projectId) ?? null;
 }
 
 function saveProjects(projects) {
@@ -86,4 +126,17 @@ function generateUuid() {
       let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
+}
+
+function showStatusMessage(message, isSuccess) {
+    const statusBox = document.getElementById('status');
+    statusBox.style.display = 'block';
+
+    if (isSuccess) {
+        statusBox.style.backgroundColor = '#00ca4e';
+    } else {
+        statusBox.style.backgroundColor = '#ff605c';
+    }
+
+    statusBox.innerHTML = `<p>${message}</p>`;
 }
