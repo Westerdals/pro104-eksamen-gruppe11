@@ -26,13 +26,11 @@
         <label for="addTask">Add Task</label>
         <input type="text" id="taskText" placeholder="Add task" required />
         <label for="priority">Choose priority:</label>
-        <input list="priority" name="priorities" id="priorities" />
-        <datalist id="priority">
-            <option value="Low"> </option>
-            <option value="Medium"> </option>
-            <option value="High"> </option>
-        </datalist>
-
+        <select name="priorities" id="priorities">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
         <br />
 
         <!-- Adding start and end date for the Project -->
