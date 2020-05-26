@@ -199,20 +199,6 @@ function showAddProjectDetails() {
     document.getElementById('add-project-details-container').style = "block";
 }
 
-function showStatusMessage(message, isSuccess) {
-    const statusBox = document.getElementById('status');
-    statusBox.style.display = 'block';
-
-    if (isSuccess) {
-        statusBox.style.backgroundColor = '#00ca4e';
-    } else {
-        statusBox.style.backgroundColor = '#ff605c';
-    }
-
-    statusBox.innerHTML = `<p>${message}</p>`;
-}
-
-
 // function that renders prject list to the page. 
 function renderProjectList() {
 
