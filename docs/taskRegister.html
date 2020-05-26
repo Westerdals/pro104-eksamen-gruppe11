@@ -33,6 +33,8 @@
         </form>
     </div>
 
+    <div id="status" style="display: none;"></div>
+
     <form onsubmit="createTask(event)" class="create-task-form-submit" style="display: none;">
         <h4 class="create-task-form-submit__h4"></h4>
         <label for="addTask">Add Task</label>
@@ -52,7 +54,7 @@
         <input type="date" id="taskEndtDate" name="taskEndtDate" class="small-textbox" required />
         <br>
         <br>
-        <input type="submit" class="create-task-form-submit__submit button"  />
+        <input type="submit" class="create-task-form-submit__submit button" value="Create task"  />
     </form>
     <br>
 
@@ -65,26 +67,13 @@
         <select id="taskList" class="small-textbox"></select>
         <br>
         <br>
-        <input type="submit" class="delegate-form-submit__legg--til button " value="Submit" />
+        <input type="submit" class="delegate-form-submit__legg--til button " value="Delegate user" />
         <br>
-        <p id="task-added"></p>
         <br>
     </form>
 
-    <!--Add members to projects-->
-   <form class="add-members-form" style="display: none;">
-        <h2>Assign member to project <span id="add-members-form__project"></span></h2>
-        <label for="add-members-form__assigned-members">Assign member</label>
-        <select id="add-members-form__assigned-members" class="small-textbox">
-            <option value="" selected disabled hidden>Choose here</option>
-        </select>
-        <br>
-        <br>
-        <input type="submit" class="add-members-form__submit button" value="Submit">
-    </form> 
-
-    <script src="scripts/functions.js" defer></script>
-    <script src="scripts/taskRegister.js" defer></script>
+    <script src="./scripts/functions.js"></script>
+    <script src="./scripts/taskRegister.js"></script>
 
 </body>
 
