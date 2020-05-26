@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>toDew - user register</title>
+    <link rel="stylesheet" href="./css/userRegister.css" />
 </head>
 
 <body>
@@ -14,15 +15,17 @@
 
         <div class="memberList">
 
-            <h3>Legg til medlemmer</h3>
-
             <div>
                 <form onsubmit="userRegister(event)">
-                    <h2>Create new User</h2>
-                    <input type="text" id="userName" placeholder="Choose User name" required />
-                    <input type="text" id="firstName" placeholder="Enter First Name" required />
-                    <input type="text" id="lastName" placeholder="Enter Last  Name" required />
-                    <input type="submit" />
+                    <h1>Create new User</h1>
+                   <!--<input type="text" id="userName" placeholder="Choose User name" required /> --> 
+                    First name <input type="text" id="firstName" placeholder="Enter First Name" required />
+                    <br>
+                    <br>
+                    Last name <input type="text" id="lastName" placeholder="Enter Last  Name" required />
+                    <br>
+                    <br>
+                    <input type="submit" id ="button" />
 
                 </form>
             </div>
@@ -42,7 +45,7 @@
     </form>
 
     <script src="scripts/userRegister.js"></script>
-    <script src="scripts/Classes.js"></script>
+
 </body>
 
 </html>
