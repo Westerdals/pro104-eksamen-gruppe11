@@ -248,3 +248,8 @@ createMembersDropdownList();
 // render all the projects
 renderProjectList();
 
+//Icon project adder
+
+function addProjectForm() {
+    document.getElementById("add-project-form").style = "block";
+}

@@ -1,16 +1,56 @@
 :root {
     font-size: 16px;
+    --green: #00ca4e;
+    --red: #ff605c;
+    --yellow: #ffbd44;
+    --lBlack: #2c2c2c;
+    --dBlack: #131313;
+    --placeholder: #3d3d3d;
+    --offWhite: #f3f3f3;
+    --Gray: #bbbbbb;
+    --dGray: #3d3d3d;
+    --blue: #2c44b0;
 }
 
 * {
     box-sizing: border-box;
+
   }
 
-.gridContainer {
+body{
+    font-family: "Roboto Light", sans-serif;
+    background-color: var(--dBlack);
+    color: var(--offWhite);
+    margin:0;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.btn{
+    color: var(--offWhite);
+    background-color:#3d3d3d;
+    text-decoration: none;
+    margin: .5em 0;
+}
+
+.btn :hover{
+ size: 50em;
+}
+
+h1, h4{
+    display: block;
+    margin: 1em;
+    height: auto;
+}
+
+.grid{
     display: grid;
-    grid-template-columns: 25rem 1fr 25rem;
-    justify-content: center;
-    align-content: space-evenly;
+    grid-template-columns: 10fr;
+    grid-template-rows: 1fr ;
+    margin: auto;
+    align-content: baseline;
+    line-height: 3em;
 }
 
 /* Small mobile devices */
@@ -21,3 +61,232 @@
     }
 
 }
+
+
+#project-container{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1em;
+
+}
+
+
+/* Icon for add new */
+.add{
+    height: 200px;
+    width: 50%;
+}
+
+/*
+.gridContainer {
+    display: grid;
+    grid-template-columns: 25rem 1fr 25rem;
+    justify-content: center;
+    align-content: space-evenly;
+}
+
+/* Small mobile devices 
+@media screen and (max-width: 414px) {
+
+    .gridContainer {
+        grid-template-columns: 0 1fr 0;
+    }
+
+}
+
+/* Styling Register New Project 
+
+#status{
+    overflow: hidden;
+    text-align: center;
+    padding: 14px 16px;
+
+}
+
+h1{
+    text-decoration: none;
+    color: var(--offWhite);
+    display: block;
+    position: absolute;
+    padding: 10px 10px;
+
+}
+
+.newProjectRegister{
+     text-align: center;
+}
+
+input[type=text]#projectName{
+    margin-top: 120px;
+    margin-left: -140px;
+    padding: 1px 1px;
+    position: absolute;
+    border-radius: 5px;
+    border-color: var(--offWhite) solid 1px;
+    width: 150px;
+    height: 30px;
+    display: inline-block;
+
+}
+
+label[for=projectName]{
+    text-decoration: underline;
+    color: var(--offWhite);
+    margin-top: 120px;
+    margin-left: -250px;
+    font-size: 17px;
+    position: absolute;
+
+}
+
+.dates{
+    text-align: center;
+}
+
+input[type="date"]{
+    position: absolute;
+    width: 150px;
+    height: 25px;
+    margin-top: 170px;
+    padding: 1px 1px;
+    display: inline-block;
+    border-radius: 5px;
+    border-color: var(--offWhite) solid 1px;
+}
+
+input#startDate{
+    margin-left: -140px;
+    position: absolute;
+
+}
+
+label[for="startDate"]{
+    display: inline-block;
+    text-decoration: underline;
+    color: var(--offWhite);
+    margin-top: 175px;
+    position: absolute;
+    margin-left: -220px;
+}
+
+input#endDate{
+    position: absolute;
+    right: 250px;
+}
+
+label[for="endDate"]{
+    position: absolute;
+    text-decoration: underline;
+    color: var(--offWhite);
+    margin-top: 175px;
+    margin-left: 50px;
+
+}
+
+.description{
+    text-align: center;
+    padding: 5px;
+}
+
+#projectDesc{
+    position: absolute;
+    margin-top: 220px;
+    margin-left: -140px;
+    width: 420px;
+    height: 130px;
+    border-radius: 5px;
+
+}
+
+h3{
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    color: var(--offWhite);
+    position: absolute;
+    margin-left: -185px;
+    margin-top: 230px;
+}
+
+
+#projectRegBtn{
+    position: absolute;
+    border-radius: 6px;
+    border: var(--dBlack) solid 1px;
+    display: block;
+    color: var(--dBlack);
+    opacity: 90%;
+    margin-top: 400px;
+    margin-left:120px;
+    width: 140px;
+    height: 40px;
+    transition: all 0.2s;
+
+}
+
+#projectRegBtn:hover{
+    background-color:var(--dGray);
+    color:var(--offWhite);
+    opacity: 80%;
+}
+
+input[value="Reset"]{
+    position: absolute;
+    border-radius: 6px;
+    border: var(--dBlack) solid 1px;
+    display: block;
+    color: var(--dBlack);
+    opacity: 90%;
+    margin-top: 450px;
+    margin-left:145px;
+    opacity: 90%;
+    width: 90px;
+    height: 30px;
+}
+
+input[value="Reset"]:hover {
+    background-color: var(--blue);
+    color: var(--offWhite);
+    opacity: 80%; }
+
+
+
+/* Styling printed informations into boxes
+
+#styleBoxes{
+    text-align: center;
+    display: grid;
+    width: 50%;
+    float: left;
+    align-content: center;
+    position: absolute;
+
+}
+
+.projectBoxes{
+   position: relative;
+    flex: 0.2;
+    display: inline-table;
+    border-radius: 6px;
+    border: 1px solid var(--offWhite);
+    width: 250px;
+    height: 40px;
+    top: 550px;
+    margin-top: 20px;
+    margin-left:20px;
+    margin-right: 20px;
+    left: 150px;
+    color: var(--offWhite);
+
+}
+
+.projectBoxes:hover{
+    background-color: var(--Gray);
+    color: var(--dBlack);
+    border: var(--dBlack) solid 1px;
+}
+
+ */
+
+
