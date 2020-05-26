@@ -123,9 +123,10 @@ h1, h4{
 }
 
 /* ICON FOR ADD NEW PROJECT */
-.add{
-    height: 200px;
-    width: 50%;
+#openCloseIcon {
+	height: 100px;
+    width: auto;
+    margin: 5rem auto 2rem auto;
 }
 
 /* BUTTON */

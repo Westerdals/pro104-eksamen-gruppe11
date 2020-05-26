@@ -122,14 +122,17 @@ renderProjectList();
 // Icon project adder
 let projectFormOpened = false;
 function openCloseProjectForm(element) {
-    const icon = document.getElementById('ionIcon');
-    const projectContainer = document.getElementById("add-project-form")
+    const icon = document.getElementById('openCloseIcon');
+    const projectContainer = document.getElementById("add-project-form");
+
     if(projectFormOpened) {
         projectContainer.style.display = "none";
-        icon.name = "add-circle-outline";
+        icon.src = "./images/plus.png";
+        icon.alt = "Click to open create project dialog";
     } else {
         projectContainer.style.display = "block";
-        icon.name = "remove-circle-outline";
+        icon.src = "./images/minus.png";
+        icon.alt = "Click close create project dialog";
     }
     projectFormOpened = projectFormOpened ? false : true;
 }
