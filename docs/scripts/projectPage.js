@@ -250,32 +250,47 @@ function createTask(event) {
 
   const taskText = document.getElementById('taskText').value;
   const priorities = document.getElementById('priorities').value;
-  const taskStartDate = document.getElementById('taskStartDate').value;
-  const taskEndtDate = document.getElementById('taskEndtDate').value;
+  const taskStartDateAsString = document.getElementById('taskStartDate').value;
+  const taskEndDateAsString = document.getElementById('taskEndtDate').value;
 
   const task = {
       id: generateUuid(),
       taskText,
       priorities,
-      taskStartDate,
-      taskEndtDate,
+      taskStartDate: taskEndDateAsString,
+      taskEndtDate: taskEndDateAsString,
       delegate: []
   };
 
-  const projectList = getProjects();
-  projectList.forEach((el) => {
-      if (el.ProjectID === selectedProject) {
-          el.tasks.push(task);
-      }
-  });
+  const taskStartDate = new Date(taskStartDateAsString);
+  const taskEndDate = new Date(taskEndDateAsString);
 
-  saveProjects(projectList);
-  renderTasks(getTasksForProject(selectedProject));
+  const project = getProjectById(selectedProject);
+  const projectStartDate = new Date(project.startDate);
+  const projectEndDate = new Date(project.endDate);
 
-  // Close the popup
-  const taskPopupWindow = document.getElementById("popUp");
-  taskPopupWindow.style.zIndex = "-1";
-  taskPopupWindow.style.display = "none";
+  if (taskStartDate < projectStartDate) {
+      showStatusMessage("Task can't start before project start..", false);
+  } else if (taskEndDate > projectEndDate) {
+      showStatusMessage("Task can't end after project end..", false);
+  } else if (taskStartDate > taskEndDate) {
+      showStatusMessage("Task can't end before start date..", false);
+  } else {
+    const projectList = getProjects();
+    projectList.forEach((el) => {
+        if (el.ProjectID === selectedProject) {
+            el.tasks.push(task);
+        }
+    });
+  
+    saveProjects(projectList);
+    renderTasks(getTasksForProject(selectedProject));
+  
+    // Close the popup
+    const taskPopupWindow = document.getElementById("popUp");
+    taskPopupWindow.style.zIndex = "-1";
+    taskPopupWindow.style.display = "none";
+  }
 }
 
 function createTaskSettingsPopup(taskId) {
@@ -308,7 +323,7 @@ function createMemberResponsibilityTable(task) {
   if(memberList.length == 0) {
     removeAllChildren(memberTable);
     const errorMsgElement = document.createElement('p');
-    errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/userRegister.html">here</a></p>`;
+    errorMsgElement.innerHTML = `<p>You have not registered any members. You can do that <a href="/userRegister.html">here</a></p>`;
     document.getElementById('modal').appendChild(errorMsgElement);
   }
 
