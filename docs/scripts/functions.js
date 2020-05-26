@@ -134,8 +134,10 @@ function showStatusMessage(message, isSuccess) {
 
     if (isSuccess) {
         statusBox.style.backgroundColor = '#00ca4e';
+        statusBox.style.color = 'black';
     } else {
         statusBox.style.backgroundColor = '#ff605c';
+        statusBox.style.color = 'white';
     }
 
     statusBox.innerHTML = `<p>${message}</p>`;
