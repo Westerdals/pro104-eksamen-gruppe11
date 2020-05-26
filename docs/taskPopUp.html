@@ -1,7 +1,7 @@
 <div id="modal" class="modal">
     <input type="button" data-close-button value="X" id="closeButton">
     <form onsubmit="createTask(event)">
-        <h4>Create Task</h4>
+        <h4>Add New Task</h4>
         <label for="addTask">Add Task</label>
         <input type="text" placeholder="Task Name" id="taskText" class="small-textbox" required>
         <br>
@@ -17,12 +17,14 @@
         <br>
 
         <!-- Adding start and end date for the Project -->
-        <label for="taskStartDate">Start Date</label>
+        <label for="taskStartDate">Start Date:</label>
         <input type="date" name="taskStartDate" id="taskStartDate" required>
-        <label for="taskEndtDate">End Date</label>
+        <br>
+        <br>
+        <label for="taskEndtDate">End Date:</label>
         <input type="date" name="taskEndtDate" id="taskEndtDate" required>
         <br>
-        <input type="submit" id="addTaskSubBtn" class="large-button" value="Add task">
+        <input type="submit" id="addTaskSubBtn" class="large-button" value="Create task">
     </form>
     <br><br>
 </div>

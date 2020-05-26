@@ -101,7 +101,7 @@ toDoButton.onclick = function() {
   const taskPopupWindow = document.getElementById("popUp");
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
-  fetch('/docs/taskPopUp.html')
+  fetch('/taskPopUp.html')
   .then(data => data.text())
   .then(html => document.getElementById('popUp').innerHTML = html)
   .then(() => {
@@ -269,7 +269,7 @@ function createTaskSettingsPopup(taskId) {
   const taskPopupWindow = document.getElementById("popUp");
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
-  fetch('/docs/taskSettingsPopUp.html')
+  fetch('/taskSettingsPopUp.html')
   .then(data => data.text())
   .then(html => document.getElementById('popUp').innerHTML = html)
   .then(() => {
@@ -287,7 +287,7 @@ function createTaskSettingsPopup(taskId) {
         if(memberList.length == 0) {
           removeAllChildren(memberTable);
           const errorMsgElement = document.createElement('p');
-          errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/docs/userRegister.html">here</a></p>`;
+          errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/userRegister.html">here</a></p>`;
           document.getElementById('modal').appendChild(errorMsgElement);
         }
 
