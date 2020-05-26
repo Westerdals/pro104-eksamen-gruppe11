@@ -53,7 +53,7 @@ function addTaskProject(event) {
     const priorities = document.getElementById("priorities").value;
     const taskStartDate = document.getElementById("taskStartDate").value;
     const taskEndDate = document.getElementById("taskEndDate").value;
-    const task = { id: generateUuid(), taskText, priorities, taskStartDate, taskEndtDate, delegate: [] }
+    const task = { id: generateUuid(), taskText, priorities, taskStartDate, taskEndtDate: taskEndDate, delegate: [] }
 
     const projects = getProjects();
 
@@ -248,3 +248,8 @@ createMembersDropdownList();
 // render all the projects
 renderProjectList();
 
+//Icon project adder
+
+function addProjectForm() {
+    document.getElementById("add-project-form").style = "block";
+}
