@@ -101,7 +101,7 @@ toDoButton.onclick = function() {
   const taskPopupWindow = document.getElementById("popUp");
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
-  fetch('/taskPopUp.html')
+  fetch('./taskPopUp.html')
   .then(data => data.text())
   .then(html => document.getElementById('popUp').innerHTML = html)
   .then(() => {
@@ -269,7 +269,7 @@ function createTaskSettingsPopup(taskId) {
   const taskPopupWindow = document.getElementById("popUp");
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
-  fetch('/taskSettingsPopUp.html')
+  fetch('./taskSettingsPopUp.html')
   .then(data => data.text())
   .then(html => document.getElementById('popUp').innerHTML = html)
   .then(() => {
