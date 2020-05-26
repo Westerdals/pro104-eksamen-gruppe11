@@ -1,0 +1,236 @@
+:root {
+	background-color: var(--lBlack);
+	font-family: Arial, Helvetica, sans-serif;
+	color: var(--Gray);
+	--green: #00ca4e;
+	--red: #ff605c;
+	--yellow: #ffbd44;
+	--lBlack: #2c2c2c;
+	--dBlack: #131313;
+	--placeholder: #3d3d3d;
+	--offWhite: #f3f3f3;
+	--Gray: #bbbbbb;
+	--dGray: #3d3d3d;
+	--postIt: #1c1c21;
+}
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	text-align: center;
+}
+
+body {
+    font-family: "Roboto Light", sans-serif;
+    background-color: var(--lBlack);
+    color: var(--offWhite);
+    margin:0;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center;  
+}
+
+/* BUTTON */
+#button {
+	width: 170px;
+	height: 50px;
+	border-radius: 30px;
+	background-color: var(--dBlack);
+	border: 1px solid var(--Gray);
+	outline: none;
+	color: var(--Gray);
+	font-weight: bold;
+}
+
+ #button:hover {
+	background-color: var(--Gray);
+	color: black;
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+
+
+.forms{
+    width: 500px;
+    height: 40px;
+    margin: 2rem auto;
+    border-radius: 30px;
+    position: relative;
+
+}
+
+
+#taskText{
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    font-style: italic;
+    margin:10px -17px;
+    padding: 1px 1px;
+    display: table-cell;
+    color: rgba(0,0,0,0.5);
+}
+
+label[for=taskText]{
+    position: relative;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: none;
+    right: 20px;
+}
+
+#priorities{
+    border-radius:5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    margin-left: 85px;
+    padding: 1px 1px;
+    display: table-cell;
+}
+
+label[for=priorities]{
+    position: relative;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration:none;
+    left:80px;
+}
+
+#priority{
+
+}
+
+
+#taskStartDate{
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    margin:10px -10px;
+    padding: 1px 1px;
+    display: table-cell;
+
+}
+
+label[for=taskStartDate]{
+    position: relative;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration: none;
+    right: 15px;
+}
+
+
+
+#taskEndDate{
+    border-radius:5px;
+    border: black solid 1px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    margin-left: 62px;
+    padding: 1px 1px;
+    display: table-cell;
+}
+
+label[for=taskEndDate]{
+    position: relative;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: "Roboto Light",sans-serif;
+    text-decoration:none;
+    left: 60px;
+}
+
+.delegateTasks{
+    position: relative;
+    padding: 100px 100px;
+    margin:80px;
+    text-align: center;
+}
+
+h3{
+    font-family: "Roboto Light",sans-serif;
+    font-style:normal;
+    font-weight: normal;
+    color:var(--dBlack);
+    font-size: 23px;
+}
+
+#userList{
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 155px;
+    height: 30px;
+    padding: 1px 1px;
+    display: table-cell;
+    margin-right:15px;
+}
+
+label[for=userList]{
+    position: relative;
+    text-decoration:none;
+    right:8px;
+}
+
+
+#taskList{
+    border-radius:5px;
+    border: black solid 1px;
+    width: 160px;
+    height: 30px;
+    margin-left: 30px;
+    padding: 1px 1px;
+    display: table-cell;
+}
+
+label[for=taskList]{
+    position: relative;
+    text-decoration:none;
+    left: 25px;
+}
+input[value="Create Task"]{
+}
+
+input[value="Submit"]{
+    display:block;
+    padding: 0.5em 1em;
+    margin: 2em 13em;
+    position: relative;
+    width:97px;
+    height:30px;
+    border-radius: 2em;
+    border: black solid 1px;
+    box-sizing: border-box;
+    font-family: "Roboto Light",sans-serif;
+    float: right;
+    left: 90px;
+    font-weight: 300;
+    text-transform:none;
+    text-align: center;
+    color:var(--dBlack);
+    background-color:var(--Gray);
+    opacity: 90%;
+    transition: all 0.2s;
+
+}
+input[value="Submit"]:hover{
+    background-color:var(--dGray);
+    color:var(--offWhite);
+    opacity: 80%;
+}
+
