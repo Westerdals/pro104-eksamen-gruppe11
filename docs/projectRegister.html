@@ -18,8 +18,9 @@
         <div>
             <!-- Register new Project -->
             <form class="create-project-forms" onsubmit="createProject(event)">
-                <h1>Register new Project</h1>
+                    <h1>Register new Project</h1>
                 <div id="status" style="display: none;"></div>
+
 
                 <div class="newProjectRegister">
                     <!-- Adding Project id and Project Name -->
@@ -48,7 +49,6 @@
             </form>
             </div>
 
-        <div id="styleBoxes" classList="projectBoxes" ></div>
 
 
 
@@ -65,7 +65,7 @@
 
                <form class="add-task-form" onsubmit="addTaskProject(event)">
                     <h4>Opprett Oppgaver</h4>
-                    <label for="addTask">Add Task</label>
+                    <label>Add Task</label>
                     <input type="text" id="taskText" placeholder="Add task" required>
                     <label for="priority">Choose priority:</label>
                     <input list="priority" name="priorities" id="priorities">
@@ -79,14 +79,17 @@
                   <!-- Adding start and end date for the Project -->
                   <label for="taskStartDate">Start Date</label>
                     <input type="date" id="taskStartDate" name="taskStartDate" required>
-                    <label for="taskEndtDate">End Date</label>
+                    <label>End Date</label>
                     <input type="date" id="taskEndDate" name="taskEndDate" required>
                     <br>
                     <input class="add-delegate-project__submit" type="submit">
                 </form>
             </div>
 
-        </div>
+        <div id="styleBoxes" classList="projectBoxes" ></div>
+
+
+    </div>
 
 
         <div id="project-container"></div>

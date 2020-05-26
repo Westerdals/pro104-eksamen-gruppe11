@@ -130,7 +130,7 @@ function isValidProjectInput() {
     if (document.getElementById("projectName").value != "" && document.getElementById("startDate").value != "" &&
         document.getElementById("endDate").value != "" && document.getElementById("projectDesc").value != "") {
 
-        document.querySelector(".add-task-form").style.display = "block";
+        document.querySelector(".add-task-form").style.display = "inherit";
 
         // Add delegate task Popup by changing display
         document.querySelector(".add-delegate-project__submit").addEventListener('click', () => {
@@ -200,7 +200,7 @@ function showAddProjectDetails() {
 
 function showStatusMessage(message, isSuccess) {
     const statusBox = document.getElementById('status');
-    statusBox.style.display = 'block';
+    statusBox.style.display = 'inherit';
 
     if (isSuccess) {
         statusBox.style.backgroundColor = '#00ca4e';

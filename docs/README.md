@@ -61,24 +61,21 @@ The concept sketch, was one of our initial steps in our brainstorming process of
 The reason behind creating a concept sketch,was because we wanted to visualize the project together from the start,
 which helped our team to shape/share our ideas, and to get a clear idea of what kind of design we will go for. 
 Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. <br/>
- ![](images/conceptSc.gif)
+ ![](images/conceptGif.gif)
  
 
 <a name="development"></a>
 ## Development methodologies
 
-* Use of a Kanban Board <br/>
-The purpose of Kanban is to create continuous change and improvements.Kanban is used to discuss
-process and make suggestions for improvements.
-By using the Kanban Board, we have made a preparation for the upcoming work during this project. 
-Since this is a digital group project, and we were not able to meet in person due to COVID-19, we found
-that the best way to create a Kanban Board will be using an online tool. Because of that, we choose
-to use Trello, which is a collaboration tool that organizes projects into boards.
-By using the Kanban Board, we did have an overview on what's we have been working on,who's working on what,
-and the work process/progress. Once we were done with the given task, we gave the status to the task as "completed", and 
-all of the tasks have been assigned their own deadline.
-![](images/kanbanBoard.png)
-![](images/kanbanBoard2.png)
+ We have been using the Kanban Board. 
+ The purpose of Kanban is to create continuous change and improvements.Kanban is used to discuss
+ process and make suggestions for improvements, and Kanban Board gives the opportunity to be prepared for the upcoming work during the project. 
+ Our inspiration comes from using Trello for this project, which is a collaboration tool that organizes projects into boards.
+ By using the Kanban Board, we had an overview on what's we have been working on,who's working on what,
+ and the work process/progress. Once we were done with the given task, we gave the status to the task as "completed", and 
+ all of the tasks have been assigned their own deadline.Considering that Kanban Board is an agile project managment tool,which helps to visualize
+ work, limit work-in-progress, and maximize efficiency,we chose to include Kanban Board in our responsive app,in order to give it a
+ better structure and overview of the different parts of the project. "toDew" uses post-it cards. 
 
 
 <a name="prototype"></a>
@@ -86,11 +83,26 @@ all of the tasks have been assigned their own deadline.
 
 * An interactive mockup of our web design.
 * High-fidelity visual version of the app,that allows you to link between pages.<br/>
-* [Prototype](https://xd.adobe.com/view/d473a8d5-681e-4022-612c-0780508b4732-a242/?fullscreen) shows how the plan was that our app would work/look like before we build it up.
+* [Prototype](https://xd.adobe.com/view/d473a8d5-681e-4022-612c-0780508b4732-a242/?fullscreen) shows how the plan was that our app would work/look like before we even build it up.
  
  
 <a name="logo"></a>
 ## Logo
+
+- We wanted to include an recognizable graphic design element, that will identify our own website, and hopefully increase our own app recognition.
+  Considering that the overall design of the website itself is very simple, clean and user-friendly, we focused on creating a logo that will be simple,
+  and easy to recognize, as well as our logo to be associated with the product( the responsive app) it represents.
+  While designing the logo, we tok in observation the name of the app, and created the logo based on it.
+  The name of the app itself, came from "toDo", which basically means that it contains all of the tasks that need to be completed, as well as to accomplish,overview and
+  plan the project. Given that the pronunciation of "toDo" and "toDew" is very similar, we gave the name to our app to be "toDew", which symbolizes both
+  purity(simple design), freshness(recently made) or power to refresh(reminder), and toDo list.
+  We have decided to go for "Combination Mark" logo, by including the Water-drop symbol, and the name of the app. The "Water Drop"
+  has an intertwined design where multiple shapes are combined together in one water drop, which again gives association of something in common and easy merging
+  in order to achieve a common goal. The color that we used for our logo is mostly "Blue", which is often associated with harmony,trust and stability.Considering that, 
+  we strove to deliver an app will have an visual harmony, will be stable, easy to use and in other words, an application which our users can trust/count on.
+  
+  
+
 
 
 <a name="class"></a>
