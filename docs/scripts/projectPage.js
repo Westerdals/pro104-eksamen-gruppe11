@@ -323,7 +323,7 @@ function createMemberResponsibilityTable(task) {
   if(memberList.length == 0) {
     removeAllChildren(memberTable);
     const errorMsgElement = document.createElement('p');
-    errorMsgElement.innerHTML = `<p>You have not registered any members. You can do that <a href="/userRegister.html">here</a></p>`;
+    errorMsgElement.innerHTML = `<p>You have not registered any members. You can do that <a href="./userRegister.html">here</a></p>`;
     document.getElementById('modal').appendChild(errorMsgElement);
   }
 
