@@ -120,6 +120,19 @@ function renderProjectList() {
 renderProjectList();
 
 // Icon project adder
-function openProjectForm() {
-    document.getElementById("add-project-form").style = "block";
+let projectFormOpened = false;
+function openCloseProjectForm(element) {
+    const icon = document.getElementById('openCloseIcon');
+    const projectContainer = document.getElementById("add-project-form");
+
+    if(projectFormOpened) {
+        projectContainer.style.display = "none";
+        icon.src = "./images/plus.png";
+        icon.alt = "Click to open create project dialog";
+    } else {
+        projectContainer.style.display = "block";
+        icon.src = "./images/minus.png";
+        icon.alt = "Click close create project dialog";
+    }
+    projectFormOpened = projectFormOpened ? false : true;
 }
