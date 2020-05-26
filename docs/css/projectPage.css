@@ -294,7 +294,8 @@ h1 {
 	z-index: 2;
 	border-radius: 12px;
 	border: black solid 2px;
-  color: var(--Gray);
+	color: var(--Gray);
+	overflow: auto;
 }
 
  /* INNER POPUP */
