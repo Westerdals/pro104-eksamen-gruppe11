@@ -50,8 +50,7 @@ Pro104 WebProject Exam
 * The program follows a clean line when it comes to design,so that tasks are in focus. 
 * User-friendly.
 * Visual aid, neat and intuitive to use. <br/>
-<ins> This web app includes the following pages and corresponding functionality: </ins>
-![](images/Skisse.jpg)
+
 
 
 <a name="concept"></a>
