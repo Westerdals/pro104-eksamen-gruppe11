@@ -53,7 +53,7 @@ function addTaskProject(event) {
     const priorities = document.getElementById("priorities").value;
     const taskStartDate = document.getElementById("taskStartDate").value;
     const taskEndDate = document.getElementById("taskEndDate").value;
-    const task = { id: generateUuid(), taskText, priorities, taskStartDate, taskEndtDate, delegate: [] }
+    const task = { id: generateUuid(), taskText, priorities, taskStartDate, taskEndtDate: taskEndDate, delegate: [] }
 
     const projects = getProjects();
 
@@ -223,6 +223,10 @@ function renderProjectList() {
     for (project of projectList) {
         let projectEl = document.createElement("div");
         let { ProjectID, endDate, projectDesc, projectName, startDate } = project;
+        projectEl.style.backgroundColor = "white";
+        projectEl.style.border = "solid green";
+        projectEl.style.borderRadius = "25px";
+        projectEl.style.margin = "1em";
 
         //The parts of the project that is shown on the webpage, inside the divs. 
         projectEl.innerHTML = `<a href="projectPage.html#${ProjectID}">
@@ -248,3 +252,8 @@ createMembersDropdownList();
 // render all the projects
 renderProjectList();
 
+//Icon project adder
+
+function addProjectForm() {
+    document.getElementById("add-project-form").style = "block";
+}
