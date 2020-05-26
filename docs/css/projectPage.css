@@ -14,6 +14,10 @@
 	--postIt: #1c1c21;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 h1 {
 	text-align: center;
 }
@@ -41,6 +45,7 @@ h1 {
 	background-color: var(--Gray);
 	color: black;
 	border: 2px solid black;
+	cursor: pointer;
 }
 
 #addTaskBtnDiv {
@@ -172,15 +177,32 @@ h1 {
 	width: 150px;
 	height: 150px;
 	margin: 20px;
-	overflow: scroll;
+	overflow: auto;
 	z-index: 1;
 	cursor: grab;
 	position: relative;
 	background-color: --dBlack;
-    background: radial-gradient(rgb(36, 34, 34), rgb(10, 9, 9));
-    box-shadow: 7px 2px 5px 2px black;
-    border:solid black;
-    border-radius: 20px;
+  background: radial-gradient(rgb(36, 34, 34), rgb(10, 9, 9));
+  box-shadow: 7px 2px 5px 2px black;
+  border:solid black;
+  border-radius: 20px;
+	scrollbar-width: thin;
+	scrollbar-color: var(--offWhite) var(--postIt);
+}
+  
+/* Chrome/Edge/Safari */
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--offWhite);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color:var(--postIt);
+	border-radius: 20px;
+	border: 3px solid var(--offWhite);
 }
 
 .header-for-tasks{

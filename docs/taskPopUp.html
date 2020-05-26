@@ -7,12 +7,11 @@
         <br>
         <br>
         <label for="priority">Choose priority:</label>
-        <input list="priority" name="priorities" id="priorities">
-        <datalist id="priority">
-            <option value="Low">
-            <option value="Medium">
-            <option value="High">
-        </datalist>
+        <select name="priorities" id="priorities">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
         <br>
         <br>
 
@@ -26,5 +25,6 @@
         <br>
         <input type="submit" id="addTaskSubBtn" class="large-button" value="Create task">
     </form>
+    <div id="status" style="display: none;"></div>
     <br><br>
 </div>
