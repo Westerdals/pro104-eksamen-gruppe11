@@ -89,6 +89,8 @@ function createTask(event) {
     refreshTaskDropdown();
 }
 
+const taskAddedMessage = document.getElementById("task-added");
+
 // Event Listener to check if DOM is on Change
 document.querySelector('#createdProject').addEventListener('change', (e) => {
     showTaskRegisterDetails();
@@ -122,11 +124,14 @@ document.querySelector('#createdProject').addEventListener('change', (e) => {
                     console.log('Added task to the user');
                     projectList[i].tasks.find(task => task === thisTask).delegate.push(selectedMember);
                     saveProjects(projectList);
+                    taskAddedMessage.innerHTML = `Done `;
                 }
             }
         }
     })
 });
+
+
 
 // Event Listener for delegating members to a project
 document.querySelector('.add-members-form__submit').addEventListener('click', (e) => {
@@ -145,7 +150,8 @@ document.querySelector('.add-members-form__submit').addEventListener('click', (e
                 console.log('Added User to the memberList');
                 project.memberList.push(memberList);
                 saveProjects(projectList);
-            }
+                
+                 }
         }
     }
 });
@@ -155,7 +161,9 @@ function showTaskRegisterDetails() {
     // Default is the element displayed none, but changing when
     document.querySelector('.create-task-form-submit').style.display = 'block';
     document.querySelector('.delegate-form-submit').style.display = 'block';
-    document.querySelector('.add-members-form').style.display = 'block';
+
+//We have not used the assign member to spesific project-feature, so we hide this for the user
+   // document.querySelector('.add-members-form').style.display = 'block';
 }
 
 //setatributes
