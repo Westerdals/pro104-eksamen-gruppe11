@@ -14,9 +14,19 @@
 	--postIt: #1c1c21;
 }
 
+* {
+	box-sizing: border-box;
+}
 
 h1 {
 	text-align: center;
+}
+
+#main-container {
+	display: flex;
+  z-index: 1;
+  margin: auto;
+  width: 1200px;
 }
 
 /* BUTTONS */
@@ -35,6 +45,7 @@ h1 {
 	background-color: var(--Gray);
 	color: black;
 	border: 2px solid black;
+	cursor: pointer;
 }
 
 #addTaskBtnDiv {
@@ -111,8 +122,7 @@ h1 {
 	background-color: var(--dBlack);
 }
 
-/*TEXT INPUT FIELDS */
-
+/* TEXT INPUT FIELDS */
 .small-textbox {
 	border-radius: 5px;
 	border: black solid 1px;
@@ -127,7 +137,6 @@ h1 {
 	text-align: center;
 	font-style: italic;
 	color: var(--dGray);
-
 }
 
 /* PROJECT OVERVIEW */
@@ -149,6 +158,7 @@ h1 {
 	margin-top: 5px;
 }
 
+/* STYLING TO THE ENTIRE DRAG AND DROP CONTAINER */
 #container {
 	background-color: var(--dBlack);
 	display: flex;
@@ -160,22 +170,69 @@ h1 {
 	position: absolute;
 	box-shadow: 3px 3px 25px 6px rgba(0,0,0,0.75);
 }
+
+/* STYLING TO THE TASK DIVS*/
 .post-it-divs {
 	display: inline-block;
 	width: 150px;
 	height: 150px;
 	margin: 20px;
-	overflow: scroll;
+	overflow: auto;
 	z-index: 1;
-	background-color: var(--postIt);
 	cursor: grab;
 	position: relative;
+	background-color: --dBlack;
+  background: radial-gradient(rgb(36, 34, 34), rgb(10, 9, 9));
+  box-shadow: 7px 2px 5px 2px black;
+  border:solid black;
+  border-radius: 20px;
+	scrollbar-width: thin;
+	scrollbar-color: var(--offWhite) var(--postIt);
+}
+  
+/* Chrome/Edge/Safari */
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--offWhite);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color:var(--postIt);
+	border-radius: 20px;
+	border: 3px solid var(--offWhite);
+}
+
+.header-for-tasks{
+	margin: 10px;
+	color: var(--Gray);
+}
+
+.priority-for-tasks{
+	margin: 10px;
+	font-size: small;
+	color: cadetblue;	
+}
+
+.responsible-for-tasks{
+	margin: 10px;
+	font-size: 14px;
+	color: rgb(31, 82, 141);	
+}
+
+.date-for-tasks{
+	color: var(--Gray);
+	font-size: x-small;
+	margin: 1px;
 }
 
 .post-it-divs::-webkit-scrollbar {
   display: none;
 }
 
+/* STYLING OF THE TASKS BORDERS */
 .post-it-divs.lowPriority {
 	border: 3px dotted var(--green);
 	border-radius: 5px;
@@ -190,6 +247,7 @@ h1 {
 	border: 2px solid var(--red);
 	border-radius: 5px;
 }
+/* STYLING TO THE DRAG AND DROP-ZONES */
 #todo-div {
 	border: 2px solid black;
 	flex: 1;
@@ -218,14 +276,10 @@ h1 {
 	z-index: 5;
 	z-index: 1;
 }
-#main-container {
-	display: flex;
-  z-index: 1;
-  margin: auto;
-  width: 1200px;
+
+.post-it-divs:active {
+	cursor: grabbing;
 }
-
-
 
 /* POPUP */
 #popUp {
@@ -264,19 +318,12 @@ h1 {
 	font-size: 30px;
 }
 
-
-
 #deleTaskDiv {
 	position: absolute;
 	margin-top: 200px;
 	text-align: center;
 	position: absolute;
 	width: 50%;
-}
-
-
-.post-it-divs:active {
-	cursor: grabbing;
 }
 
 #membersTable {
@@ -291,7 +338,6 @@ h1 {
 }
 
 /* TASK DATES */ 
-
 #taskEndtDate, #taskStartDate {
 	background-color: var(--dBlack);
 	color: var(--Gray);
@@ -306,7 +352,3 @@ h1 {
 #taskEndtDate {
 	margin-left: 39px;
 }
-
-
-
-

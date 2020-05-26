@@ -14,17 +14,14 @@
 	--postIt: #1c1c21;
 }
 
-
 main {
 display: grid;
 grid-template-columns: 25% 50% 25%;
 margin-top: 100px;  
 text-align: center;
-
 }
 
-
-/*  BUTTONS */
+/* BUTTONS */
 .large-button {
 	width: 170px;
 	height: 50px;
@@ -43,7 +40,6 @@ text-align: center;
   border: 2px solid black;
   cursor: pointer;
 }
-
 
 img {
   width: 200px;

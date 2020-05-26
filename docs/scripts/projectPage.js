@@ -42,6 +42,11 @@ if(selectedProject === null) {
     selectedProject = getSelectedProjectFromUrlHash();
   } else {
     console.log("No projects.");
+    const projectSelectorDiv = document.getElementById('projectSelector-div');
+    removeAllChildren(projectSelectorDiv);
+    const newElement = document.createElement('h3');
+    newElement.innerHTML = `Seems like you do not have any projects. Click <a href="./projectRegister.html">here</a> to get started!`;
+    projectSelectorDiv.appendChild(newElement);
   }
 } else {
   projectListEl.childNodes.forEach(child => {
@@ -51,8 +56,14 @@ if(selectedProject === null) {
   })
 }
 
-let tasks = getTasksForProject(selectedProject);
-renderTasks(tasks);
+if(selectedProject != null) {
+  let tasks = getTasksForProject(selectedProject);
+  renderTasks(tasks);
+} else {
+  // remove add task button since there are no projects..
+  const addTaskButtonDiv = document.getElementById('addTaskBtnDiv');
+  removeAllChildren(addTaskButtonDiv);
+}
 
 // When the project changes: create a new hash in the url and re-render all tasks
 projectListEl.onchange = (changeEvent) => {
@@ -184,14 +195,17 @@ function createTaskElement(task) {
 
   const startDate = new Date(task.taskStartDate);
   const startMonth = startDate.getMonth() < 10 ? `0${startDate.getMonth()}` : startDate.getMonth();
+  const startDay = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
   const dueDate = new Date(task.taskEndtDate);
   const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
+  const dueDay = dueDate.getDate() < 10 ? `0${dueDate.getDate()}` : dueDate.getDate();
   const delegates = task.delegate ?? [];
 
-  element.innerHTML += `<h3>${task.taskText}</h3>`;
-  element.innerHTML += `<p>Start date: ${startDate.getDate()}.${startMonth}.${startDate.getFullYear()}</p>`;
-  element.innerHTML += `<p>Due date: ${dueDate.getDate()}.${dueMonth}.${dueDate.getFullYear()}</p>`;
-  element.innerHTML += `<p>Priority: ${task.priorities}</p>`;
+  element.innerHTML += `<h4 class="header-for-tasks">${task.taskText}</h4>`;
+  element.innerHTML += `<p class="priority-for-tasks">Priority: <b>${task.priorities}<b></p>`;
+  element.innerHTML += `<p class="date-for-tasks">Start date: ${startDay}.${startMonth}.${startDate.getFullYear()}</p>`;
+  element.innerHTML += `<p class="date-for-tasks"> Due date: ${dueDay}.${dueMonth}.${dueDate.getFullYear()}</p>`;
+ 
   
   if(delegates.length != 0){
     let taskDelegates = ""
@@ -203,9 +217,10 @@ function createTaskElement(task) {
         console.error(`Could not find member with id: ${delegate}`);
       }
     });
-    element.innerHTML += `<p>Responsible: ${taskDelegates.slice(0, -2)}</p>`;
+    element.innerHTML += `<p class="responsible-for-tasks"> ${taskDelegates.slice(0, -2)}</p>`;
   }
   return element;
+
 }
 
 // Function to render (and re-render) tasks on the board
@@ -237,32 +252,47 @@ function createTask(event) {
 
   const taskText = document.getElementById('taskText').value;
   const priorities = document.getElementById('priorities').value;
-  const taskStartDate = document.getElementById('taskStartDate').value;
-  const taskEndtDate = document.getElementById('taskEndtDate').value;
+  const taskStartDateAsString = document.getElementById('taskStartDate').value;
+  const taskEndDateAsString = document.getElementById('taskEndtDate').value;
 
   const task = {
       id: generateUuid(),
       taskText,
       priorities,
-      taskStartDate,
-      taskEndtDate,
+      taskStartDate: taskEndDateAsString,
+      taskEndtDate: taskEndDateAsString,
       delegate: []
   };
 
-  const projectList = getProjects();
-  projectList.forEach((el) => {
-      if (el.ProjectID === selectedProject) {
-          el.tasks.push(task);
-      }
-  });
+  const taskStartDate = new Date(taskStartDateAsString);
+  const taskEndDate = new Date(taskEndDateAsString);
 
-  saveProjects(projectList);
-  renderTasks(getTasksForProject(selectedProject));
+  const project = getProjectById(selectedProject);
+  const projectStartDate = new Date(project.startDate);
+  const projectEndDate = new Date(project.endDate);
 
-  // Close the popup
-  const taskPopupWindow = document.getElementById("popUp");
-  taskPopupWindow.style.zIndex = "-1";
-  taskPopupWindow.style.display = "none";
+  if (taskStartDate < projectStartDate) {
+      showStatusMessage("Task can't start before project start..", false);
+  } else if (taskEndDate > projectEndDate) {
+      showStatusMessage("Task can't end after project end..", false);
+  } else if (taskStartDate > taskEndDate) {
+      showStatusMessage("Task can't end before start date..", false);
+  } else {
+    const projectList = getProjects();
+    projectList.forEach((el) => {
+        if (el.ProjectID === selectedProject) {
+            el.tasks.push(task);
+        }
+    });
+  
+    saveProjects(projectList);
+    renderTasks(getTasksForProject(selectedProject));
+  
+    // Close the popup
+    const taskPopupWindow = document.getElementById("popUp");
+    taskPopupWindow.style.zIndex = "-1";
+    taskPopupWindow.style.display = "none";
+  }
 }
 
 function createTaskSettingsPopup(taskId) {
@@ -279,39 +309,105 @@ function createTaskSettingsPopup(taskId) {
           taskPopupWindow.style.display = "none";
           renderTasks(getTasksForProject(selectedProject));
         }
-        
-        const memberList = getMembers();
-        const memberTable = document.getElementById('membersTable');
+
         const task = getTasksForProject(selectedProject).find(task => task.id == taskId);
-
-        if(memberList.length == 0) {
-          removeAllChildren(memberTable);
-          const errorMsgElement = document.createElement('p');
-          errorMsgElement.innerHTML = `<p>You have not registered any members. Please do that first <a href="/userRegister.html">here</a></p>`;
-          document.getElementById('modal').appendChild(errorMsgElement);
-        }
-
-        memberList.forEach(member => {
-          const tableRow = document.createElement('tr');
-          const tableCellMember = document.createElement('td');
-          const tableCellResponsible = document.createElement('td');
-
-          tableCellMember.innerText = `${member.firstName} ${member.lastName}`;
-
-          const responsibleCheckBox = document.createElement('input');
-          responsibleCheckBox.type = 'checkbox';
-          
-          responsibleCheckBox.value = member.id;
-          responsibleCheckBox.checked = task.delegate.find(d => d.userId == member.id) ? true : false;
-
-          tableCellResponsible.appendChild(responsibleCheckBox);
-          tableRow.appendChild(tableCellMember);
-          tableRow.appendChild(tableCellResponsible);
-          memberTable.appendChild(tableRow);
-
-          responsibleCheckBox.onclick = (event) => event.target.checked ? delegateMemberToTask(selectedProject, task, event.target.value) : removeMemberFromTask(selectedProject, task, event.target.value)
-        });
+        createMemberResponsibilityTable(task);
+        createPrioritySelector(task);
+        createTaskStartDateSelector(task);
+        createTaskEndDateSelector(task);
   });
+}
+
+function createMemberResponsibilityTable(task) {
+  const memberList = getMembers();
+  const memberTable = document.getElementById('membersTable');
+
+  if(memberList.length == 0) {
+    removeAllChildren(memberTable);
+    const errorMsgElement = document.createElement('p');
+    errorMsgElement.innerHTML = `<p>You have not registered any members. You can do that <a href="./userRegister.html">here</a></p>`;
+    document.getElementById('modal').appendChild(errorMsgElement);
+  }
+
+  memberList.forEach(member => {
+    const tableRow = document.createElement('tr');
+    const tableCellMember = document.createElement('td');
+    const tableCellResponsible = document.createElement('td');
+
+    tableCellMember.innerText = `${member.firstName} ${member.lastName}`;
+
+    const responsibleCheckBox = document.createElement('input');
+    responsibleCheckBox.type = 'checkbox';
+    
+    responsibleCheckBox.value = member.id;
+    responsibleCheckBox.checked = task.delegate.find(d => d.userId == member.id) ? true : false;
+
+    tableCellResponsible.appendChild(responsibleCheckBox);
+    tableRow.appendChild(tableCellMember);
+    tableRow.appendChild(tableCellResponsible);
+    memberTable.appendChild(tableRow);
+
+    responsibleCheckBox.onclick = (event) => event.target.checked ? delegateMemberToTask(selectedProject, task, event.target.value) : removeMemberFromTask(selectedProject, task, event.target.value);
+  });
+}
+
+function createPrioritySelector(task) {
+  const priorityElement = document.getElementById('taskPriority');
+  createOption(priorityElement, 'Low', 'Low');
+  createOption(priorityElement, 'Medium', 'Medium');
+  createOption(priorityElement, 'High', 'High');
+  
+  priorityElement.childNodes.forEach(option => {
+    if(option.value == task.priorities) {
+      option.selected = true;
+    }
+  })
+
+  priorityElement.onchange = (event) => setTaskPriority(selectedProject, task, event.target.value);
+}
+
+function createTaskStartDateSelector(task) {
+  const taskStartDateElement = document.getElementById('taskStartDate');
+  taskStartDateElement.value = task.taskStartDate;
+  taskStartDateElement.onchange = (event) => {
+    const project = getProjectById(selectedProject);
+    const taskStartDate = new Date(event.target.value);
+    const taskEndDate = new Date(document.getElementById('taskEndtDate').value);
+    const projectStartDate = new Date(project.startDate);
+
+    if (taskStartDate < projectStartDate) {
+      showStatusMessage("Task can't start before project start..", false);
+      taskStartDateElement.value = task.taskStartDate;
+    } else if(taskStartDate > taskEndDate){
+      showStatusMessage("Task can't start can't start before task end..", false);
+      taskStartDateElement.value = task.taskStartDate;
+    } else {
+      document.getElementById('status').style.display = 'none';
+      setTaskStartDate(selectedProject, task, event.target.value);
+    }
+  }
+}
+
+function createTaskEndDateSelector(task) {
+  const taskEndDateElement = document.getElementById('taskEndtDate');
+  taskEndDateElement.value = task.taskEndtDate;
+  taskEndDateElement.onchange = (event) => {
+    const project = getProjectById(selectedProject);
+    const taskStartDate = new Date(document.getElementById('taskStartDate').value);
+    const taskEndDate = new Date(event.target.value);
+    const projectEndDate = new Date(project.endDate);
+
+    if (taskEndDate > projectEndDate) {
+      showStatusMessage("Task can't end after project end..", false);
+      taskEndDateElement.value = task.taskEndtDate;
+    } else if (taskStartDate > taskEndDate) {
+      showStatusMessage("Task can't end before start date..", false);
+      taskEndDateElement.value = task.taskEndtDate;
+    } else {
+      document.getElementById('status').style.display = 'none';
+      setTaskEndDate(selectedProject, task, event.target.value);
+    }
+  }
 }
 
 
