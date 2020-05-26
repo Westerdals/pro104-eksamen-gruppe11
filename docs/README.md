@@ -220,7 +220,7 @@ We have been using different technologies to create this app, in order for the a
 * In one element, included attributes are added in standard order, other additional attributes are added in alphabetical order.
 * Code blocks that are child elements are always created at three spaces (or a tab) corresponding to their parent element.
 
-//bilde fra en del av koden kommer her for å vise eksempel
+![](images/htmlComments.png)
 
 **CSS**
 * Since elements referenced in HTML use camelCase, the selector in CSS is also used with camelCase.
@@ -229,18 +229,22 @@ We have been using different technologies to create this app, in order for the a
 * New line for each declaration.
 * "property" and "value" are written on the same line and end with a semicolon.
 
-//bilde fra en liten del av koden kommer her for å vise eksempel
+![](images/cssComments.png)
 
 **JavaScript**
 * Camelcase is used when naming all statements.
 * Shortening already short words is avoided.
 * Only known abbreviations are allowed.
-* Functions,conditions and loops always use spaces between operators. Use spaces before the opening bracket and place it on the first line.
+* Functions,conditions and loops always use spaces sbetween operators. Use spaces before the opening bracket and place it on the first line.
   The end bracket places a new line after the content.
 * Statements ends with a semicolon.
 * Comments are written briefly and concisely in English using "//".
 * Comments are used above the start tag of the elements.
 
-//bilde fra en del av koden kommer her for å vise eksempel
+![](images/jsComments.png)
+
+
+
+
 
 
