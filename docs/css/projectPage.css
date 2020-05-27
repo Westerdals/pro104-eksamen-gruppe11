@@ -335,7 +335,22 @@ body {
 	z-index: 2;
 	border-radius: 12px;
 	border: black solid 2px;
-  color: var(--Gray);
+	color: var(--Gray);
+	overflow: auto;
+}
+
+#overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 2;
+	cursor: pointer;
 }
 
  /* INNER POPUP */

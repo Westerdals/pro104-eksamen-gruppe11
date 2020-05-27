@@ -77,17 +77,3 @@ body {
 	color: var(--dGray);
 }
 
-#registeredMembersDropdown{
-    color: var(--Gray);
-	background-color: var(--dBlack);
-	border-radius: 20px;
-	border: 2px solid rgb(31, 82, 141);
-    width: 250px;
-    text-align: center;
-    font-size: medium;  
-}
-
-option{
-    margin-bottom: 3px;
-}
-

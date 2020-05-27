@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <link rel="stylesheet" href="./css/projectRegister.css" />
     <link rel="stylesheet" href="./css/navBar.css">
 
@@ -26,8 +24,8 @@
     <div>
 
         <div>
-            <a onclick="openProjectForm()" style="cursor: pointer;">
-                <ion-icon name="add-circle-outline" class="add"></ion-icon>
+            <a onclick="openCloseProjectForm(this)" style="cursor: pointer;">
+                <img id="openCloseIcon" alt="Click to open create project dialog" src="./images/plus.png" />
             </a>
         </div>
 
@@ -35,31 +33,32 @@
 
         <div class=grid id="add-project-form" style="display: none" ;>
             <form class="create-project-forms" onsubmit="createProject(event)">
-                <h1>Register new Project</h1>
+                <h1>Create a new Project</h1>
                 <div>
                     <!-- Adding Project id and Project Name -->
                     <label for="projectName">Project Name</label>
-                    <input type="text" placeholder="Enter Project Name" id="projectName" required>
+                    <input type="text" placeholder="Enter Project Name"  class="small-textbox" id="projectName" required>
                 </div>
 
                 <!-- Adding start and end date for the Project -->
                 <div>
                     <label for="startDate">Start Date</label>
-                    <input type="date" id="startDate" required>
+                    <input type="date" id="startDate" class="small-textbox" required>
                 </div>
                 <div>
                     <label for="endDate">End Date</label>
-                    <input type="date" id="endDate" required>
+                    <input type="date" id="endDate"  class="small-textbox" required>
                 </div>
 
                 <!-- Project description -->
                 <div>
                     <h4>Project Description</h4>
-                    <textarea name="" id="projectDesc" cols="40" rows="10"></textarea>
+                    <textarea name="" id="projectDesc" class="small-textbox" cols="40" rows="10"></textarea>
                 </div>
 
-                <button type="submit" class="add-task-project__submit" id="projectRegBtn" style="cursor: pointer;">Opprett Prosjekt</button>
+                <button type="submit" class="add-task-project__submit" id="projectRegBtn" style="cursor: pointer;">Create project</button>
                 <input type="reset" value="Reset" style="cursor: pointer;">
+                <br>
             </form>
         </div>
     </div>
