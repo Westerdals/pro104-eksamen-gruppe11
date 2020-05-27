@@ -1,37 +1,45 @@
-## Group 11 
-Pro104 WebProject Exam
+ ## Group 11 ![](images/logoHeading.png)
+ Pro104 WebProject Exam
 
 # ToDew
 // Her skal vi ha bilde/giff av nettsida
 
 
 ## Table of contents
-1. [About. ](#about)
 
-2. [Concept. ](#concept)
+1. [Prerequisites. ](#prerequisites)
 
-3. [Development methodologies. ](#development)
+2. [About. ](#about)
 
-4. [Prototype. ](#prototype)
+3. [Concept. ](#concept)
 
-5. [Logo. ](#logo)
+4. [Development methodologies. ](#development)
 
-6. [Class Description. ](#class)
+5. [Prototype. ](#prototype)
 
-7. [Requirements. ](#requirements)
+6. [Logo. ](#logo)
 
-8. [Installation. ](#install)
+7. [Class Description. ](#class)
 
-9. [Usage. ](#usage)
+8. [Requirements. ](#requirements)
 
-10. [Mobile support. ](#mobile)
+9. [Installation. ](#install)
 
-11. [Technology used. ](#technology) 
+10. [Usage. ](#usage)
 
-11. [Code Style. ](#code)
+11. [Mobile support. ](#mobile)
+
+12. [Technology used. ](#technology) 
+
+13. [Code Style. ](#code)
 
 
+<a name="prerequisites"></a>
+## Prerequisites
 
+**Before you continue, ensure you have meet the following requirements:**
+* You have installed an browser for display like Firefox, Google Chrome, Opera, Safari etc.
+* Text editor
 
 <a name="about"></a>
 ## About
