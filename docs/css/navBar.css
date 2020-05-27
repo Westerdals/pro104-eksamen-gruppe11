@@ -29,6 +29,12 @@
   margin: auto;
 }
 
+.navbar img:hover {
+  outline: none;
+  cursor: pointer;
+
+}
+
 .navbar a {
   float: left;
   color: var(--Gray);

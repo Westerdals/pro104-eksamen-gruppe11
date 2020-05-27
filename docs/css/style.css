@@ -26,19 +26,18 @@ text-align: center;
 	width: 170px;
 	height: 50px;
 	border-radius: 30px;
-	background-color: var(--dBlack);
-	border: 1px solid var(--Gray);
+	background-color: rgb(31, 82, 141);
+    color: black;
+	border: 2px solid black;
 	outline: none;
-	color: var(--Gray);
-  font-weight: bold;
-  margin-top: 7px;
+  	font-weight: bold;
+  	margin-top: 7px;
 }
 
 .large-button:hover {
-  background-color: var(--Gray);
-  color: black;
-  border: 2px solid black;
-  cursor: pointer;
+	color: var(--Gray);
+	border: 2px solid var(--Gray);
+	cursor: pointer;
 }
 
 img {

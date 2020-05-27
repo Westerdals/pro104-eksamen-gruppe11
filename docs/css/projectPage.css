@@ -24,7 +24,18 @@ body {
 	text-align: center;
 	position: relative;
 }
+#project-manager-header{
+	color: rgb(56, 135, 224) ;
+}
+#project-description-header{
+	color:var(--Gray);
+	
+}
 
+time{
+	color: var(--Gray);
+	font-weight: bold;
+}
 
 /* BUTTONS */
 .large-button {
@@ -95,7 +106,7 @@ body {
 	color: var(--Gray);
 	background-color: var(--dBlack);
 	outline: none;
-	width: 100px;
+	width: 150px;
 }
 
 #priorities {
