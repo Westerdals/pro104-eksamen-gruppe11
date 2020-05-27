@@ -1,5 +1,6 @@
- ## Group 11 ![](images/logoHeading.png)
- Pro104 WebProject Exam
+ ## Group 11 ! ![](images/logoHeadingNy.png)
+ Pro104 WebProject Exam 
+
 
 # ToDew
 // Her skal vi ha bilde/giff av nettsida
@@ -34,12 +35,15 @@
 13. [Code Style. ](#code)
 
 
+
+
 <a name="prerequisites"></a>
 ## Prerequisites
 
 **Before you continue, ensure you have meet the following requirements:**
 * You have installed an browser for display like Firefox, Google Chrome, Opera, Safari etc.
 * Text editor
+* NodeJS
 
 <a name="about"></a>
 ## About
@@ -56,9 +60,12 @@
   so it should be easy to go back and know who has worked on what. 
 * The possibility to easy change the owner of the tasks/allocate the tasks/switch tasks and leave tasks.
 * The program follows a clean line when it comes to design,so that tasks are in focus. 
+* The app includes intuitive color choices for importance-red,green and yellow.
+* Calendar layout.
+* Use of drag and drop.
+* Saving information in Local Storage.
 * User-friendly.
 * Visual aid, neat and intuitive to use. <br/>
-
 
 
 <a name="concept"></a>
@@ -68,8 +75,9 @@ We created a wireframe,that includes where our components in the responsive app 
 The concept sketch, was one of our initial steps in our brainstorming process of creating this app.
 The reason behind creating a concept sketch,was because we wanted to visualize the project together from the start,
 which helped our team to shape/share our ideas, and to get a clear idea of what kind of design we will go for. 
-Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. <br/>
- 
+Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. 
+We have weighed in, both for and against the various solutions and come to the conclusion that a Kanban-concept where post it- cards.
+are color-coded by priority and are able to be moved according to how they fit into the project, is something we would like to go for! <br/>
 ![](images/conceptScGif)
  
 
@@ -90,6 +98,7 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
 <a name="prototype"></a>
 ## Prototype
 
+* Adobe XD used.
 * An interactive mockup of our web design.
 * High-fidelity visual version of the app,that allows you to link between pages.<br/>
 * [Prototype](https://xd.adobe.com/view/d473a8d5-681e-4022-612c-0780508b4732-a242/?fullscreen) shows how the plan was that our app would work/look like before we even build it up.
@@ -105,12 +114,12 @@ Because of that, we created a quick and simple way to clarify our ideas and keep
   plan the project. Considering that the pronunciation of "toDo" and "toDew" is very similar, we gave the name to our app to be "toDew", which symbolizes both
   purity(simple design), freshness(recently made) or power to refresh(reminder), and toDo list.
   We have decided to go for "Combination Mark" logo, by including the Water-drop symbol, and the name of the app. The "Water Drop"
-  has an intertwined design where multiple shapes are combined together in one water drop, which again gives association of something in common and easy merging
+  has an intertwined design where two shapes are combined together in one water drop, which again gives association of something in common and easy merging
   in order to achieve a common goal-team collaboration. The color that we used for our logo is mostly "Blue", which is often associated with harmony,trust and stability.Considering that, 
   we strove to deliver an app that will have an visual harmony, will be stable and easy to use. In other words, 
   we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on. <br/>
  
- ![](images/LogoToDewSc.png)
+ ![](images/LogoToDew.png) 
 
  **Adobe Illustrator is used for designing the logo** 
   
@@ -147,7 +156,6 @@ This class have the function to print out the registered members. <br/>
 * Mobile device / Laptop / Desktop
 
 
-
 <a name="install"></a>
 ## Installation
 First of all, you have to have access to Github.To compile/run this project, first you need to clone/download it from Github.
@@ -176,9 +184,9 @@ who is working on what,set deadlines and give reminders.
 To be able to create a project, you need to specify the name of the project. Then you will be asked to add Start and End date, and project description.
 Once the project is created, you have the opportunity to click on the project that have been created, and you will be directly moved to Project manager page.
 (as well, as you have the opportunity to go to project-manager page by use of the navbar).
-In there you create a tasks with start/end date and priority level. You can also create you own team, by click on teams once you are in Project Manager page,
+In there you can create a tasks with start/end date and priority level. You can also create you own team, by click on teams once you are in Project Manager page,
 you can add members to your team, add roles and tasks as well. Once the tasks are created you have also the ability to move them through the different stages.
-During the project you have ability to change the status from not started, to work-in-progress og finished. As well as you have ability
+During the project you have ability to change the status on tasks from not started, to work-in-progress og finished. As well as you have ability
 to see which member is working on what. 
 Once,you go to profile, you be able to see user information, as well as user's active projects. 
 
@@ -252,6 +260,10 @@ We have been using different technologies to create this app, in order for the a
 * Comments are used above the start tag of the elements.
 
 ![](images/jsComments.png)
+
+
+
+
 
 
 
