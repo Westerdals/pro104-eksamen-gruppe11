@@ -117,7 +117,7 @@ are color-coded by priority and are able to be moved according to how they fit i
   has an intertwined design where two shapes are combined together in one water drop, which again gives association of something in common and easy merging
   in order to achieve a common goal-team collaboration. The color that we used for our logo is mostly "Blue", which is often associated with harmony,trust and stability.Considering that, 
   we strove to deliver an app that will have an visual harmony, will be stable and easy to use. In other words, 
-  we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on. <br/>
+  we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on.  <br/>
  
  ![](images/LogoToDew.png) 
 
@@ -253,7 +253,7 @@ We have been using different technologies to create this app, in order for the a
 * Camelcase is used when naming all statements.
 * Shortening already short words is avoided.
 * Only known abbreviations are allowed.
-* Functions,conditions and loops always use spaces sbetween operators. Use spaces before the opening bracket and place it on the first line.
+* Functions,conditions and loops always use spaces between operators. Use spaces before the opening bracket and place it on the first line.
   The end bracket places a new line after the content.
 * Statements ends with a semicolon.
 * Comments are written briefly and concisely in English using "//".

@@ -4,8 +4,6 @@
     <list default="true" id="1c5f410c-a6f9-48ea-a52d-b8b841e3f704" name="Default Changelist" comment="Merge branch 'master' of https://github.com/Westerdals/pro104-eksamen-gruppe-11 into MakkeBranch&#10;&#10;# Conflicts:&#10;#&#9;docs/css/projectRegister.css&#10;#&#9;docs/projectRegister.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/LogoToDewSc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/logoHeading.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
