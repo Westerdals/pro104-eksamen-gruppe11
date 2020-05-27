@@ -24,12 +24,13 @@ body {
 	text-align: center;
 	position: relative;
 }
+
 #project-manager-header{
 	color: rgb(56, 135, 224) ;
 }
+
 #project-description-header{
-	color:var(--Gray);
-	
+	color:var(--Gray);	
 }
 
 time{
@@ -283,6 +284,7 @@ time{
 	border: 2px solid var(--red);
 	border-radius: 5px;
 }
+
 /* STYLING TO THE DRAG AND DROP-ZONES */
 #todo-div {
 	border: 2px solid black;
@@ -290,12 +292,14 @@ time{
 	position: relative;
 	z-index: 1;
 }
+
 #during-div {
 	border: 2px solid black;
 	flex: 1;
 	position: relative;
 	z-index: 1;
 }
+
 #finished-div {
 	border: 2px solid black;
 	flex: 1;

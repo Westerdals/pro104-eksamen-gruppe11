@@ -2,7 +2,6 @@
 //User IdGenerator
 function userID() {
     let IdCounter = "";
-
     let userList = JSON.parse(window.localStorage.getItem("Members"));
 
     if (userList === null || userList.length == 0) {
@@ -12,10 +11,7 @@ function userID() {
     }
 
     return IdCounter;
-
 }
-
-
 
 //Creates new user
 function userRegister(event) {
@@ -35,28 +31,7 @@ function userRegister(event) {
 
     window.alert(firstName + " " + lastName + " is added to user list!")
     event.target.reset();
-
-
-
 }
-
-// //Pushes created users to list
-//function showUserList() {
-//const userList = JSON.parse(window.localStorage.getItem("UserList")) || [];
-
-//const userListEl = document.getElementsByClassName("userList");
-//userListEl.innerHTML = "";
-
-
-//for (let users of userList) {
-//userListEl.innerHTML += `<option value = ${users.id}>${users.firstName}</option>"`;
-// }
-//}
-
-//showUserList()
-
-//https://stackoverflow.com/questions/24403732/check-if-array-is-empty-or-does-not-exist-js
-
 
 const registeredMembersOpenBtn = document.getElementById("openBtn");
 const registeredMembersCloseBtn = document.getElementById("closeBtn")
@@ -108,4 +83,3 @@ function RegisteredMembersDropdownList() {
 
 // Finally prints the content to the drop-down menu.
 RegisteredMembersDropdownList();
-

@@ -1,5 +1,7 @@
-// File with common functions used across the project.
-
+/*  
+File with common functions used across the project.
+Functions have names that describes what they do
+*/
 function getMembers() {
     return JSON.parse(window.localStorage.getItem('Members')) ?? [];
 }
@@ -120,14 +122,6 @@ function removeAllChildren(parent) {
     }
 }
 
-function generateUuid() {
-    // Whenever we need something random.
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-}
-
 function showStatusMessage(message, isSuccess) {
     const statusBox = document.getElementById('status');
     statusBox.style.display = 'block';
@@ -150,4 +144,12 @@ function getFormattedDate(dateAsString) {
     const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
 
     return `${day}.${month}.${year}`;
+}
+
+ // Whenever we need something random.
+ function generateUuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
 }

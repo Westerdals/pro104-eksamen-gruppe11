@@ -65,6 +65,7 @@ if (selectedProject != null) {
   renderProjectInformation();
   renderTasks(tasks);
 } else {
+
   // remove add task button since there are no projects..
   const addTaskButtonDiv = document.getElementById('addTaskBtnDiv');
   removeAllChildren(addTaskButtonDiv);
@@ -123,6 +124,7 @@ toDoButton.onclick = function () {
     .then(data => data.text())
     .then(html => document.getElementById('popUp').innerHTML = html)
     .then(() => {
+
       // Close-button to close the taskregister window.
       const close = document.getElementById("closeButton");
 
@@ -198,6 +200,7 @@ function createTaskElement(task) {
 
 // Function to render (and re-render) tasks on the board
 function renderTasks(tasks) {
+
   // first remove all tasks on the board.
   removeAllChildren(toDoDiv);
   removeAllChildren(duringDiv);
@@ -396,7 +399,6 @@ function createTaskEndDateSelector(task) {
     }
   }
 }
-
 
 //Overlay for add new task 
 function overlayOn() {

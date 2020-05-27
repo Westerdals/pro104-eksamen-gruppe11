@@ -35,7 +35,7 @@ body{
 }
 
 .btn :hover{
- size: 50em;
+    size: 50em;
 }
 
 h1, h4{
@@ -59,7 +59,6 @@ h1, h4{
 	font-style: italic;
 	color: var(--dGray);
 }
-
 
 .grid{
     display: grid;
@@ -105,7 +104,7 @@ h1, h4{
 
 .project-name-header{
     margin: 20px;
-    color: rgb(31, 82, 141);  
+    color: rgb(56, 135, 224) 
 }
 
 .project-description{

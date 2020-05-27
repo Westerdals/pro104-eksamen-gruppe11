@@ -5,6 +5,7 @@ const createOption = (parentEl, id, value) => {
     option.innerHTML = value;
     parentEl.appendChild(option);
 };
+
 // Render the page:
 // LocalStorage Items
 const projectList = getProjects();
@@ -25,6 +26,7 @@ function refreshMembersDropdown() {
 
     // Looping through the Members Storage
     for (let member of memberList) {
+
         // Destructuring the objects 
         const { id, firstName, lastName } = member;
         createOption(membersOption, id, firstName + " " + lastName);
@@ -119,6 +121,7 @@ document.querySelector('#createdProject').addEventListener('change', (e) => {
 });
 
 function showTaskRegisterDetails() {
+    
     // Default is the element displayed none, but changing when
     document.querySelector('.create-task-form-submit').style.display = 'block';
     document.querySelector('.delegate-form-submit').style.display = 'block';

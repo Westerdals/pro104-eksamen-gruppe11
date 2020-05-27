@@ -22,15 +22,12 @@
     <span></span>
   </div>
     <div>
-
         <div>
             <a onclick="openCloseProjectForm(this)" style="cursor: pointer;">
                 <img id="openCloseIcon" alt="Click to open create project dialog" src="./images/plus.png" />
             </a>
         </div>
-
         <div id="status" style="display: none;"></div>
-
         <div class=grid id="add-project-form" style="display: none" ;>
             <form class="create-project-forms" onsubmit="createProject(event)">
                 <h1>Create a new Project</h1>
@@ -55,14 +52,12 @@
                     <h4>Project Description</h4>
                     <textarea name="" id="projectDesc" class="small-textbox" cols="40" rows="10"></textarea>
                 </div>
-
                 <button type="submit" class="add-task-project__submit" id="projectRegBtn" style="cursor: pointer;">Create project</button>
                 <input type="reset" class="reset-button" value="Reset" style="cursor: pointer;">
                 <br>
             </form>
         </div>
     </div>
-
     <div id="project-container"></div>
 
     <script src="./scripts/functions.js"></script>

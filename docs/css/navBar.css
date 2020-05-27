@@ -32,7 +32,6 @@
 .navbar img:hover {
   outline: none;
   cursor: pointer;
-
 }
 
 .navbar a {
@@ -44,16 +43,11 @@
   font-weight: bolder;
   font-size: 12px;
   line-height: 2em;
-  /*border: 1px solid var(--Gray);
-  border-radius: 5px; */
-  
 }
-
 
 .navbar a:hover {
   background-color: var(--blue);
-  color: black;
-  
+  color: black; 
 }
 
 

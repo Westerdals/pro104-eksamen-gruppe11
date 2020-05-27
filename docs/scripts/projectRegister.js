@@ -25,7 +25,6 @@ function createProject(event) {
     const projectList = getProjects();
 
     // Don't add the project if form is not valid or the project name is duplicate
-
     if (isValidProjectInput() && isNotDuplicateProjectName(projectName, projectList) && isProjectDateValid(startDate, endDate)) {
         projectList.push(projectInfo);
         saveProjects(projectList);
