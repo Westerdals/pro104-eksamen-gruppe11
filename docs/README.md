@@ -3,8 +3,7 @@
 
 
 # ToDew
-// Her skal vi ha bilde/giff av nettsida
-
+![](images/FinishWebsiteSc.gif)
 
 ## Table of contents
 
@@ -42,6 +41,7 @@
 
 **Before you continue, ensure you have meet the following requirements:**
 * You have installed an browser for display like Firefox, Google Chrome, Opera, Safari etc.
+* Preferable in Google Chrome, as it is best optimized for Google Chrome. (based on the requirements)
 * Text editor
 * NodeJS
 
@@ -125,7 +125,7 @@ are color-coded by priority and are able to be moved according to how they fit i
   
 <a name="class"></a>
 ## Class Description
-**<ins>Index class</ins>** is "toDew's" Home Page, and is the main page of the website. It is the class for
+**<ins>Front Page</ins>** is "toDew's" Front Page, and is the main page of the website. It is the class for
 the page that is first shown up in a web browser, when the application starts up. It includes "toDew's" logo,
 and intro to the different options that the application has to offer. 
 The main function is to navigate the user to the other pages.<br/>
@@ -148,6 +148,9 @@ Project name(box), and switch to the Project Manager page in order to be easily 
 This class have the function to print out the registered members. <br/>
  
 **Each class have its own JS, HTML and CSS code.**
+
+**<ins>NavBar.css</ins>** class for designing the NavBar.
+
 
 <a name="requirements"></a>
 ## Requirements
