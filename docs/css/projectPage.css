@@ -18,27 +18,25 @@
 	box-sizing: border-box;
 }
 
-h1 {
+body {
+	margin:0;
+	font-size: 1em;
+	line-height: 1.5em;
 	text-align: center;
+	position: relative;
 }
 
-#main-container {
-	display: flex;
-  z-index: 1;
-  margin: auto;
-  width: 1200px;
-}
 
 /* BUTTONS */
 .large-button {
 	width: 170px;
-	height: 50px;
-	border-radius: 30px;
-	background-color: var(--dBlack);
-	border: 1px solid var(--Gray);
-	outline: none;
-	color: var(--Gray);
-	font-weight: bold;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(31, 82, 141);
+    color: black;
+    border: 2px solid black;
+    outline: none;
+    font-weight: bold;
 }
 
 #button-todo:hover {
@@ -49,9 +47,9 @@ h1 {
 }
 
 #addTaskBtnDiv {
-	text-align: center;
 	margin-left: 1000px;
-	margin-bottom: 20px;
+	margin-top: -120px;
+	
 }
 
 #closeButton {
@@ -99,11 +97,6 @@ h1 {
 	background-color: var(--dBlack);
 	outline: none;
 	width: 100px;
-	text-align: center;
-}
-
-#projectSelector-div {
-	text-align: center;
 }
 
 #priorities {
@@ -120,6 +113,18 @@ h1 {
 
 #priority {
 	background-color: var(--dBlack);
+}
+
+#taskPriority {
+	border-radius: 5px;
+	border: black solid 1px;
+	height: 25px;
+	z-index: 1;
+	color: var(--Gray);
+	background-color: var(--dBlack);
+	outline: none;
+	width: 100px;
+	margin-left: 17px;
 }
 
 /* TEXT INPUT FIELDS */
@@ -159,6 +164,13 @@ h1 {
 }
 
 /* STYLING TO THE ENTIRE DRAG AND DROP CONTAINER */
+#main-container {
+	display: flex;
+  z-index: 1;
+  margin: auto;
+  width: 1200px;
+}
+
 #container {
 	background-color: var(--dBlack);
 	display: flex;
@@ -169,6 +181,35 @@ h1 {
 	z-index: 1;
 	position: absolute;
 	box-shadow: 3px 3px 25px 6px rgba(0,0,0,0.75);
+}
+
+/* FOR SMALLER SCREENS */
+@media screen and (max-width: 414px) {
+	#main-container {
+		width: 100vw;
+		margin-top: 100px;
+	}
+	
+	#container {
+		width: auto;
+		margin: 0;
+	}
+
+	#popUp {
+		width: 100vw;
+	}
+
+	#addTaskBtnDiv {
+		margin-left: 0;
+		margin-top: -25px;
+	}
+	#projectOverviewSec {
+		height: 700px;
+	}
+
+	.projDescriptionSec p {
+		width: auto;
+	}
 }
 
 /* STYLING TO THE TASK DIVS*/
@@ -351,4 +392,22 @@ h1 {
 
 #taskEndtDate {
 	margin-left: 39px;
+}
+
+/* PROJECT DESCRIPTION STYLING */
+#projectOverviewSec {
+	height: 270px;
+}
+.projDescriptionSec p {
+	width: 400px;
+	margin: 0 auto;
+	margin-top: -20px;
+	background-color: var(--dBlack);
+	border: 1px solid var(--Gray);
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#projectEndDate {
+	margin-top: -25px;
 }
