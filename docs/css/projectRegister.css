@@ -158,3 +158,8 @@ button:hover {
 	color: var(--Gray);
 	font-weight: bold;
 }
+.reset-button:hover{
+    background-color: var(--Gray);
+    color: var(--dBlack);
+    border: var(--dBlack);
+}
