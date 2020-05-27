@@ -134,9 +134,20 @@ function showStatusMessage(message, isSuccess) {
 
     if (isSuccess) {
         statusBox.style.backgroundColor = '#00ca4e';
+        statusBox.style.color = 'black';
     } else {
         statusBox.style.backgroundColor = '#ff605c';
+        statusBox.style.color = 'white';
     }
 
     statusBox.innerHTML = `<p>${message}</p>`;
+}
+
+function getFormattedDate(dateAsString) {
+    const date = new Date(dateAsString);
+    const year = date.getFullYear();
+    const month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+
+    return `${day}.${month}.${year}`;
 }

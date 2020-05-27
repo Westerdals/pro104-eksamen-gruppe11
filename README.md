@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  ## Group 11 ! ![](images/logoHeadingNy.png)
  Pro104 WebProject Exam 
 
@@ -44,6 +45,42 @@
 * Preferable in Google Chrome, as it is best optimized for Google Chrome. (based on the requirements)
 * Text editor
 * NodeJS
+=======
+## Group 11 
+Pro104 WebProject Exam
+
+# ToDew
+// Her skal vi ha bilde/giff av nettsida
+
+
+## Table of contents
+1. [About. ](#about)
+
+2. [Concept. ](#concept)
+
+3. [Development methodologies. ](#development)
+
+4. [Prototype. ](#prototype)
+
+5. [Logo. ](#logo)
+
+6. [Class Description. ](#class)
+
+7. [Requirements. ](#requirements)
+
+8. [Installation. ](#install)
+
+9. [Usage. ](#usage)
+
+10. [Mobile support. ](#mobile)
+
+11. [Technology used. ](#technology) 
+
+11. [Code Style. ](#code)
+
+
+
+>>>>>>> master
 
 <a name="about"></a>
 ## About
@@ -60,14 +97,21 @@
   so it should be easy to go back and know who has worked on what. 
 * The possibility to easy change the owner of the tasks/allocate the tasks/switch tasks and leave tasks.
 * The program follows a clean line when it comes to design,so that tasks are in focus. 
+<<<<<<< HEAD
 * The app includes intuitive color choices for importance-red,green and yellow.
 * Calendar layout.
 * Use of drag and drop.
 * Saving information in Local Storage.
+=======
+>>>>>>> master
 * User-friendly.
 * Visual aid, neat and intuitive to use. <br/>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 <a name="concept"></a>
 ## Concept
 
@@ -75,10 +119,15 @@ We created a wireframe,that includes where our components in the responsive app 
 The concept sketch, was one of our initial steps in our brainstorming process of creating this app.
 The reason behind creating a concept sketch,was because we wanted to visualize the project together from the start,
 which helped our team to shape/share our ideas, and to get a clear idea of what kind of design we will go for. 
+<<<<<<< HEAD
 Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. 
 We have weighed in, both for and against the various solutions and come to the conclusion that a Kanban-concept where post it- cards.
 are color-coded by priority and are able to be moved according to how they fit into the project, is something we would like to go for! <br/>
 ![](images/conceptSc.gif)
+=======
+Because of that, we created a quick and simple way to clarify our ideas and keep the project moving forward. <br/>
+ ![](images/conceptGif.gif)
+>>>>>>> master
  
 
 <a name="development"></a>
@@ -98,7 +147,10 @@ are color-coded by priority and are able to be moved according to how they fit i
 <a name="prototype"></a>
 ## Prototype
 
+<<<<<<< HEAD
 * Adobe XD used.
+=======
+>>>>>>> master
 * An interactive mockup of our web design.
 * High-fidelity visual version of the app,that allows you to link between pages.<br/>
 * [Prototype](https://xd.adobe.com/view/d473a8d5-681e-4022-612c-0780508b4732-a242/?fullscreen) shows how the plan was that our app would work/look like before we even build it up.
@@ -114,18 +166,30 @@ are color-coded by priority and are able to be moved according to how they fit i
   plan the project. Considering that the pronunciation of "toDo" and "toDew" is very similar, we gave the name to our app to be "toDew", which symbolizes both
   purity(simple design), freshness(recently made) or power to refresh(reminder), and toDo list.
   We have decided to go for "Combination Mark" logo, by including the Water-drop symbol, and the name of the app. The "Water Drop"
+<<<<<<< HEAD
   has an intertwined design where two shapes are combined together in one water drop, which again gives association of something in common and easy merging
   in order to achieve a common goal-team collaboration. The color that we used for our logo is mostly "Blue", which is often associated with harmony,trust and stability.Considering that, 
   we strove to deliver an app that will have an visual harmony, will be stable and easy to use. In other words, 
   we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on.  <br/>
  
  ![](images/LogoToDew.png) 
+=======
+  has an intertwined design where multiple shapes are combined together in one water drop, which again gives association of something in common and easy merging
+  in order to achieve a common goal-team collaboration. The color that we used for our logo is mostly "Blue", which is often associated with harmony,trust and stability.Considering that, 
+  we strove to deliver an app that will have an visual harmony, will be stable and easy to use. In other words, 
+  we wanted our logo to give impression of "toDew", as a helpful tool and a tool that our users can rely on. <br/>
+  ![](images/logoToDew.png)
+>>>>>>> master
 
  **Adobe Illustrator is used for designing the logo** 
   
 <a name="class"></a>
 ## Class Description
+<<<<<<< HEAD
 **<ins>Front Page</ins>** is "toDew's" Front Page, and is the main page of the website. It is the class for
+=======
+**<ins>Index class</ins>** is "toDew's" Home Page, and is the main page of the website. It is the class for
+>>>>>>> master
 the page that is first shown up in a web browser, when the application starts up. It includes "toDew's" logo,
 and intro to the different options that the application has to offer. 
 The main function is to navigate the user to the other pages.<br/>
@@ -149,9 +213,12 @@ This class have the function to print out the registered members. <br/>
  
 **Each class have its own JS, HTML and CSS code.**
 
+<<<<<<< HEAD
 **<ins>NavBar.css</ins>** class for designing the NavBar.
 
 
+=======
+>>>>>>> master
 <a name="requirements"></a>
 ## Requirements
 
@@ -159,6 +226,10 @@ This class have the function to print out the registered members. <br/>
 * Mobile device / Laptop / Desktop
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 <a name="install"></a>
 ## Installation
 First of all, you have to have access to Github.To compile/run this project, first you need to clone/download it from Github.
@@ -187,9 +258,15 @@ who is working on what,set deadlines and give reminders.
 To be able to create a project, you need to specify the name of the project. Then you will be asked to add Start and End date, and project description.
 Once the project is created, you have the opportunity to click on the project that have been created, and you will be directly moved to Project manager page.
 (as well, as you have the opportunity to go to project-manager page by use of the navbar).
+<<<<<<< HEAD
 In there you can create a tasks with start/end date and priority level. You can also create you own team, by click on teams once you are in Project Manager page,
 you can add members to your team, add roles and tasks as well. Once the tasks are created you have also the ability to move them through the different stages.
 During the project you have ability to change the status on tasks from not started, to work-in-progress og finished. As well as you have ability
+=======
+In there you create a tasks with start/end date and priority level. You can also create you own team, by click on teams once you are in Project Manager page,
+you can add members to your team, add roles and tasks as well. Once the tasks are created you have also the ability to move them through the different stages.
+During the project you have ability to change the status from not started, to work-in-progress og finished. As well as you have ability
+>>>>>>> master
 to see which member is working on what. 
 Once,you go to profile, you be able to see user information, as well as user's active projects. 
 
@@ -241,7 +318,11 @@ We have been using different technologies to create this app, in order for the a
 * In one element, included attributes are added in standard order, other additional attributes are added in alphabetical order.
 * Code blocks that are child elements are always created at three spaces (or a tab) corresponding to their parent element.
 
+<<<<<<< HEAD
 ![](images/htmlComments.png)
+=======
+//bilde fra en del av koden kommer her for å vise eksempel
+>>>>>>> master
 
 **CSS**
 * Since elements referenced in HTML use camelCase, the selector in CSS is also used with camelCase.
@@ -250,7 +331,11 @@ We have been using different technologies to create this app, in order for the a
 * New line for each declaration.
 * "property" and "value" are written on the same line and end with a semicolon.
 
+<<<<<<< HEAD
 ![](images/cssComments.png)
+=======
+//bilde fra en liten del av koden kommer her for å vise eksempel
+>>>>>>> master
 
 **JavaScript**
 * Camelcase is used when naming all statements.
@@ -262,6 +347,7 @@ We have been using different technologies to create this app, in order for the a
 * Comments are written briefly and concisely in English using "//".
 * Comments are used above the start tag of the elements.
 
+<<<<<<< HEAD
 ![](images/jsComments.png)
 
 
@@ -271,5 +357,8 @@ We have been using different technologies to create this app, in order for the a
 
 
 
+=======
+//bilde fra en del av koden kommer her for å vise eksempel
+>>>>>>> master
 
 

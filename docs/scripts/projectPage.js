@@ -3,7 +3,7 @@ let toDoContainer = document.getElementById("container");
 let toDoButton = document.getElementById("button-todo");
 
 let headContainer = document.getElementById("head-container");
-let duringText= document.getElementById("during-text");
+let duringText = document.getElementById("during-text");
 let finishedText = document.getElementById("finished-text");
 
 let toDoDiv = document.getElementById("todo-div");
@@ -29,14 +29,14 @@ const projectList = getProjects();
 const projectListEl = document.getElementById('projectSelector');
 
 for (let project of projectList) {
-    createOption(projectListEl, project.ProjectID, project.projectName);
+  createOption(projectListEl, project.ProjectID, project.projectName);
 }
 
 let selectedProject = getSelectedProjectFromUrlHash();
 
-if(selectedProject === null) {
+if (selectedProject === null) {
   const firstProjectInList = projectListEl.childNodes[0] ?? null;
-  if(firstProjectInList != null) {
+  if (firstProjectInList != null) {
     firstProjectInList.selected = true;
     setSelectedProjectToUrlHash(firstProjectInList.value);
     selectedProject = getSelectedProjectFromUrlHash();
@@ -44,20 +44,25 @@ if(selectedProject === null) {
     console.log("No projects.");
     const projectSelectorDiv = document.getElementById('projectSelector-div');
     removeAllChildren(projectSelectorDiv);
+
     const newElement = document.createElement('h3');
     newElement.innerHTML = `Seems like you do not have any projects. Click <a href="./projectRegister.html">here</a> to get started!`;
     projectSelectorDiv.appendChild(newElement);
+
+    const projectInformationDiv = document.getElementById('projDescriptionSec');
+    projectInformationDiv.style.display = 'none';
   }
 } else {
   projectListEl.childNodes.forEach(child => {
-    if(parseInt(child.value) === selectedProject) {
+    if (parseInt(child.value) === selectedProject) {
       child.selected = true;
     }
   })
 }
 
-if(selectedProject != null) {
+if (selectedProject != null) {
   let tasks = getTasksForProject(selectedProject);
+  renderProjectInformation();
   renderTasks(tasks);
 } else {
   // remove add task button since there are no projects..
@@ -70,13 +75,14 @@ projectListEl.onchange = (changeEvent) => {
   setSelectedProjectToUrlHash(changeEvent.target.value);
   selectedProject = getSelectedProjectFromUrlHash();
   renderTasks(getTasksForProject(selectedProject));
+  renderProjectInformation();
 }
 
 //Drag and drop functions
 function dragStart(event) {
   event.dataTransfer.setData("Text", event.target.id);
 }
-  
+
 function allowDrop(event) {
   event.preventDefault();
 }
@@ -100,63 +106,36 @@ function drop(event, element) {
     case finishedDiv:
       saveTaskStatus(selectedProject, taskId, "DONE");
       droppedOnDiv.appendChild(document.getElementById(dataTransfer));
-    break;
-    
+      break;
+
     default:
       console.error(`Task dropped on unknown element`);
-  }    
+  }
 }
 
 // Function to make taskregister popup.
-toDoButton.onclick = function() {
+toDoButton.onclick = function () {
+  overlayOn();
   const taskPopupWindow = document.getElementById("popUp");
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
   fetch('./taskPopUp.html')
-  .then(data => data.text())
-  .then(html => document.getElementById('popUp').innerHTML = html)
-  .then(() => {
-        // Close-button to close the taskregister window.
-        const close = document.getElementById("closeButton");
+    .then(data => data.text())
+    .then(html => document.getElementById('popUp').innerHTML = html)
+    .then(() => {
+      // Close-button to close the taskregister window.
+      const close = document.getElementById("closeButton");
 
-        close.onclick = function(){
-          taskPopupWindow.style.zIndex = "-1";
-          taskPopupWindow.style.display = "none";
-        }
-
-        const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-        const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-      
-        openModalButtons.forEach(toDoButton =>{
-          toDoButton.addEventListener(`click`, () => {
-            const modal = document.querySelector(toDoButton.dataset.modalTarget)
-            openModal(modal);
-        })
-      })
-
-      closeModalButtons.forEach(toDoButton =>{
-        toDoButton.addEventListener(`click`, () => {
-          const modal = toDoButton.closest(`.modal`);
-          closeModal(modal);
-        })
-      })
-  }); 
-}
-
-function openModal(modal){
-  if(modal == null) return
-  modal.classList.add(`active`);
-  overlay.classList.add(`active`);
-}
-
-function closeModal(modal){
-  if(modal == null) return
-  modal.classList.remove(`active`);
-  overlay.classList.remove(`active`);
+      close.onclick = function () {
+        overlayOff();
+        taskPopupWindow.style.zIndex = "-1";
+        taskPopupWindow.style.display = "none";
+      }
+    });
 }
 
 function getSelectedProjectFromUrlHash() {
-  if(window.location.hash) { 
+  if (window.location.hash) {
     const projectId = window.location.hash.split(`#`)[1];
     return parseInt(projectId);
   } else {
@@ -178,8 +157,8 @@ function createTaskElement(task) {
   element.ondblclick = () => createTaskSettingsPopup(task.id);
   element.id = task.id
   element.classList.add('post-it-divs');
-  
-  switch(task.priorities.toUpperCase()) {
+
+  switch (task.priorities.toUpperCase()) {
     case "LOW":
       element.classList.add('lowPriority');
       break;
@@ -193,25 +172,19 @@ function createTaskElement(task) {
       element.classList.add('unknownPriority');
   }
 
-  const startDate = new Date(task.taskStartDate);
-  const startMonth = startDate.getMonth() < 10 ? `0${startDate.getMonth()}` : startDate.getMonth();
-  const startDay = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
-  const dueDate = new Date(task.taskEndtDate);
-  const dueMonth = dueDate.getMonth() < 10 ? `0${dueDate.getMonth()}` : dueDate.getMonth();
-  const dueDay = dueDate.getDate() < 10 ? `0${dueDate.getDate()}` : dueDate.getDate();
   const delegates = task.delegate ?? [];
 
   element.innerHTML += `<h4 class="header-for-tasks">${task.taskText}</h4>`;
   element.innerHTML += `<p class="priority-for-tasks">Priority: <b>${task.priorities}<b></p>`;
-  element.innerHTML += `<p class="date-for-tasks">Start date: ${startDay}.${startMonth}.${startDate.getFullYear()}</p>`;
-  element.innerHTML += `<p class="date-for-tasks"> Due date: ${dueDay}.${dueMonth}.${dueDate.getFullYear()}</p>`;
- 
-  
-  if(delegates.length != 0){
+  element.innerHTML += `<p class="date-for-tasks">Start date: ${getFormattedDate(task.taskStartDate)}</p>`;
+  element.innerHTML += `<p class="date-for-tasks"> Due date: ${getFormattedDate(task.taskEndtDate)}</p>`;
+
+
+  if (delegates.length != 0) {
     let taskDelegates = ""
     delegates.forEach(delegate => {
       const member = getMemberById(parseInt(delegate.userId));
-      if(member != null) {
+      if (member != null) {
         taskDelegates += `${member.firstName} ${member.lastName}, `
       } else {
         console.error(`Could not find member with id: ${delegate}`);
@@ -234,7 +207,7 @@ function renderTasks(tasks) {
   tasks.forEach((task) => {
     const status = task.status ?? "TODO";
     const element = createTaskElement(task);
-    switch(status.toUpperCase()) {
+    switch (status.toUpperCase()) {
       case "IN_PROGRESS":
         duringDiv.appendChild(element);
         break;
@@ -247,6 +220,20 @@ function renderTasks(tasks) {
   });
 }
 
+// Function to render project information on the board
+function renderProjectInformation() {
+  const project = getProjectById(selectedProject);
+
+  const projectDescriptionElement = document.getElementById('projectDescription');
+  projectDescriptionElement.innerHTML = project.projectDesc;
+
+  const projectStartDateElement = document.getElementById('projectStartDate');
+  projectStartDateElement.innerHTML = getFormattedDate(project.startDate);
+
+  const projectEndDateElement = document.getElementById('projectEndDate');
+  projectEndDateElement.innerHTML = getFormattedDate(project.endDate);
+}
+
 function createTask(event) {
   event.preventDefault();
 
@@ -256,12 +243,12 @@ function createTask(event) {
   const taskEndDateAsString = document.getElementById('taskEndtDate').value;
 
   const task = {
-      id: generateUuid(),
-      taskText,
-      priorities,
-      taskStartDate: taskEndDateAsString,
-      taskEndtDate: taskEndDateAsString,
-      delegate: []
+    id: generateUuid(),
+    taskText,
+    priorities,
+    taskStartDate: taskEndDateAsString,
+    taskEndtDate: taskEndDateAsString,
+    delegate: []
   };
 
   const taskStartDate = new Date(taskStartDateAsString);
@@ -272,22 +259,22 @@ function createTask(event) {
   const projectEndDate = new Date(project.endDate);
 
   if (taskStartDate < projectStartDate) {
-      showStatusMessage("Task can't start before project start..", false);
+    showStatusMessage("Task can't start before project start..", false);
   } else if (taskEndDate > projectEndDate) {
-      showStatusMessage("Task can't end after project end..", false);
+    showStatusMessage("Task can't end after project end..", false);
   } else if (taskStartDate > taskEndDate) {
-      showStatusMessage("Task can't end before start date..", false);
+    showStatusMessage("Task can't end before start date..", false);
   } else {
     const projectList = getProjects();
     projectList.forEach((el) => {
-        if (el.ProjectID === selectedProject) {
-            el.tasks.push(task);
-        }
+      if (el.ProjectID === selectedProject) {
+        el.tasks.push(task);
+      }
     });
-  
+
     saveProjects(projectList);
     renderTasks(getTasksForProject(selectedProject));
-  
+
     // Close the popup
     const taskPopupWindow = document.getElementById("popUp");
     taskPopupWindow.style.zIndex = "-1";
@@ -300,29 +287,29 @@ function createTaskSettingsPopup(taskId) {
   taskPopupWindow.style.zIndex = "2";
   taskPopupWindow.style.display = "flex";
   fetch('./taskSettingsPopUp.html')
-  .then(data => data.text())
-  .then(html => document.getElementById('popUp').innerHTML = html)
-  .then(() => {
-        const close = document.getElementById("closeButton");
-        close.onclick = () => {
-          taskPopupWindow.style.zIndex = "-1";
-          taskPopupWindow.style.display = "none";
-          renderTasks(getTasksForProject(selectedProject));
-        }
+    .then(data => data.text())
+    .then(html => document.getElementById('popUp').innerHTML = html)
+    .then(() => {
+      const close = document.getElementById("closeButton");
+      close.onclick = () => {
+        taskPopupWindow.style.zIndex = "-1";
+        taskPopupWindow.style.display = "none";
+        renderTasks(getTasksForProject(selectedProject));
+      }
 
-        const task = getTasksForProject(selectedProject).find(task => task.id == taskId);
-        createMemberResponsibilityTable(task);
-        createPrioritySelector(task);
-        createTaskStartDateSelector(task);
-        createTaskEndDateSelector(task);
-  });
+      const task = getTasksForProject(selectedProject).find(task => task.id == taskId);
+      createMemberResponsibilityTable(task);
+      createPrioritySelector(task);
+      createTaskStartDateSelector(task);
+      createTaskEndDateSelector(task);
+    });
 }
 
 function createMemberResponsibilityTable(task) {
   const memberList = getMembers();
   const memberTable = document.getElementById('membersTable');
 
-  if(memberList.length == 0) {
+  if (memberList.length == 0) {
     removeAllChildren(memberTable);
     const errorMsgElement = document.createElement('p');
     errorMsgElement.innerHTML = `<p>You have not registered any members. You can do that <a href="./userRegister.html">here</a></p>`;
@@ -338,7 +325,7 @@ function createMemberResponsibilityTable(task) {
 
     const responsibleCheckBox = document.createElement('input');
     responsibleCheckBox.type = 'checkbox';
-    
+
     responsibleCheckBox.value = member.id;
     responsibleCheckBox.checked = task.delegate.find(d => d.userId == member.id) ? true : false;
 
@@ -356,9 +343,9 @@ function createPrioritySelector(task) {
   createOption(priorityElement, 'Low', 'Low');
   createOption(priorityElement, 'Medium', 'Medium');
   createOption(priorityElement, 'High', 'High');
-  
+
   priorityElement.childNodes.forEach(option => {
-    if(option.value == task.priorities) {
+    if (option.value == task.priorities) {
       option.selected = true;
     }
   })
@@ -378,7 +365,7 @@ function createTaskStartDateSelector(task) {
     if (taskStartDate < projectStartDate) {
       showStatusMessage("Task can't start before project start..", false);
       taskStartDateElement.value = task.taskStartDate;
-    } else if(taskStartDate > taskEndDate){
+    } else if (taskStartDate > taskEndDate) {
       showStatusMessage("Task can't start can't start before task end..", false);
       taskStartDateElement.value = task.taskStartDate;
     } else {
@@ -411,88 +398,11 @@ function createTaskEndDateSelector(task) {
 }
 
 
-//Johann sin overlay kode
-/* 
-const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-const overlay = document.getElementById(`overlay`);
-
-openModalButtons.forEach(toDoButton => {
-  toDoButton.addEventListener(`click`, () => {
-    const modal = document.querySelector(toDoButton.dataset.modalTarget)
-    openModal(modal);
-  })
-})
-
-// Make popUp close when clicking outside in the overlay
-//overlay.addEventListener(`click`, () => {
-//const modals = document.querySelectorAll(`.modal.active`);
-//modals.forEach(modal => {
-//closeModal(modal);
-//})
-//})
-
-closeModalButtons.forEach(toDoButton => {
-  toDoButton.addEventListener(`click`, () => {
-    const modal = toDoButton.closest(`.modal`);
-    closeModal(modal);
-  })
-})
-
-function openModal(modal) {
-  if (modal == null) return
-  modal.classList.add(`active`);
-  overlay.classList.add(`active`);
+//Overlay for add new task 
+function overlayOn() {
+  document.getElementById("overlay").style.display = "block";
 }
 
-function closeModal(modal) {
-  if (modal == null) return
-  modal.classList.remove(`active`);
-  overlay.classList.remove(`active`);
-=======
-    // Close-button to close the taskregister window.
-    const close = document.getElementById("closeButton");
-
-    close.onclick = function(){
-      taskPopupWindow.style.zIndex = "-1";
-      taskPopupWindow.style.display = "none";
-  }  
-
-  const openModalButtons = document.querySelectorAll(`[data-modal-target]`);
-  const closeModalButtons = document.querySelectorAll(`[data-close-button]`);
-  const overlay = document.getElementById(`overlay`);
-
-  openModalButtons.forEach(toDoButton =>{
-    toDoButton.addEventListener(`click`, () => {
-      const modal = document.querySelector(toDoButton.dataset.modalTarget)
-      openModal(modal);
-  })
-})
-
-// Make popUp close when clicking outside in the overlay
-//overlay.addEventListener(`click`, () => {
-  //const modals = document.querySelectorAll(`.modal.active`);
-  //modals.forEach(modal => {
-    //closeModal(modal);
-  //})
-//})
-
-closeModalButtons.forEach(toDoButton =>{
-  toDoButton.addEventListener(`click`, () => {
-    const modal = toDoButton.closest(`.modal`);
-    closeModal(modal);
-  })
-})
-  
-function openModal(modal){
-  if(modal == null) return
-  modal.classList.add(`active`);
-  overlay.classList.add(`active`);
+function overlayOff() {
+  document.getElementById("overlay").style.display = "none";
 }
-
-function closeModal(modal){
-  if(modal == null) return
-  modal.classList.remove(`active`);
-  overlay.classList.remove(`active`);
-}
- */

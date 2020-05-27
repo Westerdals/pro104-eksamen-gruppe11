@@ -18,40 +18,36 @@
 	box-sizing: border-box;
 }
 
-h1 {
+body {
+	margin:0;
+	font-size: 1em;
 	text-align: center;
+	position: relative;
 }
 
-#main-container {
-	display: flex;
-  z-index: 1;
-  margin: auto;
-  width: 1200px;
-}
 
 /* BUTTONS */
 .large-button {
 	width: 170px;
-	height: 50px;
-	border-radius: 30px;
-	background-color: var(--dBlack);
-	border: 1px solid var(--Gray);
-	outline: none;
-	color: var(--Gray);
-	font-weight: bold;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(31, 82, 141);
+    color: black;
+    border: 2px solid black;
+    outline: none;
+    font-weight: bold;
 }
 
 #button-todo:hover {
-	background-color: var(--Gray);
-	color: black;
-	border: 2px solid black;
+	background-color: rgb(31, 82, 141);
+	color: var(--Gray);
+	border: 2px solid var(--Gray);
 	cursor: pointer;
 }
 
 #addTaskBtnDiv {
-	text-align: center;
 	margin-left: 1000px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 
 #closeButton {
@@ -84,9 +80,10 @@ h1 {
 }
 
 #addTaskSubBtn:hover {
-	background-color: var(--Gray);
-	color: black;
-	border: 2px solid black;
+	background-color: rgb(31, 82, 141);
+	color: var(--Gray);
+	border: 2px solid var(--Gray);
+	cursor: pointer;
 }
 
 /* SELECT */
@@ -99,11 +96,6 @@ h1 {
 	background-color: var(--dBlack);
 	outline: none;
 	width: 100px;
-	text-align: center;
-}
-
-#projectSelector-div {
-	text-align: center;
 }
 
 #priorities {
@@ -120,6 +112,18 @@ h1 {
 
 #priority {
 	background-color: var(--dBlack);
+}
+
+#taskPriority {
+	border-radius: 5px;
+	border: black solid 1px;
+	height: 25px;
+	z-index: 1;
+	color: var(--Gray);
+	background-color: var(--dBlack);
+	outline: none;
+	width: 100px;
+	margin-left: 17px;
 }
 
 /* TEXT INPUT FIELDS */
@@ -159,6 +163,14 @@ h1 {
 }
 
 /* STYLING TO THE ENTIRE DRAG AND DROP CONTAINER */
+#main-container {
+	display: flex;
+  z-index: 1;
+	margin: auto;
+	margin-top: -35px;
+  width: 1200px;
+}
+
 #container {
 	background-color: var(--dBlack);
 	display: flex;
@@ -169,6 +181,33 @@ h1 {
 	z-index: 1;
 	position: absolute;
 	box-shadow: 3px 3px 25px 6px rgba(0,0,0,0.75);
+}
+
+/* FOR SMALLER SCREENS */
+@media screen and (max-width: 414px) {
+	#main-container {
+		width: 100vw;
+	}
+	
+	#container {
+		width: auto;
+		margin: 0;
+	}
+
+	#popUp {
+		width: 100vw;
+	}
+
+	#addTaskBtnDiv {
+		margin-left: 0;
+	}
+	#projectOverviewSec {
+		height: 700px;
+	}
+
+	.projDescriptionSec p {
+		width: auto;
+	}
 }
 
 /* STYLING TO THE TASK DIVS*/
@@ -190,20 +229,6 @@ h1 {
 	scrollbar-color: var(--offWhite) var(--postIt);
 }
   
-/* Chrome/Edge/Safari */
-::-webkit-scrollbar {
-	width: 12px;
-}
-
-::-webkit-scrollbar-track {
-	background: var(--offWhite);
-}
-
-::-webkit-scrollbar-thumb {
-	background-color:var(--postIt);
-	border-radius: 20px;
-	border: 3px solid var(--offWhite);
-}
 
 .header-for-tasks{
 	margin: 10px;
@@ -281,52 +306,6 @@ h1 {
 	cursor: grabbing;
 }
 
-/* NAVBAR */
-#navBar-container {
-  width: auto;
-  height: 50px;
-  background-color: var(--dBlack);
-  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-}
-
-.dropBtn {
-  height: 50px;
-  width: 90px;
-  position: relative;
-  background-color: var(--lBlack);
-  color: var(--Gray);
-  padding: 5px;
-  border: solid var(--dBlack) 2px;
-  outline: none;
-  border-radius: 5px;
-  margin-left: 2px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--dBlack);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1; 
-}
-
-.dropdown-content a {
-  color: var(--Gray);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /* POPUP */
 #popUp {
 	background-color: var(--lBlack);
@@ -340,7 +319,22 @@ h1 {
 	z-index: 2;
 	border-radius: 12px;
 	border: black solid 2px;
-  color: var(--Gray);
+	color: var(--Gray);
+	overflow: auto;
+}
+
+#overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 2;
+	cursor: pointer;
 }
 
  /* INNER POPUP */
@@ -397,4 +391,19 @@ h1 {
 
 #taskEndtDate {
 	margin-left: 39px;
+}
+
+/* Chrome/Edge/Safari */
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--offWhite);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color:var(--postIt);
+	border-radius: 20px;
+	border: 3px solid var(--offWhite);
 }
