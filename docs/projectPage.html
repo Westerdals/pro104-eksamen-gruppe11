@@ -1,72 +1,82 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>toDew - Project Manager</title>
-    <link rel="stylesheet" href="./css/projectPage.css">
-    <link rel="stylesheet" href="./css/navBar.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toDew - Project Manager</title>
+  <link rel="stylesheet" href="./css/projectPage.css">
+  <link rel="stylesheet" href="./css/navBar.css">
 </head>
+
 <body>
-<!-- NAVBAR -->
-<div class="navbar">
-  <span></span>
-  <img src="./images/ToDewLogoNav-01.png" alt="toDew Logo">
-  <a href="./userRegister.html">Register User</a>
-  <a href="./projectRegister.html">Create Project</a>
-  <a href="./taskRegister.html">Register Task</a>
-  <a class="current" href="./projectPage.html">Project Manager</a>
-  <span></span>
-</div>
-  
-<main>
- <span>
- <div>
-<div>
-  <h1>Project Manager</h1>
-  <section id="projDescriptionSec">
-    <h4>Project Description</h4>
-      <p id="projectDescription">This would be an example of a project description. It may be long, it may be short. Whichever works best for you.</p>
-    <br>
-    <time>
-      Project duration: <span id="projectStartDate"></span> - <span id="projectEndDate"></span>
-    </time>
-  </section>
- </div>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <span></span>
+    <img src="./images/ToDewLogoNav-01.png" alt="toDew Logo">
+    <a href="./userRegister.html">Register User</a>
+    <a href="./projectRegister.html">Create Project</a>
+    <a href="./taskRegister.html">Register Task</a>
+    <a class="current" href="./projectPage.html">Project Manager</a>
+    <span></span>
+  </div>
 
-<br>
-<div id="projectSelector-div">
-<label for="projectSelector">Select Project</label>
-<select id="projectSelector"></select>
-</div>
-<br>
-<div id="addTaskBtnDiv">
-<input type="button" id="button-todo" value="Add Task +" data-modal-target="#modal" class="large-button">
-</div>
-</span>
+  <main>
+    <span>
+      <div>
+        <div>
+          <h1>Project Manager</h1>
+          <section id="projDescriptionSec">
+            <h4>Project Description</h4>
+            <p id="projectDescription">This would be an example of a project description. It may be long, it may be
+              short. Whichever works best for you.</p>
+            <br>
+            <time>
+              Project duration: <span id="projectStartDate"></span> - <span id="projectEndDate"></span>
+            </time>
+          </section>
+        </div>
 
-<span id="main-container">
+        <br>
+        <div id="projectSelector-div">
+          <label for="projectSelector">Select Project</label>
+          <select id="projectSelector"></select>
+        </div>
+        <br>
+        <div id="addTaskBtnDiv">
+          <input type="button" id="button-todo" value="Add Task +" data-modal-target="#modal" class="large-button">
+        </div>
+    </span>
 
-<span id="containerToGetDisplayHorizontal">
-  <span id="container">
-    <div id="todo-text-header" class="headers"><p>TO DO</p></div>
-    <div id="todo-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="during-text-head"class="headers"><p>WORK IN PROGRESS</p></div>
-    <div id="during-div" ondrop="drop(event)"  ondragover="allowDrop(event)"></div>
-    <div id="finished-text-head"class="headers"><p>FINISHED</p></div>
-    <div id="finished-div"ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  </span>
-  </span>  
-  <span id="calendarSpan">
-    <div id="caleandar"></div>
-  </span>
-</span>
+    <span id="main-container">
 
-<div id="overlay"></div>
-<div id="popUp"></div>
+      <span id="containerToGetDisplayHorizontal">
+        <span id="container">
+          <div id="todo-text-header" class="headers">
+            <p>TO DO</p>
+          </div>
+          <div id="todo-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="during-text-head" class="headers">
+            <p>WORK IN PROGRESS</p>
+          </div>
+          <div id="during-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="finished-text-head" class="headers">
+            <p>FINISHED</p>
+          </div>
+          <div id="finished-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </span>
+      </span>
+      <span id="calendarSpan">
+        <div id="caleandar"></div>
+      </span>
+    </span>
 
-</main>
-<script src="scripts/functions.js"></script>
-<script src="scripts/projectPage.js"></script>
+    <div id="overlay"> </div>
+    <div id="popUp"></div>
+
+  </main>
+  <script src="scripts/functions.js"></script>
+  <script src="scripts/projectPage.js"></script>
 
 </body>
+
 </html>
