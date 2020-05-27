@@ -48,8 +48,7 @@ body {
 
 #addTaskBtnDiv {
 	margin-left: 1000px;
-	margin-top: -120px;
-	
+	margin-bottom: 40px;
 }
 
 #closeButton {
@@ -167,7 +166,8 @@ body {
 #main-container {
 	display: flex;
   z-index: 1;
-  margin: auto;
+	margin: auto;
+	margin-top: -35px;
   width: 1200px;
 }
 
@@ -187,7 +187,6 @@ body {
 @media screen and (max-width: 414px) {
 	#main-container {
 		width: 100vw;
-		margin-top: 100px;
 	}
 	
 	#container {
@@ -201,7 +200,6 @@ body {
 
 	#addTaskBtnDiv {
 		margin-left: 0;
-		margin-top: -25px;
 	}
 	#projectOverviewSec {
 		height: 700px;
@@ -409,20 +407,3 @@ body {
 	margin-left: 39px;
 }
 
-/* PROJECT DESCRIPTION STYLING */
-#projectOverviewSec {
-	height: 270px;
-}
-.projDescriptionSec p {
-	width: 400px;
-	margin: 0 auto;
-	margin-top: -20px;
-	background-color: var(--dBlack);
-	border: 1px solid var(--Gray);
-	border-radius: 5px;
-	padding: 5px;
-}
-
-#projectEndDate {
-	margin-top: -25px;
-}
